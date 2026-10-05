@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { CtaLink } from "@/components/cta-link";
-import { Card, PageHero, Section, SectionHeader } from "@/components/section";
+import {
+  PageHero,
+  PassiVerticali,
+  Section,
+  SectionHeader,
+} from "@/components/section";
 
 export const metadata: Metadata = {
   title: "Approvvigionamento gas e operatività sul PSV",
@@ -87,9 +92,12 @@ export default function GasPsvPage() {
         titolo="Il gas si gestisce seguendo il mercato, con regole chiare."
         introduzione="Per le imprese che consumano gas posso operare sul PSV per conto del cliente. È un lavoro fatto di scelte: quanto coprire, con quale orizzonte, con quale margine di rischio e con quali verifiche nel tempo."
       >
-        <CtaLink href="/acquisto-diretto" variante="contorno">
-          Vedi anche l&apos;acquisto aggregato di energia elettrica
-        </CtaLink>
+        <div className="flex flex-wrap gap-3">
+          <CtaLink href="/contatti">Richiedi un primo confronto</CtaLink>
+          <CtaLink href="/acquisto-aggregato" variante="contorno">
+            Vedi anche l&apos;acquisto aggregato di energia elettrica
+          </CtaLink>
+        </div>
       </PageHero>
 
       <Section>
@@ -115,16 +123,14 @@ export default function GasPsvPage() {
         <SectionHeader
           etichetta="Come si svolge"
           titolo="Quattro fasi concordate con il cliente."
+          introduzione="La copertura del gas non è un gesto singolo ma una sequenza: il profilo definisce la strategia, la strategia definisce quando operare, il presidio nel tempo tiene insieme le due cose."
         />
-        <ol className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {fasiGas.map((fase) => (
-            <li key={fase.titolo}>
-              <Card titolo={fase.titolo} numero={fase.numero}>
-                {fase.testo}
-              </Card>
-            </li>
-          ))}
-        </ol>
+        <div className="mt-4 max-w-3xl">
+          <PassiVerticali
+            etichetta="Le quattro fasi dell'approvvigionamento gas"
+            passi={fasiGas}
+          />
+        </div>
       </Section>
 
       <Section>
@@ -178,9 +184,15 @@ export default function GasPsvPage() {
             Il contratto va letto insieme al percorso di approvvigionamento.
           </h2>
           <div className="flex flex-wrap gap-3">
-            <CtaLink href="/servizi">Servizi alle imprese</CtaLink>
-            <CtaLink href="/acquisto-diretto" variante="contorno">
+            <CtaLink href="/contatti">Richiedi un primo confronto</CtaLink>
+            <CtaLink href="/servizi" variante="contorno">
+              Servizi alle imprese
+            </CtaLink>
+            <CtaLink href="/acquisto-aggregato" variante="contorno">
               Acquisto aggregato
+            </CtaLink>
+            <CtaLink href="/energia-come-servizio" variante="contorno">
+              Energia come servizio
             </CtaLink>
           </div>
         </div>

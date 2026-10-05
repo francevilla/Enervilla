@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { CtaLink } from "@/components/cta-link";
-import { Card, PageHero, Section, SectionHeader } from "@/components/section";
+import {
+  PageHero,
+  PassiVerticali,
+  Section,
+  SectionHeader,
+} from "@/components/section";
 
 export const metadata: Metadata = {
   title: "Servizi: contrattualistica, diagnosi ed efficienza energetica",
@@ -83,7 +88,10 @@ export default function ServiziPage() {
         introduzione="Il contratto, i consumi e gli interventi tecnici sono aspetti della stessa fornitura. Trattarli separatamente porta a decisioni scoordinate; leggerli insieme permette di capire dove intervenire per primo."
       >
         <div className="flex flex-wrap gap-3">
-          <CtaLink href="/acquisto-diretto">Acquisto aggregato</CtaLink>
+          <CtaLink href="/contatti">Richiedi un primo confronto</CtaLink>
+          <CtaLink href="/acquisto-aggregato" variante="contorno">
+            Acquisto aggregato
+          </CtaLink>
           <CtaLink href="/gas-psv" variante="contorno">
             Gas al PSV
           </CtaLink>
@@ -127,16 +135,33 @@ export default function ServiziPage() {
         <SectionHeader
           etichetta="Metodo"
           titolo="Come si svolge il lavoro, in quattro passi."
+          introduzione="Lo stesso ordine per ogni area di servizio: prima i dati, poi la lettura, poi le alternative, infine la decisione dell'impresa."
         />
-        <ol className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {metodo.map((passo) => (
-            <li key={passo.titolo}>
-              <Card titolo={passo.titolo} numero={passo.numero}>
-                {passo.testo}
-              </Card>
-            </li>
-          ))}
-        </ol>
+        <div className="mt-4 max-w-3xl">
+          <PassiVerticali etichetta="I quattro passi del metodo" passi={metodo} />
+        </div>
+      </Section>
+
+      <Section variante="verde">
+        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+          <SectionHeader
+            etichetta="Oltre la fornitura"
+            titolo="Quando l'energia arriva come servizio."
+            introduzione="Nelle offerte Energy as a Service il contratto lega volume, impianti e monitoraggio in un unico pacchetto, remunerato con un canone o con una quota dei risparmi. È un terreno dove la lettura contrattuale conta più che altrove."
+          />
+          <div className="space-y-4 text-sm leading-relaxed text-grafite-700">
+            <p className="border-l-2 border-verde-700 pl-4">
+              Se stai valutando un&apos;offerta di questo tipo, la pagina
+              dedicata spiega il modello, le forme contrattuali e le verifiche
+              da fare prima di firmare.
+            </p>
+            <div>
+              <CtaLink href="/energia-come-servizio" variante="contorno">
+                Energia come servizio (EaaS)
+              </CtaLink>
+            </div>
+          </div>
+        </div>
       </Section>
 
       <Section variante="scuro">
@@ -171,8 +196,9 @@ export default function ServiziPage() {
             Il punto di partenza è sempre la lettura dei dati.
           </h2>
           <div className="flex flex-wrap gap-3">
-            <CtaLink href="/chi-sono">Chi sono</CtaLink>
-            <CtaLink href="/acquisto-diretto" variante="contorno">
+            <CtaLink href="/contatti">Richiedi un primo confronto</CtaLink>
+            <CtaLink href="/chi-sono" variante="contorno">Chi sono</CtaLink>
+            <CtaLink href="/acquisto-aggregato" variante="contorno">
               Acquisto aggregato
             </CtaLink>
           </div>

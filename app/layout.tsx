@@ -29,10 +29,28 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "it_IT",
+    url: urlSito,
     siteName: "Consulenza energetica per imprese",
     title: "Consulenza energetica per imprese | Bologna · Italia",
     description:
       "Aggrego i fabbisogni delle imprese, le metto in relazione con i produttori e seguo i passaggi necessari all'approvvigionamento e alla consegna dell'energia.",
+    // L'immagine è generata da app/opengraph-image.tsx; dichiararla qui rende
+    // l'anteprima affidabile anche su piattaforme che leggono solo i tag OG.
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Anteprima del sito: consulenza energetica per imprese, flusso dai consumi alla consegna.",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Consulenza energetica per imprese | Bologna · Italia",
+    description:
+      "Aggregazione dei fabbisogni, relazione con i produttori, contrattualistica, diagnosi ed efficienza energetica. Gas gestito sul PSV.",
+    images: ["/opengraph-image"],
   },
   robots: {
     index: true,

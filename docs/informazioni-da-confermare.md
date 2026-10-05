@@ -50,6 +50,10 @@ Da confermare con il titolare prima di pubblicare qualunque dettaglio su:
   citare solo con riferimento verificato) e con quale livello di dettaglio.
 - **Efficienza energetica:** quali tipologie di intervento vengono seguite e con
   quali figure tecniche esterne si collabora.
+- **Energia come servizio (EaaS):** se il consulente ha già seguito pratiche su
+  offerte EaaS o contratti a prestazione (da citare solo con esperienza reale);
+  per ora la pagina descrive il modello e il perimetro del ruolo, senza
+  dichiarare esperienze non verificate.
 - **Modalità di incarico e compensi:** non presenti nel sito, da decidere se
   pubblicare o tenere fuori sito.
 

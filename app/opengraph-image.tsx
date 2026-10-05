@@ -57,7 +57,7 @@ export default function OpengraphImage() {
               maxWidth: "880px",
             }}
           >
-            Acquisto aggregato di energia elettrica, gas al PSV,
+            Acquisto aggregato, gas al PSV, energia come servizio (EaaS),
             contrattualistica, diagnosi ed efficienza energetica.
           </div>
         </div>

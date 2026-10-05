@@ -1,0 +1,15 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/acquisto-aggregato/page": "app/acquisto-aggregato/page.js",
+  "/chi-sono/page": "app/chi-sono/page.js",
+  "/contatti/page": "app/contatti/page.js",
+  "/energia-come-servizio/page": "app/energia-come-servizio/page.js",
+  "/gas-psv/page": "app/gas-psv/page.js",
+  "/icon.svg/route": "app/icon.svg/route.js",
+  "/opengraph-image/route": "app/opengraph-image/route.js",
+  "/page": "app/page.js",
+  "/robots.txt/route": "app/robots.txt/route.js",
+  "/servizi/page": "app/servizi/page.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js"
+}

@@ -11,7 +11,9 @@ type CtaLinkProps = {
 
 /**
  * Pulsante-collegamento verso una pagina reale del sito.
- * L'accento lime è usato solo qui, con misura.
+ * Regola di gerarchia: la variante "solida" è sempre la CTA primaria della
+ * schermata (su fondi chiari: verde profondo; su fondi scuri: lime).
+ * La variante "contorno" segnala azioni secondarie e non compete con la primaria.
  */
 export function CtaLink({
   href,
@@ -26,7 +28,7 @@ export function CtaLink({
     variante === "solida"
       ? suFondoScuro
         ? "bg-lime-400 text-grafite-950 hover:bg-verde-300"
-        : "bg-grafite-950 text-avorio-50 hover:bg-verde-900"
+        : "bg-verde-800 text-avorio-50 hover:bg-verde-900"
       : suFondoScuro
         ? "border border-grafite-700 text-avorio-50 hover:border-lime-400 hover:text-lime-400"
         : "border border-grafite-300 text-grafite-900 hover:border-verde-700 hover:text-verde-900";

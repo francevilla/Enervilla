@@ -94,7 +94,8 @@ export default function HomePage() {
               contratti, diagnosi ed efficienza energetica.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
-              <CtaLink href="/acquisto-diretto">
+              <CtaLink href="/contatti">Richiedi un primo confronto</CtaLink>
+              <CtaLink href="/acquisto-aggregato" variante="contorno">
                 Scopri l&apos;acquisto aggregato
               </CtaLink>
               <CtaLink href="/gas-psv" variante="contorno">
@@ -188,7 +189,7 @@ export default function HomePage() {
         </ol>
 
         <div className="mt-10">
-          <CtaLink href="/acquisto-diretto">
+          <CtaLink href="/acquisto-aggregato">
             Come funziona l&apos;acquisto aggregato
           </CtaLink>
         </div>
@@ -289,9 +290,43 @@ export default function HomePage() {
             </p>
           </div>
         </div>
-        <div className="mt-10">
+        <div className="mt-10 flex flex-wrap gap-3">
           <CtaLink href="/servizi" suFondoScuro>
             Vai ai servizi
+          </CtaLink>
+          <CtaLink href="/energia-come-servizio" variante="contorno" suFondoScuro>
+            Energia come servizio (EaaS)
+          </CtaLink>
+        </div>
+      </Section>
+
+      {/* 6b. Energia come servizio (EaaS) */}
+      <Section>
+        <SectionHeader
+          etichetta="Energy as a Service"
+          titolo="Quando l'offerta non è più solo un volume: i servizi dentro il contratto."
+          introduzione="Nell'EaaS l'impresa non compra soltanto energia: compra consulenza, impianti, monitoraggio, in cambio di un canone o di una quota dei risparmi. Il modello è solido quando il contratto lo è: prima di firmare servono baseline documentata, perimetro esplicito e rischi assegnati."
+        />
+        <ul className="mt-8 space-y-4 text-sm leading-relaxed text-grafite-700">
+          <li className="border-l-2 border-verde-700 pl-4">
+            Due forme contrattuali tipiche — abbonamento e contratto a
+            prestazione — spostano il rischio di prezzo e di quantità in modo
+            diverso tra le parti.
+          </li>
+          <li className="border-l-2 border-verde-700 pl-4">
+            Il valore dipende da quattro verifiche preliminari: baseline dei
+            consumi, perimetro dei servizi, allocazione dei rischi, condizioni
+            di uscita.
+          </li>
+          <li className="border-l-2 border-verde-700 pl-4">
+            Il mio ruolo su questi percorsi è la parte di analisi e
+            contrattualistica, non la vendita di impianti: gli interventi
+            tecnici restano a chi li esegue.
+          </li>
+        </ul>
+        <div className="mt-8">
+          <CtaLink href="/energia-come-servizio" variante="contorno">
+            Che cosa è l&apos;energia come servizio
           </CtaLink>
         </div>
       </Section>
@@ -328,9 +363,15 @@ export default function HomePage() {
             </p>
           </div>
           <div className="flex flex-wrap gap-3 md:flex-col md:items-start">
-            <CtaLink href="/acquisto-diretto">Acquisto aggregato</CtaLink>
+            <CtaLink href="/contatti">Richiedi un primo confronto</CtaLink>
+            <CtaLink href="/acquisto-aggregato" variante="contorno">
+              Acquisto aggregato
+            </CtaLink>
             <CtaLink href="/gas-psv" variante="contorno">
               Gas al PSV
+            </CtaLink>
+            <CtaLink href="/energia-come-servizio" variante="contorno">
+              Energia come servizio
             </CtaLink>
             <CtaLink href="/servizi" variante="contorno">
               Servizi alle imprese

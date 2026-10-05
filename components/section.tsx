@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { ReactNode } from "react";
 
 type PageHeroProps = {
@@ -17,7 +18,14 @@ export function PageHero({
   return (
     <section className="border-b border-grafite-200 bg-avorio-50">
       <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-20">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-verde-800">
+        {/* Orientamento: sempre una via d'uscita verso la home. */}
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-grafite-500 transition-colors hover:text-verde-900"
+        >
+          <span aria-hidden="true">←</span> Home
+        </Link>
+        <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-verde-800">
           {etichetta}
         </p>
         <h1 className="mt-5 max-w-4xl text-4xl leading-[1.1] sm:text-5xl">
@@ -140,5 +148,40 @@ export function Card({ titolo, numero, children }: CardProps) {
         {children}
       </p>
     </div>
+  );
+}
+
+type PassiVerticaliProps = {
+  /** Titolo accessibile dell'elenco (per lettori schermici). */
+  etichetta: string;
+  passi: { titolo: string; testo: string }[];
+};
+
+/**
+ * Guida verticale per le pagine lunghe: linea continua con tacche numerate.
+ * Dispositivo di orientamento richiesto dal piano di design (dà senso di
+ * progresso e struttura nelle sezioni "come funziona").
+ */
+export function PassiVerticali({ etichetta, passi }: PassiVerticaliProps) {
+  return (
+    <ol className="mt-10" aria-label={etichetta}>
+      {passi.map((passo, indice) => (
+        <li
+          key={passo.titolo}
+          className="relative border-l border-grafite-300 pb-8 pl-6 last:pb-0 sm:pl-8"
+        >
+          <span
+            aria-hidden="true"
+            className="absolute left-[-9px] top-0 flex h-[18px] w-[18px] items-center justify-center border border-verde-700 bg-avorio-50 text-[0.6rem] font-semibold text-verde-900"
+          >
+            {String(indice + 1).padStart(2, "0")}
+          </span>
+          <h3 className="text-lg">{passo.titolo}</h3>
+          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-grafite-700">
+            {passo.testo}
+          </p>
+        </li>
+      ))}
+    </ol>
   );
 }
