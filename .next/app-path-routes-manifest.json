@@ -1,0 +1,15 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/acquisto-aggregato/page": "/acquisto-aggregato",
+  "/chi-sono/page": "/chi-sono",
+  "/contatti/page": "/contatti",
+  "/energia-come-servizio/page": "/energia-come-servizio",
+  "/gas-psv/page": "/gas-psv",
+  "/icon.svg/route": "/icon.svg",
+  "/opengraph-image/route": "/opengraph-image",
+  "/page": "/",
+  "/robots.txt/route": "/robots.txt",
+  "/servizi/page": "/servizi",
+  "/sitemap.xml/route": "/sitemap.xml"
+}

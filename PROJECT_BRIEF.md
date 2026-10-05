@@ -33,11 +33,12 @@ Il sito deve:
 
 | Percorso             | Contenuto principale                                                     |
 | -------------------- | ------------------------------------------------------------------------ |
-| `/`                  | Posizionamento, metodo, sintesi delle tre aree di lavoro                  |
-| `/acquisto-diretto`  | Acquisto aggregato di energia elettrica: dal consumo alla consegna        |
-| `/gas-psv`           | Gas al PSV: profilo di consumo, scelte di copertura, gestione del rischio |
-| `/servizi`           | Contrattualistica, diagnosi energetiche, efficienza energetica            |
-| `/chi-sono`          | Profilo professionale, aree di competenza, regole di lavoro               |
+| `/`                  | Posizionamento, metodo, sintesi delle aree di lavoro                        |
+| `/acquisto-aggregato` | Acquisto aggregato di energia elettrica: dal consumo alla consegna         |
+| `/gas-psv`           | Gas al PSV: profilo di consumo, scelte di copertura, gestione del rischio  |
+| `/energia-come-servizio` | Energia come servizio (EaaS): definizione, contratti, perimetro del ruolo |
+| `/servizi`           | Contrattualistica, diagnosi energetiche, efficienza energetica             |
+| `/chi-sono`          | Profilo professionale, aree di competenza, regole di lavoro                |
 
 La navigazione è definita in un unico punto (`lib/site.ts`): se una pagina non
 esiste, il collegamento non esiste.

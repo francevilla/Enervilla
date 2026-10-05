@@ -14,8 +14,9 @@ legali verranno inseriti solo dopo conferma (vedi
 | Percorso            | Contenuto                                                              |
 | ------------------- | ---------------------------------------------------------------------- |
 | `/`                 | Posizionamento, metodo di lavoro, sintesi delle aree di attività       |
-| `/acquisto-diretto` | Acquisto aggregato di energia elettrica, dai consumi alla consegna     |
+| `/acquisto-aggregato` | Acquisto aggregato di energia elettrica, dai consumi alla consegna     |
 | `/gas-psv`          | Approvvigionamento gas con operatività sul PSV                         |
+| `/energia-come-servizio` | Energia come servizio (EaaS): definizione, contratti, perimetro     |
 | `/servizi`          | Contrattualistica, diagnosi energetiche, efficienza energetica         |
 | `/chi-sono`         | Profilo professionale, aree di competenza, regole di lavoro            |
 
@@ -44,7 +45,8 @@ npx tsc --noEmit  # controllo dei tipi TypeScript
 app/
   layout.tsx            struttura comune (header, footer, metadati, dati strutturati)
   page.tsx              pagina iniziale
-  acquisto-diretto/     pagina acquisto aggregato
+  acquisto-aggregato/    pagina acquisto aggregato
+  energia-come-servizio/ pagina energia come servizio (EaaS)
   gas-psv/              pagina gas al PSV
   servizi/              pagina servizi
   chi-sono/             pagina profilo

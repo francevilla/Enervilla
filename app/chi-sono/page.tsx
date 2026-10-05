@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { CtaLink } from "@/components/cta-link";
 import { PageHero, Section, SectionHeader } from "@/components/section";
 import { site } from "@/lib/site";
@@ -112,11 +113,18 @@ export default function ChiSonoPage() {
           <div className="border border-grafite-300 bg-avorio-100 p-6 sm:p-8">
             <h2 className="text-2xl">Informazioni in corso di completamento</h2>
             <p className="mt-4 text-sm leading-relaxed text-grafite-700">
-              Questo sito non riporta ancora recapiti, riferimenti fiscali,
-              curriculum dettagliato, casi seguiti e note legali. Sono
-              informazioni che devono arrivare dal titolare del sito: finché non
-              sono disponibili preferisco lasciare il sito senza, invece di
-              inserire dati non verificati.
+              Questo sito non riporta ancora riferimenti fiscali, curriculum
+              dettagliato, casi seguiti e note legali. Sono informazioni che
+              devono arrivare dal titolare del sito: finché non sono disponibili
+              preferisco lasciare il sito senza, invece di inserire dati non
+              verificati. I recapiti ufficiali verranno pubblicati nella pagina{" "}
+              <Link
+                href="/contatti"
+                className="font-medium text-verde-900 underline underline-offset-4 hover:text-verde-700"
+              >
+                Contatti
+              </Link>{" "}
+              appena confermati.
             </p>
             <p className="mt-4 text-sm leading-relaxed text-grafite-700">
               L&apos;elenco puntuale di ciò che manca è nel documento
@@ -139,9 +147,15 @@ export default function ChiSonoPage() {
             I percorsi di lavoro in dettaglio.
           </h2>
           <div className="flex flex-wrap gap-3">
-            <CtaLink href="/acquisto-diretto">Acquisto aggregato</CtaLink>
+            <CtaLink href="/contatti">Richiedi un primo confronto</CtaLink>
+            <CtaLink href="/acquisto-aggregato" variante="contorno">
+              Acquisto aggregato
+            </CtaLink>
             <CtaLink href="/gas-psv" variante="contorno">
               Gas al PSV
+            </CtaLink>
+            <CtaLink href="/energia-come-servizio" variante="contorno">
+              Energia come servizio
             </CtaLink>
             <CtaLink href="/servizi" variante="contorno">
               Servizi

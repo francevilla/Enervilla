@@ -16,16 +16,21 @@ export type VoceMenu = {
 };
 
 export const menuPrincipale: VoceMenu[] = [
-  { href: "/acquisto-diretto", etichetta: "Acquisto aggregato" },
+  { href: "/acquisto-aggregato", etichetta: "Acquisto aggregato" },
   { href: "/gas-psv", etichetta: "Gas al PSV" },
+  { href: "/energia-come-servizio", etichetta: "Energia come servizio" },
   { href: "/servizi", etichetta: "Servizi" },
   { href: "/chi-sono", etichetta: "Chi sono" },
 ];
+
+/** Percorso della pagina contatti, sempre in fondo al menu e nel footer. */
+export const percorsoContatti = "/contatti";
 
 /** Collegamenti usati nel footer: tutte pagine reali del sito. */
 export const collegamentiFooter: VoceMenu[] = [
   { href: "/", etichetta: "Home" },
   ...menuPrincipale,
+  { href: percorsoContatti, etichetta: "Contatti" },
 ];
 
 /** Le quattro tappe del flusso di approvvigionamento elettrico aggregato. */
@@ -67,6 +72,32 @@ export const urlSito =
   process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 /**
+ * Riferimenti di contatto del titolare.
+ * Valori null = dato non ancora confermato (vedi
+ * docs/informazioni-da-confermare.md): le pagine li omettono senza
+ * inventare nulla. Appena il titolare conferma, si compilano qui e
+ * compaiono automaticamente nella pagina /contatti.
+ */
+export type Recapiti = {
+  email: string | null;
+  telefono: string | null;
+  linkedin: string | null;
+};
+
+export const recapiti: Recapiti = {
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? null,
+  telefono: process.env.NEXT_PUBLIC_CONTACT_PHONE ?? null,
+  linkedin: process.env.NEXT_PUBLIC_CONTACT_LINKEDIN ?? null,
+};
+
+/**
+ * Data dell'ultima modifica reale dei contenuti, usata dalla sitemap.
+ * Aggiornarla a mano quando cambiano i testi: evita che il sito dichiari
+ * ai crawler una modifica mai avvenuta.
+ */
+export const ultimaModificaContenuti = new Date("2026-10-06");
+
+/**
  * Dati strutturati (JSON-LD) per i motori di ricerca.
  * Contiene soltanto informazioni verificate: nome dell'attività, descrizione,
  * area servita e città di base. Telefono, email, indirizzo civico e partita IVA
@@ -78,7 +109,7 @@ export const datiStrutturati = {
   "@type": "ProfessionalService",
   name: site.nome,
   description:
-    "Consulenza energetica per imprese: aggregazione dei fabbisogni, relazione con i produttori, contrattualistica, diagnosi ed efficienza energetica. Approvvigionamento gas con operatività sul PSV.",
+    "Consulenza energetica per imprese: aggregazione dei fabbisogni, relazione con i produttori, contrattualistica, diagnosi ed efficienza energetica. Approvvigionamento gas con operatività sul PSV e impostazione di percorsi energia come servizio (EaaS).",
   areaServed: {
     "@type": "Country",
     name: "Italia",
@@ -91,6 +122,7 @@ export const datiStrutturati = {
   knowsAbout: [
     "Acquisto aggregato di energia elettrica",
     "Approvvigionamento gas sul PSV",
+    "Energy as a Service (EaaS)",
     "Contrattualistica energetica",
     "Diagnosi energetiche",
     "Efficienza energetica",
