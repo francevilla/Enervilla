@@ -133,11 +133,11 @@ export default function EnergiaComeServizioPage() {
           titolo="Non una fornitura più cara di servizi: un modo diverso di comprare energia."
           introduzione="L'Irena, agenzia internazionale per le energie rinnovabili, descrive l'EaaS come il modello più innovativo tra quelli emersi nel settore, con vantaggi possibili in tutti i segmenti: industriale, commerciale e consumer. La definizione conta poco, però, se poi non la si traduce in clausole."
         />
-        <div className="mt-12 grid gap-px overflow-hidden border border-grafite-200 md:grid-cols-3">
+        <div className="mt-12 grid gap-px overflow-hidden border border-grafite-700 md:grid-cols-3">
           {definizioni.map((voce) => (
-            <div key={voce.termine} className="bg-avorio-50 p-6 sm:p-8">
-              <h3 className="font-display text-xl">{voce.termine}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-grafite-700">
+            <div key={voce.termine} className="bg-grafite-900 p-6 sm:p-8">
+              <h3 className="font-display text-xl text-avorio-50">{voce.termine}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-grafite-200">
                 {voce.definizione}
               </p>
             </div>
@@ -145,7 +145,7 @@ export default function EnergiaComeServizioPage() {
         </div>
       </Section>
 
-      <Section variante="verde">
+      <Section variante="superficie">
         <SectionHeader
           etichetta="Come funziona"
           titolo="Tre famiglie di servizi, tre economie diverse."
@@ -172,15 +172,15 @@ export default function EnergiaComeServizioPage() {
           {contratti.map((forma) => (
             <article
               key={forma.titolo}
-              className="border border-grafite-200 bg-avorio-50 p-6 sm:p-8"
+              className="border border-grafite-700 bg-grafite-900 p-6 sm:p-8"
             >
-              <h3 className="text-2xl">{forma.titolo}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-grafite-700">
+              <h3 className="text-2xl text-avorio-50">{forma.titolo}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-grafite-200">
                 {forma.sintesi}
               </p>
-              <ul className="mt-5 space-y-3 text-sm leading-relaxed text-grafite-700">
+              <ul className="mt-5 space-y-3 text-sm leading-relaxed text-grafite-200">
                 {forma.punti.map((punto) => (
-                  <li key={punto} className="border-l-2 border-verde-700 pl-4">
+                  <li key={punto} className="border-l-2 border-verde-600 pl-4">
                     {punto}
                   </li>
                 ))}
@@ -211,9 +211,9 @@ export default function EnergiaComeServizioPage() {
             etichetta="Perché ora"
             titolo="Tre condizioni che rendono l'EaaS praticabile oggi."
           />
-          <ul className="space-y-4 text-sm leading-relaxed text-grafite-700">
+          <ul className="space-y-4 text-sm leading-relaxed text-grafite-200">
             {percheAdesso.map((voce) => (
-              <li key={voce} className="border-l-2 border-grafite-300 pl-4">
+              <li key={voce} className="border-l-2 border-grafite-700 pl-4">
                 {voce}
               </li>
             ))}
@@ -221,35 +221,35 @@ export default function EnergiaComeServizioPage() {
         </div>
       </Section>
 
-      <Section variante="verde">
+      <Section variante="superficie">
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <SectionHeader
             etichetta="Il mio ruolo"
             titolo="Faccio la parte di analisi e contrattualistica. Non vendo l'impianto."
             introduzione="L'EaaS vive di rapporti continuativi: perché funzionino, il perimetro deve essere esplicito fin dall'inizio. È il lavoro che so fare, ed è quello che faccio."
           />
-          <div className="space-y-4 text-sm leading-relaxed text-grafite-700">
-            <p className="border-l-2 border-verde-700 pl-4">
+          <div className="space-y-4 text-sm leading-relaxed text-grafite-200">
+            <p className="border-l-2 border-verde-600 pl-4">
               Cosa posso fare: leggere e confrontare le offerte EaaS, impostare
               la baseline dei consumi, definire insieme all&apos;impresa il
               perimetro accettabile di servizi e rischi, presidiare il contratto
               nel tempo con gli stessi metodi usati per la fornitura elettrica e
               per il gas.
             </p>
-            <p className="border-l-2 border-verde-700 pl-4">
+            <p className="border-l-2 border-verde-600 pl-4">
               Cosa non faccio: non eseguo direttamente gli interventi sugli
               impianti e non fornisco consulenza legale o fiscale. Su un
               contratto EaaS queste competenze servono: vanno coinvolte, non
               improvvisate.
             </p>
-            <p className="border-l-2 border-verde-700 pl-4">
+            <p className="border-l-2 border-verde-600 pl-4">
               Come si collega agli altri percorsi: l&apos;acquisto aggregato e
               l&apos;operatività sul PSV riguardano la fornitura; l&apos;EaaS
               riguarda ciò che ci si costruisce sopra. Le quattro verifiche qui
               accanto valgono in entrambi i casi.
             </p>
             <div>
-              <CtaLink href="/servizi" variante="contorno">
+              <CtaLink href="/servizi" variante="contorno" suFondoScuro>
                 Come lavoro su contratti, diagnosi ed efficienza
               </CtaLink>
             </div>
@@ -257,9 +257,9 @@ export default function EnergiaComeServizioPage() {
         </div>
       </Section>
 
-      <Section variante="verde" compatta>
+      <Section variante="superficie" compatta>
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <h2 className="max-w-xl text-3xl">
+          <h2 className="max-w-xl text-3xl text-avorio-50">
             Hai un&apos;offerta EaaS davanti? Partiamo dalle clausole.
           </h2>
           <div className="flex flex-wrap gap-3">

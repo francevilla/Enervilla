@@ -107,11 +107,11 @@ export default function GasPsvPage() {
           introduzione="Il gas che alimenta i siti di un'impresa ha alle spalle un mercato all'ingrosso. Il PSV è il punto di riferimento di quel mercato: conoscerlo permette di decidere in modo consapevole invece di subire le condizioni."
         />
 
-        <div className="mt-12 grid gap-px overflow-hidden border border-grafite-200 md:grid-cols-3">
+        <div className="mt-12 grid gap-px overflow-hidden border border-grafite-700 md:grid-cols-3">
           {puntiChiave.map((punto) => (
-            <div key={punto.titolo} className="bg-avorio-50 p-6 sm:p-8">
-              <h3 className="text-xl">{punto.titolo}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-grafite-700">
+            <div key={punto.titolo} className="bg-grafite-900 p-6 sm:p-8">
+              <h3 className="text-xl text-avorio-50">{punto.titolo}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-grafite-200">
                 {punto.testo}
               </p>
             </div>
@@ -119,14 +119,16 @@ export default function GasPsvPage() {
         </div>
       </Section>
 
-      <Section variante="verde">
+      <Section variante="chiaro">
         <SectionHeader
+          tono="chiaro"
           etichetta="Come si svolge"
           titolo="Quattro fasi concordate con il cliente."
           introduzione="La copertura del gas non è un gesto singolo ma una sequenza: il profilo definisce la strategia, la strategia definisce quando operare, il presidio nel tempo tiene insieme le due cose."
         />
         <div className="mt-4 max-w-3xl">
           <PassiVerticali
+            tono="chiaro"
             etichetta="Le quattro fasi dell'approvvigionamento gas"
             passi={fasiGas}
           />
@@ -140,17 +142,17 @@ export default function GasPsvPage() {
             titolo="Nessuna promessa di prezzo, solo scelte spiegate."
             introduzione="Lavorare sul PSV non significa azzerare il rischio: significa decidere con cognizione di causa e con una strategia condivisa."
           />
-          <div className="space-y-4 text-sm leading-relaxed text-grafite-700">
-            <p className="border-l-2 border-grafite-300 pl-4">
+          <div className="space-y-4 text-sm leading-relaxed text-grafite-200">
+            <p className="border-l-2 border-verde-600 pl-4">
               Il risultato dipende dal momento in cui si decide, dall&apos;orizzonte
               scelto e dalla situazione del mercato, che non è prevedibile.
             </p>
-            <p className="border-l-2 border-grafite-300 pl-4">
+            <p className="border-l-2 border-verde-600 pl-4">
               Non presento il servizio come la scelta più conveniente in
               assoluto: la valutazione va fatta sul profilo di consumo e sugli
               obiettivi dell&apos;impresa.
             </p>
-            <p className="border-l-2 border-grafite-300 pl-4">
+            <p className="border-l-2 border-verde-600 pl-4">
               Le decisioni vengono documentate, così che si sappia sempre da
               dove parte una scelta e perché è stata presa.
             </p>
@@ -158,9 +160,8 @@ export default function GasPsvPage() {
         </div>
       </Section>
 
-      <Section variante="scuro" compatta>
+      <Section variante="superficie" compatta>
         <SectionHeader
-          tono="scuro"
           etichetta="Vocabolario"
           titolo="Le parole che servono per decidere."
         />
@@ -170,7 +171,7 @@ export default function GasPsvPage() {
               <dt className="font-display text-lg text-avorio-50">
                 {voce.termine}
               </dt>
-              <dd className="mt-2 text-sm leading-relaxed text-grafite-300">
+              <dd className="mt-2 text-sm leading-relaxed text-grafite-200">
                 {voce.definizione}
               </dd>
             </div>
@@ -178,9 +179,9 @@ export default function GasPsvPage() {
         </dl>
       </Section>
 
-      <Section variante="verde" compatta>
+      <Section variante="chiaro" compatta>
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <h2 className="max-w-xl text-3xl">
+          <h2 className="max-w-xl text-3xl text-grafite-950">
             Il contratto va letto insieme al percorso di approvvigionamento.
           </h2>
           <div className="flex flex-wrap gap-3">

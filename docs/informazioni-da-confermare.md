@@ -72,6 +72,7 @@ Da confermare con il titolare prima di pubblicare qualunque dettaglio su:
 | ------------------------------------------ | -------- | ---- |
 | Foto professionale                         | mancante | Da inserire in `/chi-sono` con diritti d'uso chiari |
 | Anteprima social (1200×630)                | completata | Generata col codice in `app/opengraph-image.tsx` (nessuna foto, palette grafite/avorio/verde/lime, flusso consumi → consegna) |
+| Riferimento visivo `docs/DarkVilla.jpg`    | **da caricare** | Il file non è presente nel repository né nel filesystem del workspace (verificato con ricerca su tutto il disco e nella cronologia git). Il tema scuro attuale è un'interpretazione del brief "villa al buio": quando l'immagine sarà caricata in `docs/`, calibrare i valori oklch di `app/globals.css` (fondo, superficie, intensità della luce radiale, tonalità del lime) e verificare i contrasti WCAG. |
 | Logo o marchio                             | mancante | Il sito usa solo un segno grafico astratto |
 | Casi seguiti / referenze                    | assenti  | Solo con autorizzazione scritta dei clienti |
 | Loghi di produttori o partner              | assenti  | Da inserire solo con autorizzazione |

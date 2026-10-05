@@ -65,14 +65,11 @@ export const metadata: Metadata = {
 };
 
 /**
- * Colori del tema del browser: avorio per lo schema chiaro, grafite per
- * quello scuro. Coerenti con la palette definita in app/globals.css.
+ * Colori del tema del browser: il sito è a tema scuro fisso ("DarkVilla"),
+ * quindi un unico valore coerente con la superficie principale di globals.css.
  */
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f4f2ed" },
-    { media: "(prefers-color-scheme: dark)", color: "#0e1217" },
-  ],
+  themeColor: "#2a2f38",
 };
 
 export default function RootLayout({
@@ -96,7 +93,7 @@ export default function RootLayout({
         />
         <a
           href="#contenuto"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-grafite-950 focus:px-4 focus:py-2 focus:text-avorio-50"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-lime-400 focus:px-4 focus:py-2 focus:text-grafite-950"
         >
           Vai al contenuto principale
         </a>

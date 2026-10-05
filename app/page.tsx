@@ -77,16 +77,16 @@ export default function HomePage() {
   return (
     <>
       {/* 1. Hero */}
-      <section className="border-b border-grafite-200 bg-avorio-50">
+      <section className="border-b border-grafite-800">
         <div className="mx-auto grid max-w-6xl gap-14 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-verde-800">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-lime-400">
               {site.etichetta}
             </p>
-            <h1 className="mt-6 text-4xl leading-[1.08] sm:text-5xl lg:text-6xl">
+            <h1 className="mt-6 text-4xl leading-[1.08] text-avorio-50 sm:text-5xl lg:text-6xl">
               Porto le imprese più vicine al mercato dell&apos;energia.
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-grafite-700">
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-grafite-200">
               Aggrego i fabbisogni delle imprese, le metto in relazione con i
               produttori e seguo i passaggi necessari
               all&apos;approvvigionamento e alla consegna dell&apos;energia. Per
@@ -109,7 +109,7 @@ export default function HomePage() {
       </section>
 
       {/* 2. Fascia di posizionamento, senza numeri inventati */}
-      <Section variante="scuro" compatta>
+      <Section variante="superficie" compatta>
         <dl className="grid gap-px overflow-hidden border border-grafite-800 sm:grid-cols-3">
           {posizionamento.map((voce) => (
             <div
@@ -132,21 +132,21 @@ export default function HomePage() {
           introduzione="Guardare soltanto il prezzo al megawattora porta a confrontare offerte che non sono confrontabili. Per capire cosa si sta firmando servono quattro elementi letti insieme."
         />
 
-        <div className="mt-12 grid gap-px overflow-hidden border border-grafite-200 md:grid-cols-2">
+        <div className="mt-12 grid gap-px overflow-hidden border border-grafite-700 md:grid-cols-2">
           {variabiliCosto.map((voce, indice) => (
-            <div key={voce.titolo} className="bg-avorio-50 p-6 sm:p-8">
+            <div key={voce.titolo} className="bg-grafite-900 p-6 sm:p-8">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-grafite-500">
                 {String(indice + 1).padStart(2, "0")}
               </p>
-              <h3 className="mt-3 text-xl">{voce.titolo}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-grafite-700">
+              <h3 className="mt-3 text-xl text-avorio-50">{voce.titolo}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-grafite-200">
                 {voce.testo}
               </p>
             </div>
           ))}
         </div>
 
-        <p className="mt-8 max-w-3xl text-sm leading-relaxed text-grafite-700">
+        <p className="mt-8 max-w-3xl text-sm leading-relaxed text-grafite-200">
           Non lavoro su promesse di risultato: lavoro sulla lettura corretta
           della fornitura, sul confronto tra alternative possibili e sulla
           chiarezza di quello che viene firmato.
@@ -154,8 +154,9 @@ export default function HomePage() {
       </Section>
 
       {/* 4. Acquisto elettrico aggregato in quattro passaggi */}
-      <Section variante="verde">
+      <Section variante="chiaro">
         <SectionHeader
+          tono="chiaro"
           etichetta="Acquisto aggregato"
           titolo="Dai consumi reali a un acquisto trattato insieme."
           introduzione="Fabbisogni piccoli e separati difficilmente ottengono condizioni interessanti. Riuniti, diventano un perimetro che i produttori valutano."
@@ -163,25 +164,25 @@ export default function HomePage() {
 
         <ol className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           <li>
-            <Card titolo="Analisi dei consumi" numero="Passaggio 01">
+            <Card tono="chiaro" titolo="Analisi dei consumi" numero="Passaggio 01">
               Raccolta e lettura dei dati di consumo dei siti: volumi, profili
               orari, stagionalità e vincoli tecnici.
             </Card>
           </li>
           <li>
-            <Card titolo="Aggregazione dei fabbisogni" numero="Passaggio 02">
+            <Card tono="chiaro" titolo="Aggregazione dei fabbisogni" numero="Passaggio 02">
               I consumi di più imprese vengono riuniti in un unico perimetro di
               acquisto, con regole chiare su volumi e durata.
             </Card>
           </li>
           <li>
-            <Card titolo="Confronto e trattativa" numero="Passaggio 03">
+            <Card tono="chiaro" titolo="Confronto e trattativa" numero="Passaggio 03">
               Confronto tra le proposte dei produttori e trattativa sulle
               condizioni, con attenzione alla struttura del contratto.
             </Card>
           </li>
           <li>
-            <Card titolo="Passaggi di consegna" numero="Passaggio 04">
+            <Card tono="chiaro" titolo="Passaggi di consegna" numero="Passaggio 04">
               Coordinamento delle attività necessarie perché l&apos;energia
               elettrica arrivi ai siti nei tempi previsti.
             </Card>
@@ -205,17 +206,17 @@ export default function HomePage() {
               titolo="Approvvigionamento del gas con operatività sul PSV."
               introduzione="Per le imprese che consumano gas posso operare sul PSV per conto del cliente: il punto di scambio virtuale dove il gas viene negoziato prima di arrivare al contatore."
             />
-            <ul className="mt-8 space-y-4 text-sm leading-relaxed text-grafite-700">
-              <li className="border-l-2 border-verde-700 pl-4">
+            <ul className="mt-8 space-y-4 text-sm leading-relaxed text-grafite-200">
+              <li className="border-l-2 border-verde-600 pl-4">
                 La gestione sul PSV riguarda volume e tempi, con riferimento
                 alle quotazioni di mercato.
               </li>
-              <li className="border-l-2 border-verde-700 pl-4">
+              <li className="border-l-2 border-verde-600 pl-4">
                 Il risultato dipende dal profilo di consumo, dall&apos;orizzonte
                 scelto e dalla situazione di mercato nel momento in cui si
                 decide.
               </li>
-              <li className="border-l-2 border-verde-700 pl-4">
+              <li className="border-l-2 border-verde-600 pl-4">
                 È un&apos;attività con una componente di rischio: va impostata
                 insieme al cliente e in modo trasparente, non presentata come
                 una garanzia di prezzo.
@@ -228,18 +229,18 @@ export default function HomePage() {
             </div>
           </div>
 
-          <aside className="border border-grafite-200 bg-avorio-100 p-6 sm:p-8">
-            <h3 className="text-lg">Vocabolario essenziale</h3>
-            <dl className="mt-5 space-y-4 text-sm leading-relaxed text-grafite-700">
+          <aside className="border border-grafite-700 bg-grafite-900 p-6 sm:p-8">
+            <h3 className="text-lg text-avorio-50">Vocabolario essenziale</h3>
+            <dl className="mt-5 space-y-4 text-sm leading-relaxed text-grafite-200">
               <div>
-                <dt className="font-semibold text-grafite-950">PSV</dt>
+                <dt className="font-semibold text-avorio-100">PSV</dt>
                 <dd>
                   Punto di scambio virtuale: il riferimento dove il gas viene
                   negoziato sul mercato all&apos;ingrosso italiano.
                 </dd>
               </div>
               <div>
-                <dt className="font-semibold text-grafite-950">
+                <dt className="font-semibold text-avorio-100">
                   Profilo di consumo
                 </dt>
                 <dd>
@@ -248,7 +249,7 @@ export default function HomePage() {
                 </dd>
               </div>
               <div>
-                <dt className="font-semibold text-grafite-950">Consegna</dt>
+                <dt className="font-semibold text-avorio-100">Consegna</dt>
                 <dd>
                   L&apos;insieme dei passaggi tecnici e amministrativi che
                   rendono operativa la fornitura sui siti.
@@ -260,9 +261,8 @@ export default function HomePage() {
       </Section>
 
       {/* 6. Servizi alle imprese */}
-      <Section variante="scuro">
+      <Section>
         <SectionHeader
-          tono="scuro"
           etichetta="Aree di lavoro"
           titolo="Contrattualistica, diagnosi, efficienza."
         />
@@ -291,10 +291,10 @@ export default function HomePage() {
           </div>
         </div>
         <div className="mt-10 flex flex-wrap gap-3">
-          <CtaLink href="/servizi" suFondoScuro>
+          <CtaLink href="/servizi">
             Vai ai servizi
           </CtaLink>
-          <CtaLink href="/energia-come-servizio" variante="contorno" suFondoScuro>
+          <CtaLink href="/energia-come-servizio" variante="contorno">
             Energia come servizio (EaaS)
           </CtaLink>
         </div>
@@ -307,18 +307,18 @@ export default function HomePage() {
           titolo="Quando l'offerta non è più solo un volume: i servizi dentro il contratto."
           introduzione="Nell'EaaS l'impresa non compra soltanto energia: compra consulenza, impianti, monitoraggio, in cambio di un canone o di una quota dei risparmi. Il modello è solido quando il contratto lo è: prima di firmare servono baseline documentata, perimetro esplicito e rischi assegnati."
         />
-        <ul className="mt-8 space-y-4 text-sm leading-relaxed text-grafite-700">
-          <li className="border-l-2 border-verde-700 pl-4">
+        <ul className="mt-8 space-y-4 text-sm leading-relaxed text-grafite-200">
+          <li className="border-l-2 border-verde-600 pl-4">
             Due forme contrattuali tipiche — abbonamento e contratto a
             prestazione — spostano il rischio di prezzo e di quantità in modo
             diverso tra le parti.
           </li>
-          <li className="border-l-2 border-verde-700 pl-4">
+          <li className="border-l-2 border-verde-600 pl-4">
             Il valore dipende da quattro verifiche preliminari: baseline dei
             consumi, perimetro dei servizi, allocazione dei rischi, condizioni
             di uscita.
           </li>
-          <li className="border-l-2 border-verde-700 pl-4">
+          <li className="border-l-2 border-verde-600 pl-4">
             Il mio ruolo su questi percorsi è la parte di analisi e
             contrattualistica, non la vendita di impianti: gli interventi
             tecnici restano a chi li esegue.
@@ -351,10 +351,10 @@ export default function HomePage() {
       </Section>
 
       {/* 8. CTA finali verso pagine reali */}
-      <Section variante="verde" compatta>
+      <Section variante="chiaro" compatta>
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
-            <h2 className="text-3xl sm:text-4xl">Da dove si parte, in pratica.</h2>
+            <h2 className="text-3xl text-grafite-950 sm:text-4xl">Da dove si parte, in pratica.</h2>
             <p className="mt-4 text-base leading-relaxed text-grafite-700">
               Se l&apos;impresa acquista energia elettrica per più siti, il
               punto di partenza è l&apos;acquisto aggregato. Se il consumo è

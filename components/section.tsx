@@ -8,7 +8,8 @@ type PageHeroProps = {
   children?: ReactNode;
 };
 
-/** Intestazione delle pagine interne: stessa gerarchia visiva della home. */
+/** Intestazione delle pagine interne: eredita il fondo scuro della pagina,
+ *  con bordo superiore che separa dall'header (tema "DarkVilla"). */
 export function PageHero({
   etichetta,
   titolo,
@@ -16,22 +17,22 @@ export function PageHero({
   children,
 }: PageHeroProps) {
   return (
-    <section className="border-b border-grafite-200 bg-avorio-50">
+    <section className="border-b border-grafite-800">
       <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-20">
         {/* Orientamento: sempre una via d'uscita verso la home. */}
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-grafite-500 transition-colors hover:text-verde-900"
+          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-grafite-500 transition-colors hover:text-lime-400"
         >
           <span aria-hidden="true">←</span> Home
         </Link>
-        <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-verde-800">
+        <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-lime-400">
           {etichetta}
         </p>
-        <h1 className="mt-5 max-w-4xl text-4xl leading-[1.1] sm:text-5xl">
+        <h1 className="mt-5 max-w-4xl text-4xl leading-[1.1] text-avorio-50 sm:text-5xl">
           {titolo}
         </h1>
-        <p className="mt-6 max-w-3xl text-lg leading-relaxed text-grafite-700">
+        <p className="mt-6 max-w-3xl text-lg leading-relaxed text-grafite-200">
           {introduzione}
         </p>
         {children ? <div className="mt-9">{children}</div> : null}
@@ -42,23 +43,25 @@ export function PageHero({
 
 type SectionProps = {
   id?: string;
-  /** Sfondo della fascia: avorio (predefinito), grafite o verde tenue. */
-  variante?: "chiaro" | "scuro" | "verde";
+  /** Sfondo della fascia: scuro (predefinito), avorio o superficie elevata. */
+  variante?: "scuro" | "chiaro" | "superficie";
   children: ReactNode;
   /** Riduce lo spazio verticale quando le sezioni sono consecutive. */
   compatta?: boolean;
 };
 
 const sfondi: Record<NonNullable<SectionProps["variante"]>, string> = {
-  chiaro: "bg-avorio-50",
-  scuro: "bg-grafite-950 text-grafite-200",
-  verde: "bg-verde-100",
+  scuro: "bg-transparent text-grafite-200",
+  chiaro: "fascia-chiara bg-avorio-50 text-grafite-700",
+  superficie: "bg-grafite-900 text-grafite-200",
 };
 
-/** Fascia di pagina con larghezza contenuta e ritmo verticale costante. */
+/** Fascia di pagina con larghezza contenuta e ritmo verticale costante.
+ *  Tema "DarkVilla": il default è scuro (sfondo della pagina); le varianti
+ *  chiare sono eccezioni volute per creare contrasto a blocchi pieni. */
 export function Section({
   id,
-  variante = "chiaro",
+  variante = "scuro",
   compatta = false,
   children,
 }: SectionProps) {
@@ -79,17 +82,19 @@ type SectionHeaderProps = {
   etichetta?: string;
   titolo: string;
   introduzione?: string;
-  /** Su sfondo scuro i colori dei testi cambiano per restare leggibili. */
-  tono?: "chiaro" | "scuro";
+  /** Tema "DarkVilla": il default è su fondo scuro (titolo avorio, etichetta
+   *  lime). Passare tono="chiaro" solo dentro le fasce sopravvissute chiare,
+   *  dove valgono i colori del tema originale avorio/grafite. */
+  tono?: "scuro" | "chiaro";
 };
 
 export function SectionHeader({
   etichetta,
   titolo,
   introduzione,
-  tono = "chiaro",
+  tono = "scuro",
 }: SectionHeaderProps) {
-  const scuro = tono === "scuro";
+  const suChiaro = tono === "chiaro";
 
   return (
     <div className="max-w-3xl">
@@ -97,7 +102,7 @@ export function SectionHeader({
         <p
           className={[
             "text-xs font-semibold uppercase tracking-[0.2em]",
-            scuro ? "text-lime-400" : "text-verde-800",
+            suChiaro ? "text-verde-800" : "text-lime-400",
           ].join(" ")}
         >
           {etichetta}
@@ -106,7 +111,7 @@ export function SectionHeader({
       <h2
         className={[
           "mt-3 text-3xl leading-tight sm:text-4xl",
-          scuro ? "text-avorio-50" : "",
+          suChiaro ? "" : "text-avorio-50",
         ]
           .join(" ")
           .trim()}
@@ -117,7 +122,7 @@ export function SectionHeader({
         <p
           className={[
             "mt-5 text-base leading-relaxed sm:text-lg",
-            scuro ? "text-grafite-200" : "text-grafite-700",
+            suChiaro ? "text-grafite-700" : "text-grafite-200",
           ].join(" ")}
         >
           {introduzione}
@@ -134,17 +139,46 @@ type CardProps = {
   numero?: string;
 };
 
-/** Riquadro sobrio: bordo sottile, nessuna ombra. */
-export function Card({ titolo, numero, children }: CardProps) {
+type CardTono = "scuro" | "chiaro";
+
+const cardNumeri: Record<CardTono, string> = {
+  scuro: "text-grafite-500",
+  chiaro: "text-grafite-500",
+};
+const cardTitoli: Record<CardTono, string> = {
+  scuro: "text-avorio-50",
+  chiaro: "text-grafite-900",
+};
+const cardTesti: Record<CardTono, string> = {
+  scuro: "text-grafite-200",
+  chiaro: "text-grafite-700",
+};
+
+/** Riquadro sobrio: bordo sottile su superficie elevata, nessuna ombra.
+ *  tono="chiaro" per l'uso dentro le fasce sopravvissute avorio del tema. */
+export function Card({
+  titolo,
+  numero,
+  tono = "scuro",
+  children,
+}: CardProps & { tono?: CardTono }) {
   return (
-    <div className="border border-grafite-200 bg-avorio-50 p-6">
+    <div
+      className={
+        tono === "chiaro"
+          ? "border border-grafite-200 bg-avorio-50 p-6"
+          : "border border-grafite-700 bg-grafite-900 p-6"
+      }
+    >
       {numero ? (
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-grafite-500">
+        <p
+          className={`text-xs font-semibold uppercase tracking-[0.2em] ${cardNumeri[tono]}`}
+        >
           {numero}
         </p>
       ) : null}
-      <h3 className="mt-2 text-xl">{titolo}</h3>
-      <p className="mt-3 text-sm leading-relaxed text-grafite-700">
+      <h3 className={`mt-2 text-xl ${cardTitoli[tono]}`}>{titolo}</h3>
+      <p className={`mt-3 text-sm leading-relaxed ${cardTesti[tono]}`}>
         {children}
       </p>
     </div>
@@ -161,23 +195,41 @@ type PassiVerticaliProps = {
  * Guida verticale per le pagine lunghe: linea continua con tacche numerate.
  * Dispositivo di orientamento richiesto dal piano di design (dà senso di
  * progresso e struttura nelle sezioni "come funziona").
+ * tono="chiaro" per l'uso dentro le fasce sopravvissute avorio del tema.
  */
-export function PassiVerticali({ etichetta, passi }: PassiVerticaliProps) {
+export function PassiVerticali({
+  etichetta,
+  passi,
+  tono = "scuro",
+}: PassiVerticaliProps & { tono?: CardTono }) {
+  const suChiaro = tono === "chiaro";
   return (
     <ol className="mt-10" aria-label={etichetta}>
       {passi.map((passo, indice) => (
         <li
           key={passo.titolo}
-          className="relative border-l border-grafite-300 pb-8 pl-6 last:pb-0 sm:pl-8"
+          className={`relative border-l pb-8 pl-6 last:pb-0 sm:pl-8 ${
+            suChiaro ? "border-grafite-200" : "border-grafite-700"
+          }`}
         >
           <span
             aria-hidden="true"
-            className="absolute left-[-9px] top-0 flex h-[18px] w-[18px] items-center justify-center border border-verde-700 bg-avorio-50 text-[0.6rem] font-semibold text-verde-900"
+            className={`absolute left-[-9px] top-0 flex h-[18px] w-[18px] items-center justify-center rounded-full border text-[0.6rem] font-semibold ${
+              suChiaro
+                ? "border-verde-700 bg-avorio-50 text-verde-800"
+                : "border-verde-600 bg-grafite-900 text-verde-300"
+            }`}
           >
             {String(indice + 1).padStart(2, "0")}
           </span>
-          <h3 className="text-lg">{passo.titolo}</h3>
-          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-grafite-700">
+          <h3 className={`text-lg ${suChiaro ? "text-grafite-900" : "text-avorio-50"}`}>
+            {passo.titolo}
+          </h3>
+          <p
+            className={`mt-2 max-w-2xl text-sm leading-relaxed ${
+              suChiaro ? "text-grafite-700" : "text-grafite-200"
+            }`}
+          >
             {passo.testo}
           </p>
         </li>
