@@ -56,10 +56,12 @@ export default function ContattiPage() {
 
       {/* Stato attuale: recapiti non ancora pubblicati (nessun dato inventato). */}
       {nessunRecapito ? (
-        <Section variante="verde">
-          <div className="border border-verde-300 bg-avorio-50 p-6 sm:p-8">
-            <h2 className="text-2xl">Recapiti in fase di pubblicazione</h2>
-            <p className="mt-4 max-w-3xl text-sm leading-relaxed text-grafite-700">
+        <Section variante="superficie">
+          <div className="border border-verde-600 bg-grafite-900 p-6 sm:p-8">
+            <h2 className="text-2xl text-avorio-50">
+              Recapiti in fase di pubblicazione
+            </h2>
+            <p className="mt-4 max-w-3xl text-sm leading-relaxed text-grafite-200">
               Gli indirizzi di contatto di {site.nome.toLowerCase()} non sono
               ancora pubblicati su questo sito: verranno inseriti appena il
               titolare li conferma ufficialmente, insieme ai riferimenti fiscali
@@ -67,21 +69,21 @@ export default function ContattiPage() {
               descrivono metodo e aree di lavoro:{" "}
               <a
                 href="/acquisto-aggregato"
-                className="font-medium text-verde-900 underline underline-offset-4 hover:text-verde-700"
+                className="font-medium text-verde-300 underline underline-offset-4 hover:text-lime-400"
               >
                 acquisto aggregato
               </a>
               ,{" "}
               <a
                 href="/gas-psv"
-                className="font-medium text-verde-900 underline underline-offset-4 hover:text-verde-700"
+                className="font-medium text-verde-300 underline underline-offset-4 hover:text-lime-400"
               >
                 gas al PSV
               </a>{" "}
               e{" "}
               <a
                 href="/servizi"
-                className="font-medium text-verde-900 underline underline-offset-4 hover:text-verde-700"
+                className="font-medium text-verde-300 underline underline-offset-4 hover:text-lime-400"
               >
                 servizi
               </a>{" "}
@@ -91,17 +93,17 @@ export default function ContattiPage() {
         </Section>
       ) : (
         /* Blocco recapiti: appare automaticamente quando i dati sono confermati. */
-        <Section variante="verde">
-          <dl className="grid gap-px overflow-hidden border border-verde-300 sm:grid-cols-3">
+        <Section variante="superficie">
+          <dl className="grid gap-px overflow-hidden border border-grafite-700 sm:grid-cols-3">
             {recapiti.email ? (
-              <div className="bg-avorio-50 p-6">
+              <div className="bg-grafite-900 p-6">
                 <dt className="text-xs font-semibold uppercase tracking-[0.2em] text-grafite-500">
                   Email
                 </dt>
                 <dd className="mt-3">
                   <a
                     href={`mailto:${recapiti.email}`}
-                    className="font-medium text-verde-900 underline underline-offset-4 hover:text-verde-700"
+                    className="font-medium break-all text-verde-300 underline underline-offset-4 hover:text-lime-400"
                   >
                     {recapiti.email}
                   </a>
@@ -109,14 +111,14 @@ export default function ContattiPage() {
               </div>
             ) : null}
             {recapiti.telefono ? (
-              <div className="bg-avorio-50 p-6">
+              <div className="bg-grafite-900 p-6">
                 <dt className="text-xs font-semibold uppercase tracking-[0.2em] text-grafite-500">
                   Telefono
                 </dt>
                 <dd className="mt-3">
                   <a
                     href={`tel:${recapiti.telefono.replace(/[^+\d]/g, "")}`}
-                    className="font-medium text-verde-900 underline underline-offset-4 hover:text-verde-700"
+                    className="font-medium text-verde-300 underline underline-offset-4 hover:text-lime-400"
                   >
                     {recapiti.telefono}
                   </a>
@@ -124,7 +126,7 @@ export default function ContattiPage() {
               </div>
             ) : null}
             {recapiti.linkedin ? (
-              <div className="bg-avorio-50 p-6">
+              <div className="bg-grafite-900 p-6">
                 <dt className="text-xs font-semibold uppercase tracking-[0.2em] text-grafite-500">
                   LinkedIn
                 </dt>
@@ -133,7 +135,7 @@ export default function ContattiPage() {
                     href={recapiti.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-medium text-verde-900 underline underline-offset-4 hover:text-verde-700"
+                    className="font-medium text-verde-300 underline underline-offset-4 hover:text-lime-400"
                   >
                     Profilo professionale
                   </a>
@@ -147,28 +149,28 @@ export default function ContattiPage() {
       {/* Come scrivere una richiesta utile. */}
       <Section>
         <div className="max-w-3xl">
-          <h2 className="text-3xl sm:text-4xl">
+          <h2 className="text-3xl text-avorio-50 sm:text-4xl">
             Cosa serve per il primo confronto.
           </h2>
-          <p className="mt-5 text-base leading-relaxed text-grafite-700 sm:text-lg">
+          <p className="mt-5 text-base leading-relaxed text-grafite-200 sm:text-lg">
             Una richiesta ben impostata vale più di qualunque modulo: queste
             sono le informazioni che permettono di capire subito se e come si
             può lavorare.
           </p>
         </div>
 
-        <ul className="mt-12 grid gap-px overflow-hidden border border-grafite-200 md:grid-cols-2">
+        <ul className="mt-12 grid gap-px overflow-hidden border border-grafite-700 md:grid-cols-2">
           {informazioniUtili.map((voce) => (
-            <li key={voce.titolo} className="bg-avorio-50 p-6 sm:p-8">
-              <h3 className="text-xl">{voce.titolo}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-grafite-700">
+            <li key={voce.titolo} className="bg-grafite-900 p-6 sm:p-8">
+              <h3 className="text-xl text-avorio-50">{voce.titolo}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-grafite-200">
                 {voce.testo}
               </p>
             </li>
           ))}
         </ul>
 
-        <p className="mt-8 max-w-3xl text-sm leading-relaxed text-grafite-700">
+        <p className="mt-8 max-w-3xl text-sm leading-relaxed text-grafite-300">
           Le informazioni inviate servono solo a valutare la richiesta e non
           vengono condivise con terzi. L&apos;informativa privacy completa sarà
           pubblicata insieme ai recapiti ufficiali.

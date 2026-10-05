@@ -43,7 +43,7 @@ export default function ChiSonoPage() {
               titolo="Mettere le imprese in condizione di decidere."
               introduzione="Il mio lavoro non è vendere energia: è mettere l'impresa nella condizione di capire cosa sta comprando, quali alternative esistono e quali conseguenze comportano."
             />
-            <div className="mt-8 space-y-4 text-base leading-relaxed text-grafite-700">
+            <div className="mt-8 space-y-4 text-base leading-relaxed text-grafite-200">
               <p>
                 Aggrego i fabbisogni di più imprese per costruire perimetri di
                 acquisto trattabili con i produttori. Nel tempo ho seguito
@@ -62,9 +62,9 @@ export default function ChiSonoPage() {
               </p>
             </div>
           </div>
-          <aside className="border border-grafite-200 bg-avorio-100 p-6 sm:p-8">
+          <aside className="border border-grafite-700 bg-grafite-900 p-6 sm:p-8">
             <h2 className="text-lg">Aree di competenza</h2>
-            <ul className="mt-5 space-y-3 text-sm leading-relaxed text-grafite-700">
+            <ul className="mt-5 space-y-3 text-sm leading-relaxed text-grafite-200">
               {areeCompetenza.map((area) => (
                 <li key={area} className="border-l-2 border-verde-700 pl-4">
                   {area}
@@ -75,9 +75,8 @@ export default function ChiSonoPage() {
         </div>
       </Section>
 
-      <Section variante="scuro">
+      <Section>
         <SectionHeader
-          tono="scuro"
           etichetta="Come lavoro"
           titolo="Tre regole che tengo presenti."
         />
@@ -110,9 +109,9 @@ export default function ChiSonoPage() {
 
       <Section>
         <div className="grid gap-10 lg:grid-cols-[1fr_1fr]">
-          <div className="border border-grafite-300 bg-avorio-100 p-6 sm:p-8">
-            <h2 className="text-2xl">Informazioni in corso di completamento</h2>
-            <p className="mt-4 text-sm leading-relaxed text-grafite-700">
+          <div className="border border-verde-600 bg-grafite-900 p-6 sm:p-8">
+            <h2 className="text-2xl text-avorio-50">Informazioni in corso di completamento</h2>
+            <p className="mt-4 text-sm leading-relaxed text-grafite-200">
               Questo sito non riporta ancora riferimenti fiscali, curriculum
               dettagliato, casi seguiti e note legali. Sono informazioni che
               devono arrivare dal titolare del sito: finché non sono disponibili
@@ -120,13 +119,13 @@ export default function ChiSonoPage() {
               verificati. I recapiti ufficiali verranno pubblicati nella pagina{" "}
               <Link
                 href="/contatti"
-                className="font-medium text-verde-900 underline underline-offset-4 hover:text-verde-700"
+                className="font-medium text-verde-300 underline underline-offset-4 hover:text-lime-400"
               >
                 Contatti
               </Link>{" "}
               appena confermati.
             </p>
-            <p className="mt-4 text-sm leading-relaxed text-grafite-700">
+            <p className="mt-4 text-sm leading-relaxed text-grafite-200">
               L&apos;elenco puntuale di ciò che manca è nel documento
               docs/informazioni-da-confermare.md incluso nel progetto.
             </p>
@@ -141,9 +140,9 @@ export default function ChiSonoPage() {
         </div>
       </Section>
 
-      <Section variante="verde" compatta>
+      <Section variante="chiaro" compatta>
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <h2 className="max-w-xl text-3xl">
+          <h2 className="max-w-xl text-3xl text-grafite-950">
             I percorsi di lavoro in dettaglio.
           </h2>
           <div className="flex flex-wrap gap-3">

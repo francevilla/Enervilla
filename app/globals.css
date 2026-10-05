@@ -1,37 +1,52 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------------
-   Sistema visivo del sito
-   Palette sobria ed editoriale: grafite, avorio, verde profondo e un accento
-   lime usato con molta parsimonia (CTA e pochi dettagli grafici).
-   Tipi di carattere di sistema: nessun font esterno da scaricare.
+   Sistema visivo del sito — variante "DarkVilla"
+   Interpretazione operativa del brief "villa al buio": fondo notte con una
+   sola sorgente di luce calda (il lime), superfici appena illuminate come
+   volumi che emergono dal buio, bordo sottile chiaro al posto delle ombre.
+   NOTA: il file docs/DarkVilla.jpg NON risulta presente nel repository né
+   nel filesystem al momento di questa passata; la calibrazione cromatica
+   definitiva va rifatta quando l'immagine sarà caricata (vedi
+   docs/informazioni-da-confermare.md).
+   Regola chiave: il lime vive SU fondo scuro. Le fasce chiare sopravvissute
+   (card "cosa non diremo", box checklist) restano nel tema originale
+   avorio/grafite, senza accenti lime.
+   Tipografia invariata: serif editoriale per i titoli, sans di sistema
+   per il testo. Nessun font esterno da scaricare.
 --------------------------------------------------------------------------- */
 
 @theme {
-  --color-grafite-950: oklch(0.18 0.012 250);
-  --color-grafite-900: oklch(0.24 0.012 250);
-  --color-grafite-800: oklch(0.31 0.012 250);
-  --color-grafite-700: oklch(0.4 0.012 250);
-  --color-grafite-500: oklch(0.55 0.012 255);
-  --color-grafite-300: oklch(0.76 0.008 255);
-  --color-grafite-200: oklch(0.86 0.006 255);
-  --color-grafite-100: oklch(0.92 0.005 255);
-  --color-grafite-50: oklch(0.965 0.004 255);
+  /* Scala "grafite": ruoli SEMANTICI, adattati al tema scuro.
+     Valori bassi = superficie scura; valori alti = testo chiaro. */
+  --color-grafite-950: oklch(0.165 0.012 255); /* sfondo principale */
+  --color-grafite-900: oklch(0.21 0.013 255);  /* superficie elevata */
+  --color-grafite-800: oklch(0.27 0.014 255);  /* bordo forte / hover */
+  --color-grafite-700: oklch(0.34 0.014 255);  /* bordo */
+  --color-grafite-500: oklch(0.55 0.015 255);  /* testo attenuato */
+  --color-grafite-300: oklch(0.7 0.012 255);   /* testo secondario */
+  --color-grafite-200: oklch(0.82 0.008 255);  /* testo primario smorzato */
+  --color-grafite-100: oklch(0.91 0.006 255);  /* testo ad alto contrasto */
+  --color-grafite-50: oklch(0.965 0.004 255);  /* bianco sporco */
 
-  --color-avorio-50: oklch(0.985 0.006 95);
-  --color-avorio-100: oklch(0.965 0.008 95);
-  --color-avorio-200: oklch(0.935 0.01 95);
+  /* Avorio: testo e riempimenti chiari sul fondo scuro */
+  --color-avorio-50: oklch(0.955 0.008 95);
+  --color-avorio-100: oklch(0.92 0.01 95);
+  --color-avorio-200: oklch(0.86 0.012 95);
 
-  --color-verde-900: oklch(0.28 0.05 165);
+  /* Verde: famiglia luminosa per superfici d'accento SUL FONDO SCURO.
+     verde-900/800/700 restano profondi per le fasce chiare superstiti. */
+  --color-verde-900: oklch(0.28 0.05 165); /* testo scuro sopra lime */
   --color-verde-800: oklch(0.35 0.06 165);
   --color-verde-700: oklch(0.45 0.07 165);
-  --color-verde-600: oklch(0.55 0.08 165);
-  --color-verde-500: oklch(0.62 0.09 165);
-  --color-verde-300: oklch(0.82 0.05 165);
-  --color-verde-200: oklch(0.9 0.035 165);
-  --color-verde-100: oklch(0.95 0.02 165);
+  --color-verde-600: oklch(0.62 0.12 155);
+  --color-verde-500: oklch(0.75 0.15 150); /* accento principale */
+  --color-verde-300: oklch(0.85 0.13 145); /* accento chiaro / link */
+  --color-verde-200: oklch(0.9 0.09 140);  /* tinte discrete su fondi scuri */
+  --color-verde-100: oklch(0.94 0.05 135);
 
-  --color-lime-400: oklch(0.86 0.17 122);
+  /* Lime: accento brillante delle CTA (solo su fondo scuro) */
+  --color-lime-400: oklch(0.87 0.19 125);
 
   --font-sans: ui-sans-serif, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
     Arial, sans-serif;
@@ -45,26 +60,36 @@ html {
 }
 
 body {
-  background-color: var(--color-avorio-50);
-  color: var(--color-grafite-900);
+  background-color: var(--color-grafite-950);
+  background-image: radial-gradient(
+      ellipse 80% 50% at 50% -10%,
+      oklch(0.3 0.035 255 / 0.6),
+      transparent
+    ),
+    linear-gradient(var(--color-grafite-950), var(--color-grafite-950));
+  background-attachment: fixed;
+  color: var(--color-avorio-50);
   font-family: var(--font-sans);
   text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background-color: var(--color-verde-200);
+  background-color: var(--color-lime-400);
   color: var(--color-grafite-950);
 }
 
 a:focus-visible,
 button:focus-visible,
 summary:focus-visible {
-  outline: 2px solid var(--color-verde-700);
+  outline: 2px solid var(--color-lime-400);
   outline-offset: 3px;
   border-radius: 2px;
 }
 
-/* Titoli: serif editoriale, peso contenuto e righe bilanciate. */
+/* Titoli: serif editoriale, peso contenuto e righe bilanciate.
+   Il colore avorio vale SUL FONDO SCURO (default del tema "DarkVilla");
+   dentro le fasce chiare sopravvissute (.fascia-chiara) i titoli tornano
+   ai colori grafite del tema originale. */
 h1,
 h2,
 h3,
@@ -73,6 +98,13 @@ h4 {
   font-weight: 500;
   letter-spacing: -0.01em;
   text-wrap: balance;
+  color: var(--color-avorio-50);
+}
+
+.fascia-chiara h1,
+.fascia-chiara h2,
+.fascia-chiara h3,
+.fascia-chiara h4 {
   color: var(--color-grafite-950);
 }
 

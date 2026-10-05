@@ -10,7 +10,7 @@ export const alt = `${site.nome} — ${site.posizionamento}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const grafite = "#0e1217";
+const grafite = "#262b35";
 const avorio = "#f4f2ed";
 const grafiteChiaro = "#b9bfc4";
 const verde = "#2f7a5f";

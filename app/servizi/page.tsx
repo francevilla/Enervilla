@@ -109,18 +109,18 @@ export default function ServiziPage() {
           {aree.map((area) => (
             <article
               key={area.titolo}
-              className="border border-grafite-200 bg-avorio-50 p-6 sm:p-8"
+              className="border border-grafite-700 bg-grafite-900 p-6 sm:p-8"
             >
               <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
                 <div>
-                  <h3 className="text-2xl">{area.titolo}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-grafite-700">
+                  <h3 className="text-2xl text-avorio-50">{area.titolo}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-grafite-200">
                     {area.sintesi}
                   </p>
                 </div>
-                <ul className="space-y-3 text-sm leading-relaxed text-grafite-700">
+                <ul className="space-y-3 text-sm leading-relaxed text-grafite-200">
                   {area.punti.map((punto) => (
-                    <li key={punto} className="border-l-2 border-verde-700 pl-4">
+                    <li key={punto} className="border-l-2 border-verde-600 pl-4">
                       {punto}
                     </li>
                   ))}
@@ -131,20 +131,22 @@ export default function ServiziPage() {
         </div>
       </Section>
 
-      <Section variante="verde">
+      <Section variante="chiaro">
         <SectionHeader
+          tono="chiaro"
           etichetta="Metodo"
           titolo="Come si svolge il lavoro, in quattro passi."
           introduzione="Lo stesso ordine per ogni area di servizio: prima i dati, poi la lettura, poi le alternative, infine la decisione dell'impresa."
         />
         <div className="mt-4 max-w-3xl">
-          <PassiVerticali etichetta="I quattro passi del metodo" passi={metodo} />
+          <PassiVerticali tono="chiaro" etichetta="I quattro passi del metodo" passi={metodo} />
         </div>
       </Section>
 
-      <Section variante="verde">
+      <Section variante="chiaro">
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <SectionHeader
+            tono="chiaro"
             etichetta="Oltre la fornitura"
             titolo="Quando l'energia arriva come servizio."
             introduzione="Nelle offerte Energy as a Service il contratto lega volume, impianti e monitoraggio in un unico pacchetto, remunerato con un canone o con una quota dei risparmi. È un terreno dove la lettura contrattuale conta più che altrove."
@@ -164,15 +166,14 @@ export default function ServiziPage() {
         </div>
       </Section>
 
-      <Section variante="scuro">
+      <Section>
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <SectionHeader
-            tono="scuro"
             etichetta="Perimetro"
             titolo="Che cosa resta fuori dal lavoro."
             introduzione="Essere espliciti sui confini evita aspettative sbagliate e rende il rapporto più semplice."
           />
-          <ul className="space-y-4 text-sm leading-relaxed text-grafite-300">
+          <ul className="space-y-4 text-sm leading-relaxed text-grafite-200">
             <li className="border-l-2 border-grafite-700 pl-4">
               Non fornisco consulenza legale, fiscale o contabile: quando serve,
               il confronto va fatto con i professionisti che l&apos;impresa ha
@@ -190,9 +191,9 @@ export default function ServiziPage() {
         </div>
       </Section>
 
-      <Section variante="verde" compatta>
+      <Section variante="chiaro" compatta>
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <h2 className="max-w-xl text-3xl">
+          <h2 className="max-w-xl text-3xl text-grafite-950">
             Il punto di partenza è sempre la lettura dei dati.
           </h2>
           <div className="flex flex-wrap gap-3">

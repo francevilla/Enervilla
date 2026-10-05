@@ -6,7 +6,7 @@ export function SiteFooter() {
   const anno = new Date().getFullYear();
 
   return (
-    <footer className="mt-24 border-t border-grafite-200 bg-grafite-950 text-grafite-200">
+    <footer className="mt-24 border-t border-grafite-800 bg-grafite-950 text-grafite-200">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-[1.2fr_1fr]">
         <div>
           <p className="font-display text-2xl text-avorio-50">
