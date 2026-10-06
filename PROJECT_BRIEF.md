@@ -76,8 +76,10 @@ esiste, il collegamento non esiste.
 - **Gerarchia delle CTA:** una sola primaria per schermata (lime su scuro,
   verde-800 pieno su fascia chiara); le chiusure usano il componente `Chiusura`
   (una primaria + link testuali), mai file di bottoni.
-- **Marchio:** segnaposto "Energia per imprese" in `lib/site.ts` (`marchio`),
-  in attesa del nome pubblico definitivo.
+- **Marchio ufficiale:** lockup ibrido "EnerVilla · Deep Energy" (masterbrand
+  + descrittore) con payoff "Consulenza energetica per imprese", definito in
+  `lib/site.ts` (`marchio`) e applicato a header, footer, titoli, OG e dati
+  strutturati. Favicon 2×2 invariata (coerente con qualsiasi nome).
 - **Accessibilità:** struttura semantica (heading, liste, `dl`), link "salta al
   contenuto", stati di focus visibili, menu mobile con blocco scorrimento e
   contenimento del focus, target tattili ≥ 44px, contrasti misurati e

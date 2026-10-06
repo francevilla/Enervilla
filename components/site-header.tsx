@@ -93,10 +93,10 @@ export function SiteHeader() {
         >
           <span className="block h-3 w-3 translate-y-[-1px] bg-lime-400 transition-colors group-hover:bg-verde-300" />
           <span className="text-sm font-semibold uppercase tracking-[0.16em]">
-            {marchio.principale}
+            {marchio.nome}
           </span>
           <span className="hidden text-sm uppercase tracking-[0.16em] text-grafite-300 sm:inline">
-            {marchio.secondaria}
+            · {marchio.descrittore}
           </span>
         </Link>
 

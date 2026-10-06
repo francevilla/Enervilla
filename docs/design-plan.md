@@ -158,3 +158,16 @@ sezione "Fonti":
   energia (terza struttura contrattuale).
 
 Regola: nuove affermazioni tecniche solo con fonte linkata in pagina.
+
+---
+
+## 8. Lockup ibrido ufficiale — ottobre 2026
+
+Scelta del titolare: marchio **"EnerVilla · Deep Energy"** (studio §9–§10).
+`marchio` in `lib/site.ts` ridefinito come `{ nome, descrittore, lockup,
+payoff }` e applicato a header (nome sempre, descrittore da `sm` in su),
+footer (lockup + payoff), titoli SEO (keyword prima e brand dopo in home;
+template `%s | EnerVilla · Deep Energy` nelle interne), `applicationName`,
+OG (`siteName`/title) e JSON-LD (`name` = lockup, `alternateName` =
+dicitura). Favicon 2×2 invariata.
+Restano: verifica UIBM/EUIPO e registrazione domini.

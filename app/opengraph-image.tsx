@@ -7,7 +7,7 @@ import { marchio, site, tappaDettagli } from "@/lib/site";
  * sfondo grafite, titolo in avorio e accento lime. Gli hex sono quelli
  * calcolati dai token oklch di app/globals.css.
  */
-export const alt = `${site.nome} — ${site.posizionamento}`;
+export const alt = `${marchio.lockup} — ${site.nome}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -46,7 +46,7 @@ export default function OpengraphImage() {
               color: grafiteChiaro,
             }}
           >
-            {`${marchio.principale} ${marchio.secondaria}`}
+            {marchio.lockup}
           </div>
         </div>
 

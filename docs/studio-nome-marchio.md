@@ -116,7 +116,7 @@ sistema, stessi token del sito).
 
 ## 8. Prossimi passi
 
-1. Il titolare sceglie una variante (A–D) o chiede nuove direzioni.
+1. ~~Scelta variante~~ — FATTO 06/10/2026: lockup ibrido «EnerVilla · Deep Energy» (vedi §10).
 2. Verifica anteriorità marchio (UIBM/EUIPO) con professionista.
 3. Registrazione `enervilla.it` (+ `.com` difensivo) o del dominio scelto.
 4. Applicazione al sito + favicon definitiva + aggiornamento docs.
@@ -188,3 +188,13 @@ come Deep Energy"), analisi dedicata con gli stessi criteri del §2.
 Deep Energy come masterbrand: **15/30 contro 27/30 di EnerVilla**. L'idea è
 buona come *contenuto* (metodo/prodotto), debole come *contenitore*
 (marchio). Vedi variante visiva V5 in `docs/marchio-varianti.html`.
+
+---
+
+## 10. Decisione (06/10/2026)
+
+Il titolare adotta il **lockup ibrido "EnerVilla · Deep Energy"** come marchio
+ufficiale: masterbrand coniato (A) + descrittore evocativo (F), payoff
+"Consulenza energetica per imprese". Applicato a header, footer, titoli,
+anteprime social e dati strutturati. Restano: verifica anteriorità UIBM/EUIPO
+con professionista e registrazione domini (`enervilla.it` + `.com` difensivo).

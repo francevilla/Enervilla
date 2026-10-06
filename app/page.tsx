@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Consulenza energetica per imprese · Bologna · Italia",
+    absolute: "Consulenza energetica per imprese · Bologna | EnerVilla · Deep Energy",
   },
   description:
     "Aggrego i fabbisogni delle imprese, le metto in relazione con i produttori e seguo i passaggi necessari all'approvvigionamento e alla consegna dell'energia. Per il gas opero sul PSV per conto dei clienti.",

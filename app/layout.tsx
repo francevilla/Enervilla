@@ -8,12 +8,12 @@ import { datiStrutturati, urlSito } from "@/lib/site";
 export const metadata: Metadata = {
   metadataBase: new URL(urlSito),
   title: {
-    default: "Consulenza energetica per imprese | Bologna · Italia",
-    template: "%s | Consulenza energetica per imprese",
+    default: "EnerVilla · Deep Energy — Consulenza energetica per imprese | Bologna · Italia",
+    template: "%s | EnerVilla · Deep Energy",
   },
   description:
     "Aggregazione dei fabbisogni energetici delle imprese, relazione diretta con i produttori, contrattualistica, diagnosi energetiche ed efficienza. Base a Bologna, operatività nazionale.",
-  applicationName: "Consulenza energetica per imprese",
+  applicationName: "EnerVilla · Deep Energy",
   alternates: {
     canonical: "/",
   },
@@ -30,8 +30,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "it_IT",
     url: urlSito,
-    siteName: "Consulenza energetica per imprese",
-    title: "Consulenza energetica per imprese | Bologna · Italia",
+    siteName: "EnerVilla · Deep Energy",
+    title: "Consulenza energetica per imprese · Bologna | EnerVilla · Deep Energy",
     description:
       "Aggrego i fabbisogni delle imprese, le metto in relazione con i produttori e seguo i passaggi necessari all'approvvigionamento e alla consegna dell'energia.",
     // L'immagine è generata da app/opengraph-image.tsx; dichiararla qui rende
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Consulenza energetica per imprese | Bologna · Italia",
+    title: "Consulenza energetica per imprese · Bologna | EnerVilla · Deep Energy",
     description:
       "Aggregazione dei fabbisogni, relazione con i produttori, contrattualistica, diagnosi ed efficienza energetica. Gas gestito sul PSV.",
     images: ["/opengraph-image"],
