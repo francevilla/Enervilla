@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { CtaLink } from "@/components/cta-link";
 import { FlowDiagram } from "@/components/flow-diagram";
 import { Card, Section, SectionHeader } from "@/components/section";
@@ -76,35 +77,54 @@ const metodo = [
 export default function HomePage() {
   return (
     <>
-      {/* 1. Hero */}
+      {/* 1. Hero — quinta visiva DarkVilla: la villa al buio con una sola
+          finestra accesa (l'immagine di riferimento, servita da public/).
+          Il testo resta a sinistra come nella composizione della foto;
+          il FlowDiagram prosegue sotto la banda d'immagine. */}
       <section className="border-b border-grafite-800">
-        <div className="mx-auto grid max-w-6xl gap-14 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-lime-400">
-              {site.etichetta}
-            </p>
-            <h1 className="mt-6 text-4xl leading-[1.08] text-avorio-50 sm:text-5xl lg:text-6xl">
-              Porto le imprese più vicine al mercato dell&apos;energia.
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-grafite-200">
-              Aggrego i fabbisogni delle imprese, le metto in relazione con i
-              produttori e seguo i passaggi necessari
-              all&apos;approvvigionamento e alla consegna dell&apos;energia. Per
-              il gas, opero sul PSV per conto dei clienti. Mi occupo anche di
-              contratti, diagnosi ed efficienza energetica.
-            </p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <CtaLink href="/contatti">Richiedi un primo confronto</CtaLink>
-              <CtaLink href="/acquisto-aggregato" variante="contorno">
-                Scopri l&apos;acquisto aggregato
-              </CtaLink>
-              <CtaLink href="/gas-psv" variante="contorno">
-                Approfondisci il PSV
-              </CtaLink>
+        <div className="relative isolate overflow-hidden border-b border-grafite-800">
+          <Image
+            src="/darkvilla-hero.jpg"
+            alt="Architettura residenziale di notte: volumi chiari emergono dal buio blu, illuminati da una sola finestra accesa"
+            fill
+            priority
+            sizes="100vw"
+            className="hidden h-full w-full object-cover opacity-60 sm:block"
+          />
+          {/* Velature per garantire il contrasto del testo (WCAG AA):
+              scurisce ulteriormente il fondo dietro la colonna di testo. */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 -z-10 bg-gradient-to-r from-grafite-950 via-grafite-950/85 to-grafite-950/30 sm:to-transparent"
+          />
+          <div className="mx-auto grid max-w-6xl gap-14 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-lime-400">
+                {site.etichetta}
+              </p>
+              <h1 className="mt-6 text-4xl leading-[1.08] text-avorio-50 sm:text-5xl lg:text-6xl">
+                Porto le imprese più vicine al mercato dell&apos;energia.
+              </h1>
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-grafite-200">
+                Aggrego i fabbisogni delle imprese, le metto in relazione con i
+                produttori e seguo i passaggi necessari
+                all&apos;approvvigionamento e alla consegna dell&apos;energia. Per
+                il gas, opero sul PSV per conto dei clienti. Mi occupo anche di
+                contratti, diagnosi ed efficienza energetica.
+              </p>
+              <div className="mt-9 flex flex-wrap gap-3">
+                <CtaLink href="/contatti">Richiedi un primo confronto</CtaLink>
+                <CtaLink href="/acquisto-aggregato" variante="contorno">
+                  Scopri l&apos;acquisto aggregato
+                </CtaLink>
+                <CtaLink href="/gas-psv" variante="contorno">
+                  Approfondisci il PSV
+                </CtaLink>
+              </div>
             </div>
-          </div>
 
-          <FlowDiagram />
+            <FlowDiagram />
+          </div>
         </div>
       </section>
 

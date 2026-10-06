@@ -10,9 +10,10 @@ export const alt = `${site.nome} — ${site.posizionamento}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const grafite = "#262b35";
+const grafite = "#0a121d"; // blu-notte reale di DarkVilla.jpg (~#060e19/#0c141e)
 const avorio = "#f4f2ed";
 const grafiteChiaro = "#b9bfc4";
+const brace = "#d5bbab"; // bagliore caldo della finestra accesa (estratto dalla foto)
 const verde = "#2f7a5f";
 const lime = "#a3d977";
 
@@ -27,6 +28,10 @@ export default function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           backgroundColor: grafite,
+          /* Composizione coerente con DarkVilla.jpg: campo freddo buio
+             con una sola sorgente calda in alto a destra. */
+          backgroundImage:
+            "radial-gradient(ellipse 55% 70% at 82% 12%, rgba(213,187,171,0.14), transparent)",
           padding: "72px 80px",
           color: avorio,
         }}
@@ -70,7 +75,7 @@ export default function OpengraphImage() {
           <div style={{ fontSize: 28, color: avorio }}>
             {tappaDettagli[1].titolo}
           </div>
-          <div style={{ width: 28, height: 2, backgroundColor: verde }} />
+          <div style={{ width: 28, height: 2, backgroundColor: brace }} />
           <div style={{ fontSize: 28, color: avorio }}>
             {tappaDettagli[2].titolo}
           </div>

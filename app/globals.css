@@ -2,27 +2,31 @@
 
 /* ---------------------------------------------------------------------------
    Sistema visivo del sito — variante "DarkVilla"
-   Interpretazione operativa del brief "villa al buio": fondo notte con una
-   sola sorgente di luce calda (il lime), superfici appena illuminate come
-   volumi che emergono dal buio, bordo sottile chiaro al posto delle ombre.
-   NOTA: il file docs/DarkVilla.jpg NON risulta presente nel repository né
-   nel filesystem al momento di questa passata; la calibrazione cromatica
-   definitiva va rifatta quando l'immagine sarà caricata (vedi
-   docs/informazioni-da-confermare.md).
-   Regola chiave: il lime vive SU fondo scuro. Le fasce chiare sopravvissute
-   (card "cosa non diremo", box checklist) restano nel tema originale
-   avorio/grafite, senza accenti lime.
+   Calibrata sull'immagine reale docs/DarkVilla.jpg (recuperata dalla storia
+   git; copia servita in public/darkvilla-hero.jpg). Analisi cromatica
+   dell'immagine: ~85% dei pixel è blu-notte profondo (#060e19 → #121b27,
+   hue ≈ 255°, bassa saturazione); l'unica sorgente di luce è un bagliore
+   CALDO ambrato a dx-centro (centroide x≈0.68, colore medio #d5bbab,
+   hue ≈ 54°). Non c'è alcun verde/lime nella fotografia.
+   Conseguenze progettuali recepite:
+   - fondi e superfici derivati dai hex reali dell'immagine;
+   - l'accento d'interfaccia (CTA, etichette) resta il lime, ma è ora una
+     scelta dichiarata: funge da "finestra accesa" in un campo freddo dove
+     l'occhio non trova punti caldi; il calore letterale della foto
+     (--color-brace*) è usato per gradiente hero e dettagli;
+   - superfici come volumi che emergono dal buio, bordo sottile al posto
+     delle ombre; fasce chiare superstiti senza accenti lime.
    Tipografia invariata: serif editoriale per i titoli, sans di sistema
    per il testo. Nessun font esterno da scaricare.
 --------------------------------------------------------------------------- */
 
 @theme {
-  /* Scala "grafite": ruoli SEMANTICI, adattati al tema scuro.
-     Valori bassi = superficie scura; valori alti = testo chiaro. */
-  --color-grafite-950: oklch(0.165 0.012 255); /* sfondo principale */
-  --color-grafite-900: oklch(0.21 0.013 255);  /* superficie elevata */
-  --color-grafite-800: oklch(0.27 0.014 255);  /* bordo forte / hover */
-  --color-grafite-700: oklch(0.34 0.014 255);  /* bordo */
+  /* Scala "grafite": ruoli SEMANTICI, calibrati sui blu-notte reali
+     dell'immagine (hue 255°, coerente con #060e19/#0c141e/#121b27). */
+  --color-grafite-950: oklch(0.162 0.027 255); /* sfondo: #060e19 esatto */
+  --color-grafite-900: oklch(0.22 0.026 256);  /* superficie: ~#121b27 */
+  --color-grafite-800: oklch(0.275 0.02 257);  /* bordo forte / hover: ~#1b212a */
+  --color-grafite-700: oklch(0.34 0.02 257);   /* bordo */
   --color-grafite-500: oklch(0.55 0.015 255);  /* testo attenuato */
   --color-grafite-300: oklch(0.7 0.012 255);   /* testo secondario */
   --color-grafite-200: oklch(0.82 0.008 255);  /* testo primario smorzato */
@@ -33,6 +37,12 @@
   --color-avorio-50: oklch(0.955 0.008 95);
   --color-avorio-100: oklch(0.92 0.01 95);
   --color-avorio-200: oklch(0.86 0.012 95);
+
+  /* Brace: calore estratto dalla luce della foto (bagliore #d5bbab,
+     toni medi #896858/#6e6462). Uso decorativo: gradiente hero e
+     dettagli — mai come colore di testo funzionale. */
+  --color-brace-500: oklch(0.546 0.049 47);  /* #896858 */
+  --color-brace-300: oklch(0.81 0.037 54);   /* #d5bbab */
 
   /* Verde: famiglia luminosa per superfici d'accento SUL FONDO SCURO.
      verde-900/800/700 restano profondi per le fasce chiare superstiti. */
@@ -45,7 +55,9 @@
   --color-verde-200: oklch(0.9 0.09 140);  /* tinte discrete su fondi scuri */
   --color-verde-100: oklch(0.94 0.05 135);
 
-  /* Lime: accento brillante delle CTA (solo su fondo scuro) */
+  /* Lime: accento brillante delle CTA (solo su fondo scuro).
+     Scelta dichiarata contro la foto: unico punto caldo-verde in un
+     campo freddo, funzione di "finestra accesa". */
   --color-lime-400: oklch(0.87 0.19 125);
 
   --font-sans: ui-sans-serif, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
@@ -61,9 +73,18 @@ html {
 
 body {
   background-color: var(--color-grafite-950);
+  /* Atmosfera DarkVilla calibrata sull'immagine: campo blu-notte freddo
+     con una sola sorgente calda a destra (come il bagliore della foto,
+     centroide x≈0.68), e leggera risalita di luce dal basso a sinistra
+     (terzo inferiore dell'immagine più chiaro del superiore). */
   background-image: radial-gradient(
+      ellipse 45% 60% at 72% 30%,
+      oklch(0.32 0.045 54 / 0.16),
+      transparent
+    ),
+    radial-gradient(
       ellipse 80% 50% at 50% -10%,
-      oklch(0.3 0.035 255 / 0.6),
+      oklch(0.3 0.035 255 / 0.55),
       transparent
     ),
     linear-gradient(var(--color-grafite-950), var(--color-grafite-950));
