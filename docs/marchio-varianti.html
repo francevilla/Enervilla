@@ -143,6 +143,21 @@
   .v4 .payoff { margin-top: 12px; font-size: 13px; color: var(--grafite-300); }
   .mini-v4 { font-family: var(--font-display); font-size: 19px; color: var(--avorio-50); }
   .mini-v4 em { font-style: normal; color: var(--lime-400); }
+  /* --- Lockup V5 --- */
+  .v5 { text-align: center; }
+  .v5 .nome { font-family: var(--font-display); font-size: clamp(48px, 9vw, 84px); line-height: 1.05; }
+  .v5 .nome em { font-style: normal; color: var(--lime-400); }
+  .v5 .payoff { margin-top: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.24em; color: var(--grafite-300); }
+  .mini-v5 { font-family: var(--font-display); font-size: 19px; color: var(--avorio-50); }
+  .mini-v5 em { font-style: normal; color: var(--lime-400); }
+  .ibrido {
+    margin: 0 24px 24px; padding: 20px 24px;
+    border: 1px dashed var(--grafite-700);
+    display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: baseline; justify-content: space-between;
+  }
+  .ibrido p { font-size: 14px; color: var(--grafite-200); }
+  .ibrido .lock { font-family: var(--font-display); font-size: 22px; }
+  .ibrido .lock em { font-style: normal; color: var(--lime-400); }
   .nota-finale {
     margin-top: 40px; border: 1px solid var(--verde-700);
     padding: 24px; font-size: 15px; color: var(--grafite-200);
@@ -154,7 +169,7 @@
 <div class="pagina">
 
   <p class="eyebrow">Studio nome e marchio · ottobre 2026</p>
-  <h1>Quattro varianti di marchio, una sola da scegliere.</h1>
+  <h1>Cinque direzioni di marchio, una sola da scegliere.</h1>
   <p class="intro">
     Tutte le varianti usano solo font di sistema e i token del sito (nessuna
     dipendenza esterna), con payoff <em>"Consulenza energetica per imprese"</em>.
@@ -323,6 +338,55 @@
         <h3>Limiti</h3>
         <p>Meno distintivo di EnerVilla: "Villa" è un cognome diffuso e "energia" è generica.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- V5 -->
+  <section class="variante" aria-label="Variante 5">
+    <div class="variante-testa">
+      <h2>V5 · Deep Energy</h2>
+      <span class="tag alt">15/30 · sconsigliato come masterbrand</span>
+    </div>
+    <div class="lockup">
+      <div class="v5">
+        <p class="nome">Deep <em>Energy</em></p>
+        <p class="payoff">Consulenza energetica per imprese</p>
+      </div>
+    </div>
+    <div class="mock-header" aria-hidden="true">
+      <span class="mini-v5">Deep <em>Energy</em></span>
+      <span class="mock-nav"><span>Servizi</span><span>Gas al PSV</span><span>Chi sono</span><span>Contatti</span></span>
+    </div>
+    <div class="dettagli">
+      <div>
+        <h3>Meriti veri</h3>
+        <ul>
+          <li>Evoca profondità di analisi (dati, contratti, mercato)</li>
+          <li>Eco felice: "deep market" = mercato liquido e profondo</li>
+          <li>Breve, moderno, internazionale</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Perché no (dettagli nel §9)</h3>
+        <ul>
+          <li>5+ omonimi nel settore energia worldwide</li>
+          <li>SEO contro un termine generico; .com occupati</li>
+          <li>Marchio descrittivo: rischio rifiuto EUIPO</li>
+          <li>"Deep" si detta "con due e" a ogni telefonata</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Favicon 32px</h3>
+        <p class="fav">
+          <svg width="32" height="32" viewBox="0 0 32 32" role="img" aria-label="Favicon DE"><rect width="32" height="32" fill="#060e19"/><text x="16" y="23" text-anchor="middle" font-family="Palatino, Georgia, serif" font-size="15" fill="#f2f0ea">D<tspan fill="#b8e948">E</tspan></text></svg>
+          <svg width="16" height="16" viewBox="0 0 32 32" role="img" aria-label="Favicon DE piccola"><rect width="32" height="32" fill="#060e19"/><text x="16" y="23" text-anchor="middle" font-family="Palatino, Georgia, serif" font-size="15" fill="#f2f0ea">D<tspan fill="#b8e948">E</tspan></text></svg>
+        </p>
+        <p style="margin-top:8px">Iniziali "DE". Ipotesi puramente comparativa.</p>
+      </div>
+    </div>
+    <div class="ibrido">
+      <p><strong style="color:var(--avorio-50)">Alternativa che salva l'idea:</strong> "Deep Energy" come nome del metodo dentro EnerVilla — evocatività senza costi di marchio.</p>
+      <p class="lock">EnerVilla · <em>Deep Energy Method</em></p>
     </div>
   </section>
 

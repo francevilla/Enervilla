@@ -120,3 +120,71 @@ sistema, stessi token del sito).
 2. Verifica anteriorità marchio (UIBM/EUIPO) con professionista.
 3. Registrazione `enervilla.it` (+ `.com` difensivo) o del dominio scelto.
 4. Applicazione al sito + favicon definitiva + aggiornamento docs.
+
+---
+
+## 9. Deep-dive: "Deep Energy" (ottobre 2026)
+
+Su proposta del titolare ("mi piace EnerVilla, ma pensavo anche a qualcosa
+come Deep Energy"), analisi dedicata con gli stessi criteri del §2.
+
+### 9.1 I meriti veri (steelman)
+
+- **Profondità come promessa**: analisi a fondo di dati, contratti e mercato —
+  coerente con "dati prima delle opinioni" e col metodo in 4 fasi.
+- **Risonanza settoriale**: in finanza e mercati *"deep market"* indica un
+  mercato liquido e profondo — eco felice per aggregazione e operatività PSV.
+- Breve (4 sillabe), moderno, internazionale; `deepenergy.it` non risolve
+  (probabilmente libero, verifica DNS 06/10/2026).
+
+### 9.2 I cinque problemi (evidence-based)
+
+1. **Affollamento nel settore**: almeno 5 omonimi "Deep Energy" già attivi
+   nell'energia worldwide — Deep Energy Capital (geotermia, Londra,
+   deepenergy.capital), DEEP Energy Specialists (oil & gas, Texas),
+   Deep Energy Development (oil & gas, Nigeria), Deep Energy Technologies
+   (e-frac, USA), Deep Energy Sdn Bhd (offshore, Malesia). Rischio
+   confusione e passaparola disperso.
+2. **SEO impraticabile**: "deep energy" è anche termine generico di settore
+   (es. *deep energy renovation* in ambito UE): un sito nuovo competerebbe
+   con un termine, non con dei concorrenti.
+3. **Marchio debole**: due parole generiche inglesi (qualità + campo
+   merceologico) = alto rischio di rifiuto EUIPO per difetto di carattere
+   distintivo/descrittività (art. 7 Reg. 2017/1001; cfr. caso "BioMarkt",
+   Trib. UE T-641/21). Un nome coniato come EnerVilla è registrabile,
+   un descrittivo va solo difeso a fatica.
+4. **Fluency per il pubblico italiano**: Alter & Oppenheimer (2006, PNAS)
+   mostrano che i nomi facili da pronunciare ottengono più fiducia e
+   preferenza. "Deep" per un decisore italiano si legge "dip" ma si scrive
+   con due "e" ("deep con due e", a ogni telefonata): frizione di
+   dettatura e digitazione. EnerVilla si legge come si scrive.
+5. **Ownability dimezzata**: `deepenergy.com` e `deep-energy.com` risultano
+   occupati (solo `.it` libero); la rete semantica di "deep" mescola
+   accezioni negative (deep web, deepfake, deep state) a quelle positive
+   (deep dive) — rumore connotativo su un brand della fiducia.
+
+### 9.3 Punteggio comparativo
+
+| Candidato | C1 | C2 | C3 | C4 | C5 | C6 | **Tot.** |
+|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| A. EnerVilla | 4 | 5 | 5 | 5 | 4 | 4 | **27** |
+| **F. Deep Energy** | 3 | 3 | 1 | 4 | 1 | 3 | **15** |
+
+### 9.4 Come tenere l'evocatività senza pagarne i costi
+
+1. **Nome del metodo (consigliato)**: "Il metodo Deep Energy" dentro il
+   brand EnerVilla — dati → analisi → opzioni → decisione. Tutta
+   l'evocatività, zero fabbisogno di marchio/dominio/SEO.
+2. **Nome di prodotto**: "Deep Energy Audit" / "Deep Energy Report" per
+   un'offerta/prodotto specifico.
+3. **Ibrido (se piace come brand)**: "EnerVilla · Deep Energy" — la
+   distintività la porta EnerVilla, Deep Energy fa da descrittore.
+4. **Sconsigliati**: masterbrand puro "Deep Energy"; "Energia Profonda"
+   (poetico, inadatto al B2B industriale); "Deep Energia" (ibrido che
+   somma i difetti di entrambi).
+
+### 9.4 Verdetto
+
+Deep Energy come masterbrand: **15/30 contro 27/30 di EnerVilla**. L'idea è
+buona come *contenuto* (metodo/prodotto), debole come *contenitore*
+(marchio). Vedi variante visiva V5 in `docs/marchio-varianti.html`.
