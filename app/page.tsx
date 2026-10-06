@@ -320,9 +320,9 @@ export default function HomePage() {
         />
         <ul className="mt-8 space-y-4 text-sm leading-relaxed text-grafite-700">
           <li className="border-l-2 border-verde-700 pl-4">
-            Due forme contrattuali tipiche — abbonamento e contratto a
-            prestazione — spostano il rischio di prezzo e di quantità in modo
-            diverso tra le parti.
+            Tre strutture tipiche — abbonamento, contratto a prestazione,
+            fornitura gestita — spostano rischi e pagamenti in modo diverso
+            tra le parti.
           </li>
           <li className="border-l-2 border-verde-700 pl-4">
             Il valore dipende da quattro verifiche preliminari: baseline dei

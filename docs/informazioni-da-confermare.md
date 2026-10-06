@@ -53,7 +53,7 @@ Da confermare con il titolare prima di pubblicare qualunque dettaglio su:
 - **Energia come servizio (EaaS):** se il consulente ha già seguito pratiche su
   offerte EaaS o contratti a prestazione (da citare solo con esperienza reale);
   per ora la pagina descrive il modello e il perimetro del ruolo, senza
-  dichiarare esperienze non verificate.
+  dichiarare esperienze non verificate. Aggiornamento ott-2026: le affermazioni tecniche della pagina sono ricondotte a 7 fonti pubbliche verificate (IRENA, IEA, Banca Mondiale, JRC, EVO/IPMVP, Transparense/EED, DPR 412/1993), elencate in pagina.
 - **Modalità di incarico e compensi:** non presenti nel sito, da decidere se
   pubblicare o tenere fuori sito.
 
@@ -70,7 +70,7 @@ Da confermare con il titolare prima di pubblicare qualunque dettaglio su:
 
 | Elemento                                   | Stato    | Note |
 | ------------------------------------------ | -------- | ---- |
-| Foto professionale (ritratto del titolare) | **caricata e in uso** | `public/darkvilla-hero.jpg` (1584×672, ~40 KB), mostrata intera nell'hero della home con didascalia neutra (nessun nome pubblicato). Resta da confermare esplicitamente il consenso alla pubblicazione online |
+| Foto professionale (ritratto del titolare) | **caricata e in uso** | `public/darkvilla-hero.jpg` (1584×672, ~40 KB), mostrata intera nell'hero della home con didascalia neutra (nessun nome pubblicato). Consenso esplicito del titolare alla pubblicazione online confermato il 06/10/2026. |
 | Anteprima social (1200×630)                | completata | Generata col codice in `app/opengraph-image.tsx` (nessuna foto, palette grafite/avorio/verde/lime, flusso consumi → consegna) |
 | Riferimento visivo `docs/DarkVilla.jpg`    | **archivio** | Copia originale del ritratto (qualità piena); la copia servita è `public/darkvilla-hero.jpg` (compressa, ~40 KB). Nota: "DarkVilla" è il nome del tema scuro + il cognome del titolare (Villa), nessun riferimento a edifici. Le vecchie note su "villa notturna / finestra accesa / bagliore caldo" descrivevano un'immagine inesistente e sono state rimosse ovunque. |
 | Logo o marchio                             | segnaposto | Header e anteprime social usano "Energia per imprese" da `lib/site.ts` (`marchio`), in attesa del nome pubblico definitivo scelto dal titolare |

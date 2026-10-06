@@ -132,3 +132,29 @@ falso ed è stato corretto.
 
 Regola conseguente (già nei commenti di `globals.css`): su scuro il testo
 piccolo parte da grafite-300; grafite-500 solo per bordi su chiaro.
+
+---
+
+## 7. Pagina EaaS evidence-based — ottobre 2026
+
+Le affermazioni tecniche di `/energia-come-servizio` sono state ricondotte a
+fonti pubbliche verificate (ricerca web ott-2026), elencate in pagina nella
+sezione "Fonti":
+
+- **IRENA (2020)**, *Innovation landscape brief: Energy as a Service* —
+  definizione e tre famiglie (consulenza / impianti / gestione). Corretta
+  l'attribuzione precedente ("modello più innovativo" non verificata).
+- **IEA**, *ESCO contracts* — shared savings vs guaranteed savings.
+- **Banca Mondiale** — terzo modello (gestione energetica esternalizzata, il
+  più diffuso in UE): la pagina ora descrive tre strutture, non due
+  (allineato anche il rimando in home §6b).
+- **Transparense (progetto UE)** — definizioni EED di EPC ed *energy service
+  provider*; corretta la voce ESCo (termine d'uso equivalente, non termine
+  della direttiva).
+- **EVO / IPMVP** — equazione dei risparmi nella verifica della baseline.
+- **JRC (2019)**, *Energy Service Market in the EU* — mercato stabile o in
+  crescita, Italia tra i più dinamici (quarto fattore "perché ora").
+- **DPR 412/1993** (testo via ISPRA) — definizione di contratto servizio
+  energia (terza struttura contrattuale).
+
+Regola: nuove affermazioni tecniche solo con fonte linkata in pagina.
