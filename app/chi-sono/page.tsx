@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CtaLink } from "@/components/cta-link";
-import { PageHero, Section, SectionHeader } from "@/components/section";
+import { Chiusura, PageHero, Section, SectionHeader } from "@/components/section";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -30,7 +29,7 @@ export default function ChiSonoPage() {
         titolo="Un referente tecnico, non un intermediario di passaggio."
         introduzione="Lavoro da oltre vent'anni nella consulenza energetica per le imprese. Mi occupo di come l'energia viene acquistata, contrattualizzata e consegnata, con un rapporto diretto con i produttori e con i siti dei clienti."
       >
-        <p className="text-xs uppercase tracking-[0.18em] text-grafite-500">
+        <p className="text-xs uppercase tracking-[0.18em] text-grafite-300">
           {site.posizionamento}
         </p>
       </PageHero>
@@ -75,7 +74,7 @@ export default function ChiSonoPage() {
         </div>
       </Section>
 
-      <Section>
+      <Section variante="superficie">
         <SectionHeader
           etichetta="Come lavoro"
           titolo="Tre regole che tengo presenti."
@@ -125,10 +124,6 @@ export default function ChiSonoPage() {
               </Link>{" "}
               appena confermati.
             </p>
-            <p className="mt-4 text-sm leading-relaxed text-grafite-200">
-              L&apos;elenco puntuale di ciò che manca è nel documento
-              docs/informazioni-da-confermare.md incluso nel progetto.
-            </p>
           </div>
           <div>
             <SectionHeader
@@ -141,26 +136,17 @@ export default function ChiSonoPage() {
       </Section>
 
       <Section variante="chiaro" compatta>
-        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <h2 className="max-w-xl text-3xl text-grafite-950">
-            I percorsi di lavoro in dettaglio.
-          </h2>
-          <div className="flex flex-wrap gap-3">
-            <CtaLink href="/contatti">Richiedi un primo confronto</CtaLink>
-            <CtaLink href="/acquisto-aggregato" variante="contorno">
-              Acquisto aggregato
-            </CtaLink>
-            <CtaLink href="/gas-psv" variante="contorno">
-              Gas al PSV
-            </CtaLink>
-            <CtaLink href="/energia-come-servizio" variante="contorno">
-              Energia come servizio
-            </CtaLink>
-            <CtaLink href="/servizi" variante="contorno">
-              Servizi
-            </CtaLink>
-          </div>
-        </div>
+        <Chiusura
+          tono="chiaro"
+          titolo="I percorsi di lavoro in dettaglio."
+          primaria={{ href: "/contatti", etichetta: "Richiedi un primo confronto" }}
+          secondari={[
+            { href: "/acquisto-aggregato", etichetta: "Acquisto aggregato" },
+            { href: "/gas-psv", etichetta: "Gas al PSV" },
+            { href: "/energia-come-servizio", etichetta: "Energia come servizio" },
+            { href: "/servizi", etichetta: "Servizi" },
+          ]}
+        />
       </Section>
     </>
   );

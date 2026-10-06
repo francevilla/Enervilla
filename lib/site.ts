@@ -4,10 +4,24 @@
  */
 
 export const site = {
-  /** Nome della professione: nessun nome o cognome inventato. */
+  /** Dicitura descrittiva dell'attività (payoff e testi): nessun nome inventato. */
   nome: "Consulenza energetica per imprese",
   etichetta: "Consulenza energetica per imprese · Bologna · Italia",
   posizionamento: "Bologna · Operatività nazionale",
+} as const;
+
+/**
+ * Marchio ufficiale (scelta del titolare, 06/10/2026): lockup ibrido
+ * "EnerVilla · Deep Energy" — masterbrand coniato + descrittore evocativo
+ * (vedi docs/studio-nome-marchio.md §9-§10). Il payoff resta la dicitura
+ * descrittiva, per SEO e chiarezza. Un solo punto da aggiornare.
+ * Restano: verifica anteriorità UIBM/EUIPO e registrazione domini.
+ */
+export const marchio = {
+  nome: "EnerVilla",
+  descrittore: "Deep Energy",
+  lockup: "EnerVilla · Deep Energy",
+  payoff: "Consulenza energetica per imprese",
 } as const;
 
 export type VoceMenu = {
@@ -107,7 +121,8 @@ export const ultimaModificaContenuti = new Date("2026-10-06");
 export const datiStrutturati = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: site.nome,
+  name: marchio.lockup,
+  alternateName: site.nome,
   description:
     "Consulenza energetica per imprese: aggregazione dei fabbisogni, relazione con i produttori, contrattualistica, diagnosi ed efficienza energetica. Approvvigionamento gas con operatività sul PSV e impostazione di percorsi energia come servizio (EaaS).",
   areaServed: {

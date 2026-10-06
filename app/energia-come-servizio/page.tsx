@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { CtaLink } from "@/components/cta-link";
 import {
   Card,
+  Chiusura,
   PageHero,
   PassiVerticali,
   Section,
@@ -26,7 +27,7 @@ const definizioni = [
   {
     termine: "ESCo",
     definizione:
-      "Energy Service Company: il soggetto che eroga i servizi energetici. La Commissione europea usa questa definizione per le imprese del settore.",
+      "Energy Service Company: il nome d'uso comune per chi eroga servizi energetici. La direttiva UE sull'efficienza energetica parla di «energy service provider» (chi fornisce servizi energetici presso il cliente finale); ESCO è il termine equivalente usato nella pratica.",
   },
   {
     termine: "Servizi annessi",
@@ -77,13 +78,23 @@ const contratti = [
       "Il risparmio futuro può finanziare l'intervento odierno: la forma va letta come un finanziamento",
     ],
   },
+  {
+    titolo: "Fornitura gestita",
+    sintesi:
+      "Si paga l'energia utile o il comfort (calore, luce, freddo), non il chilowattora: chi eroga investe, gestisce gli impianti e si assume il rischio tecnico.",
+    punti: [
+      "Il cliente paga un corrispettivo legato al servizio ricevuto, con costi prevedibili nel tempo",
+      "La Banca Mondiale la indica come il modello di gestione energetica più diffuso in Unione europea",
+      "In Italia questa logica è quella del «contratto servizio energia» (DPR 412/1993)",
+    ],
+  },
 ];
 
 const verificaPrima = [
   {
     titolo: "Baseline dei consumi",
     testo:
-      "Ogni promessa di risparmio parte da un riferimento di consumo. Se la baseline non è documentata sito per sito, il confronto finale non regge.",
+      "Ogni promessa di risparmio parte da un riferimento di consumo documentato sito per sito. Il riferimento internazionale per misurarlo è il protocollo IPMVP: Risparmi = (Energia baseline − Energia rilevata) ± Aggiustamenti.",
   },
   {
     titolo: "Perimetro dei servizi",
@@ -106,6 +117,58 @@ const percheAdesso = [
   "Costi di installazione ancora significativi per rinnovabili e accumuli: modelli che li distribuiscono nel tempo allargano il numero di progetti sostenibili.",
   "Maturità delle tecnologie di misura e monitoraggio: senza dati orari verificabili nessun contratto a prestazione è controllabile.",
   "Obiettivi di decarbonizzazione ed elettrificazione: per le imprese non è una scelta di immagine, è una variabile di costo strutturale.",
+  "Un mercato dei servizi energetici in crescita: il Centro comune di ricerca della Commissione europea rilevava nel 2019 un mercato stabile o in crescita in quasi tutti gli Stati membri, con l'Italia tra i paesi più dinamici (survey 2018-19).",
+];
+
+const fonti = [
+  {
+    titolo: "Innovation landscape brief: Energy as a Service",
+    fonte: "IRENA · 2020",
+    url: "https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2020/Jul/IRENA_Energy-as-a-Service_2020.pdf",
+    rilevanza:
+      "Definizione del modello EaaS e classificazione in tre famiglie: consulenza, impianti, gestione.",
+  },
+  {
+    titolo: "Energy Service Companies: ESCO contracts",
+    fonte: "IEA",
+    url: "https://www.iea.org/reports/energy-service-companies-escos-2/esco-contracts",
+    rilevanza:
+      "I due modelli di energy performance contract: condivisione dei risparmi e risparmio garantito.",
+  },
+  {
+    titolo: "What is EPC",
+    fonte: "Transparense (progetto europeo)",
+    url: "https://www.transparense.eu/eu/epc-qa/what-is-epc/",
+    rilevanza:
+      "Definizioni della direttiva UE sull'efficienza energetica: energy performance contracting ed energy service provider.",
+  },
+  {
+    titolo: "Le società di servizi energetici e i loro modelli di business",
+    fonte: "Banca Mondiale",
+    url: "https://documents1.worldbank.org/curated/en/709221467753465653/pdf/103932-REVISED-LW54-fin-logo-OKR.pdf",
+    rilevanza:
+      "Terzo modello oltre ai due EPC: gestione energetica esternalizzata, la più diffusa in Unione europea.",
+  },
+  {
+    titolo: "International Performance Measurement and Verification Protocol (IPMVP)",
+    fonte: "EVO — Efficiency Valuation Organization",
+    url: "https://evo-world.org/",
+    rilevanza:
+      "Il protocollo internazionale per misurare e verificare i risparmi: baseline, periodo di riferimento, aggiustamenti.",
+  },
+  {
+    titolo: "Energy Service Market in the EU — Status review and recommendations 2019",
+    fonte: "JRC, Commissione europea",
+    url: "https://publications.jrc.ec.europa.eu/repository/bitstream/JRC118815/jrc118815.pdf",
+    rilevanza:
+      "Mercato dei servizi energetici stabile o in crescita in quasi tutti gli Stati membri, Italia tra i più dinamici.",
+  },
+  {
+    titolo: "DPR 26 agosto 1993, n. 412 (testo coordinato)",
+    fonte: "Normativa italiana, via ISPRA",
+    url: "https://www.isprambiente.gov.it/contentfiles/00005500/5556-d.p.r.26agosto1993n.412.pdf",
+    rilevanza: "Definizione italiana di «contratto servizio energia».",
+  },
 ];
 
 export default function EnergiaComeServizioPage() {
@@ -131,7 +194,7 @@ export default function EnergiaComeServizioPage() {
         <SectionHeader
           etichetta="Definizione"
           titolo="Non una fornitura più cara di servizi: un modo diverso di comprare energia."
-          introduzione="L'Irena, agenzia internazionale per le energie rinnovabili, descrive l'EaaS come il modello più innovativo tra quelli emersi nel settore, con vantaggi possibili in tutti i segmenti: industriale, commerciale e consumer. La definizione conta poco, però, se poi non la si traduce in clausole."
+          introduzione="L'Irena (agenzia internazionale per le energie rinnovabili) dedica all'EaaS uno dei suoi brief sulle innovazioni del settore elettrico: un modello nato da digitalizzazione e decentralizzazione, che sposta il valore dalla vendita di chilowattora alla fornitura di servizi. La definizione conta poco, però, se poi non la si traduce in clausole."
         />
         <div className="mt-12 grid gap-px overflow-hidden border border-grafite-700 md:grid-cols-3">
           {definizioni.map((voce) => (
@@ -149,7 +212,7 @@ export default function EnergiaComeServizioPage() {
         <SectionHeader
           etichetta="Come funziona"
           titolo="Tre famiglie di servizi, tre economie diverse."
-          introduzione="Capire a quale famiglia appartiene l'offerta che si ha davanti cambia il modo di valutarla: ogni famiglia genera il proprio margine in modo diverso."
+          introduzione="La classificazione in tre famiglie è quella di IRENA (2020). Capire a quale famiglia appartiene l'offerta che si ha davanti cambia il modo di valutarla, perché ognuna genera il proprio margine in modo diverso."
         />
         <ol className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {treFamiglie.map((famiglia) => (
@@ -165,10 +228,10 @@ export default function EnergiaComeServizioPage() {
       <Section>
         <SectionHeader
           etichetta="Forme contrattuali"
-          titolo="Abbonamento o contratto a prestazione: sono due rischi diversi."
-          introduzione="Sono le due strutture con cui l'EaaS viene tipicamente erogato. Vengono spesso presentate come equivalenti; non lo sono."
+          titolo="Abbonamento, prestazione o fornitura gestita: tre rischi diversi."
+          introduzione="Sono le tre strutture con cui questi servizi vengono tipicamente erogati: canone fisso, remunerazione legata ai risultati, pagamento dell'energia utile. Vengono spesso presentate come equivalenti; non lo sono."
         />
-        <div className="mt-12 grid gap-6 lg:grid-cols-2">
+        <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {contratti.map((forma) => (
             <article
               key={forma.titolo}
@@ -209,7 +272,7 @@ export default function EnergiaComeServizioPage() {
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <SectionHeader
             etichetta="Perché ora"
-            titolo="Tre condizioni che rendono l'EaaS praticabile oggi."
+            titolo="Quattro condizioni che rendono l'EaaS praticabile oggi."
           />
           <ul className="space-y-4 text-sm leading-relaxed text-grafite-200">
             {percheAdesso.map((voce) => (
@@ -249,7 +312,7 @@ export default function EnergiaComeServizioPage() {
               accanto valgono in entrambi i casi.
             </p>
             <div>
-              <CtaLink href="/servizi" variante="contorno" suFondoScuro>
+              <CtaLink href="/servizi" variante="contorno">
                 Come lavoro su contratti, diagnosi ed efficienza
               </CtaLink>
             </div>
@@ -257,21 +320,47 @@ export default function EnergiaComeServizioPage() {
         </div>
       </Section>
 
-      <Section variante="superficie" compatta>
-        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <h2 className="max-w-xl text-3xl text-avorio-50">
-            Hai un&apos;offerta EaaS davanti? Partiamo dalle clausole.
-          </h2>
-          <div className="flex flex-wrap gap-3">
-            <CtaLink href="/contatti">Richiedi un primo confronto</CtaLink>
-            <CtaLink href="/servizi" variante="contorno">
-              Servizi alle imprese
-            </CtaLink>
-            <CtaLink href="/gas-psv" variante="contorno">
-              Gas al PSV
-            </CtaLink>
-          </div>
-        </div>
+      <Section>
+        <SectionHeader
+          etichetta="Fonti"
+          titolo="Da dove vengono queste informazioni."
+          introduzione="Ogni affermazione tecnica di questa pagina è riconducibile a una fonte pubblica e verificabile. I documenti restano la lettura consigliata prima di valutare un'offerta."
+        />
+        <ul className="mt-12 space-y-4">
+          {fonti.map((voce) => (
+            <li
+              key={voce.url}
+              className="border border-grafite-700 bg-grafite-900 p-6"
+            >
+              <a
+                href={voce.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-verde-300 underline underline-offset-4 hover:text-lime-400"
+              >
+                {voce.titolo}
+                <span aria-hidden="true"> ↗</span>
+              </a>
+              <p className="mt-2 text-xs font-semibold uppercase tracking-[0.18em] text-grafite-300">
+                {voce.fonte}
+              </p>
+              <p className="mt-2 max-w-3xl text-sm leading-relaxed text-grafite-200">
+                {voce.rilevanza}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section compatta>
+        <Chiusura
+          titolo="Hai un'offerta EaaS davanti? Partiamo dalle clausole."
+          primaria={{ href: "/contatti", etichetta: "Richiedi un primo confronto" }}
+          secondari={[
+            { href: "/servizi", etichetta: "Servizi alle imprese" },
+            { href: "/gas-psv", etichetta: "Gas al PSV" },
+          ]}
+        />
       </Section>
     </>
   );

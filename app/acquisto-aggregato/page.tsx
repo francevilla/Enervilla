@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { CtaLink } from "@/components/cta-link";
 import { FlowDiagram } from "@/components/flow-diagram";
 import {
+  Chiusura,
   PageHero,
   PassiVerticali,
   Section,
@@ -109,7 +110,7 @@ export default function AcquistoDirettoPage() {
         </div>
       </Section>
 
-      <Section>
+      <Section variante="superficie">
         <div className="grid gap-10 md:grid-cols-2">
           <div className="border border-grafite-700 bg-grafite-900 p-6 sm:p-8">
             <h2 className="text-2xl text-avorio-50">Cosa serve dall&apos;impresa</h2>
@@ -148,21 +149,16 @@ export default function AcquistoDirettoPage() {
       </Section>
 
       <Section variante="chiaro" compatta>
-        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <h2 className="max-w-xl text-3xl text-grafite-950">
-            Il percorso gas segue una logica diversa.
-          </h2>
-          <div className="flex flex-wrap gap-3">
-            <CtaLink href="/contatti">Richiedi un primo confronto</CtaLink>
-            <CtaLink href="/gas-psv" variante="contorno">Gas al PSV</CtaLink>
-            <CtaLink href="/energia-come-servizio" variante="contorno">
-              Energia come servizio
-            </CtaLink>
-            <CtaLink href="/servizi" variante="contorno">
-              Servizi alle imprese
-            </CtaLink>
-          </div>
-        </div>
+        <Chiusura
+          tono="chiaro"
+          titolo="Il percorso gas segue una logica diversa."
+          primaria={{ href: "/contatti", etichetta: "Richiedi un primo confronto" }}
+          secondari={[
+            { href: "/gas-psv", etichetta: "Gas al PSV" },
+            { href: "/energia-come-servizio", etichetta: "Energia come servizio" },
+            { href: "/servizi", etichetta: "Servizi alle imprese" },
+          ]}
+        />
       </Section>
     </>
   );

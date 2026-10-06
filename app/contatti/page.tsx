@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { CtaLink } from "@/components/cta-link";
-import { PageHero, Section } from "@/components/section";
+import { Chiusura, PageHero, Section } from "@/components/section";
 import { recapiti, site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -67,26 +68,26 @@ export default function ContattiPage() {
               titolare li conferma ufficialmente, insieme ai riferimenti fiscali
               e all&apos;informativa privacy. Nel frattempo le pagine del sito
               descrivono metodo e aree di lavoro:{" "}
-              <a
+              <Link
                 href="/acquisto-aggregato"
                 className="font-medium text-verde-300 underline underline-offset-4 hover:text-lime-400"
               >
                 acquisto aggregato
-              </a>
+              </Link>
               ,{" "}
-              <a
+              <Link
                 href="/gas-psv"
                 className="font-medium text-verde-300 underline underline-offset-4 hover:text-lime-400"
               >
                 gas al PSV
-              </a>{" "}
+              </Link>{" "}
               e{" "}
-              <a
+              <Link
                 href="/servizi"
                 className="font-medium text-verde-300 underline underline-offset-4 hover:text-lime-400"
               >
                 servizi
-              </a>{" "}
+              </Link>{" "}
               rispondono già alle domande tecniche più frequenti.
             </p>
           </div>
@@ -97,7 +98,7 @@ export default function ContattiPage() {
           <dl className="grid gap-px overflow-hidden border border-grafite-700 sm:grid-cols-3">
             {recapiti.email ? (
               <div className="bg-grafite-900 p-6">
-                <dt className="text-xs font-semibold uppercase tracking-[0.2em] text-grafite-500">
+                <dt className="text-xs font-semibold uppercase tracking-[0.2em] text-grafite-300">
                   Email
                 </dt>
                 <dd className="mt-3">
@@ -112,7 +113,7 @@ export default function ContattiPage() {
             ) : null}
             {recapiti.telefono ? (
               <div className="bg-grafite-900 p-6">
-                <dt className="text-xs font-semibold uppercase tracking-[0.2em] text-grafite-500">
+                <dt className="text-xs font-semibold uppercase tracking-[0.2em] text-grafite-300">
                   Telefono
                 </dt>
                 <dd className="mt-3">
@@ -127,7 +128,7 @@ export default function ContattiPage() {
             ) : null}
             {recapiti.linkedin ? (
               <div className="bg-grafite-900 p-6">
-                <dt className="text-xs font-semibold uppercase tracking-[0.2em] text-grafite-500">
+                <dt className="text-xs font-semibold uppercase tracking-[0.2em] text-grafite-300">
                   LinkedIn
                 </dt>
                 <dd className="mt-3">
@@ -178,26 +179,16 @@ export default function ContattiPage() {
       </Section>
 
       {/* Chiusura: ritorno ai percorsi di lavoro. */}
-      <Section variante="scuro" compatta>
-        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <h2 className="max-w-xl text-3xl text-avorio-50">
-            Prima di scrivere, forse la tua risposta è già in una pagina.
-          </h2>
-          <div className="flex flex-wrap gap-3">
-            <CtaLink href="/acquisto-aggregato" suFondoScuro>
-              Acquisto aggregato
-            </CtaLink>
-            <CtaLink href="/gas-psv" variante="contorno" suFondoScuro>
-              Gas al PSV
-            </CtaLink>
-            <CtaLink href="/energia-come-servizio" variante="contorno" suFondoScuro>
-              Energia come servizio
-            </CtaLink>
-            <CtaLink href="/chi-sono" variante="contorno" suFondoScuro>
-              Chi sono
-            </CtaLink>
-          </div>
-        </div>
+      <Section variante="superficie" compatta>
+        <Chiusura
+          titolo="Prima di scrivere, forse la tua risposta è già in una pagina."
+          primaria={{ href: "/acquisto-aggregato", etichetta: "Acquisto aggregato" }}
+          secondari={[
+            { href: "/gas-psv", etichetta: "Gas al PSV" },
+            { href: "/energia-come-servizio", etichetta: "Energia come servizio" },
+            { href: "/chi-sono", etichetta: "Chi sono" },
+          ]}
+        />
       </Section>
     </>
   );

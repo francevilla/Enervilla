@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Varianti marchio — studio nome ottobre 2026</title>
+<style>
+  :root {
+    --grafite-950: #060e19;
+    --grafite-900: #131b27;
+    --grafite-700: #313842;
+    --grafite-300: #9a9fa6;
+    --grafite-200: #c1c4c9;
+    --avorio-50: #f2f0ea;
+    --verde-800: #154433;
+    --verde-700: #2a624b;
+    --lime-400: #b8e948;
+    --font-sans: ui-sans-serif, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    background: var(--grafite-950);
+    color: var(--avorio-50);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    padding: 48px 20px 80px;
+  }
+  .pagina { max-width: 960px; margin: 0 auto; }
+  .eyebrow {
+    font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.2em;
+    color: var(--lime-400);
+  }
+  h1 {
+    font-family: var(--font-display); font-weight: 500;
+    font-size: clamp(32px, 5vw, 52px); line-height: 1.1;
+    margin-top: 16px; max-width: 20ch;
+  }
+  .intro { margin-top: 16px; max-width: 62ch; color: var(--grafite-200); font-size: 17px; }
+  .intro a { color: var(--lime-400); }
+  .variante {
+    margin-top: 40px;
+    border: 1px solid var(--grafite-700);
+    background: var(--grafite-900);
+  }
+  .variante-testa {
+    display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--grafite-700);
+  }
+  .variante-testa h2 { font-family: var(--font-display); font-weight: 500; font-size: 24px; }
+  .tag {
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em;
+    padding: 4px 10px;
+  }
+  .tag.ok { background: var(--lime-400); color: var(--grafite-950); }
+  .tag.alt { border: 1px solid var(--grafite-700); color: var(--grafite-300); }
+  .lockup {
+    padding: 56px 24px;
+    display: flex; justify-content: center; align-items: center;
+    border-bottom: 1px solid var(--grafite-700);
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(154,159,166,0.08), transparent),
+      var(--grafite-950);
+  }
+  .mock-header {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; padding: 14px 24px;
+    border-bottom: 1px solid var(--grafite-700);
+    font-size: 13px; color: var(--grafite-300);
+  }
+  .mock-nav { display: flex; gap: 18px; }
+  .dettagli {
+    display: grid; gap: 0;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 720px) { .dettagli { grid-template-columns: 1fr 1fr 1fr; } }
+  .dettagli > div { padding: 20px 24px; border-top: 1px solid var(--grafite-700); }
+  @media (min-width: 720px) {
+    .dettagli > div { border-top: 0; border-left: 1px solid var(--grafite-700); }
+    .dettagli > div:first-child { border-left: 0; }
+  }
+  .dettagli h3 {
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.16em; color: var(--grafite-300); margin-bottom: 8px;
+  }
+  .dettagli p, .dettagli li { font-size: 14px; color: var(--grafite-200); }
+  .dettagli ul { padding-left: 18px; }
+  .fav { display: inline-flex; gap: 12px; align-items: flex-end; margin-top: 4px; }
+  code {
+    font-size: 13px; background: var(--grafite-950);
+    border: 1px solid var(--grafite-700); padding: 1px 6px;
+    color: var(--grafite-200);
+  }
+  /* --- Lockup V1 --- */
+  .v1 { text-align: center; }
+  .v1 .marchio { font-family: var(--font-display); font-size: clamp(48px, 9vw, 88px); line-height: 1; }
+  .v1 .marchio .q {
+    display: inline-block; width: 0.32em; height: 0.32em;
+    background: var(--lime-400); margin-right: 0.18em;
+  }
+  .v1 .payoff {
+    margin-top: 14px; font-size: 13px; text-transform: uppercase;
+    letter-spacing: 0.28em; color: var(--grafite-300);
+  }
+  .mini-v1 { display: inline-flex; align-items: baseline; gap: 8px; color: var(--avorio-50); font-size: 14px; }
+  .mini-v1 .q { display: inline-block; width: 11px; height: 11px; background: var(--lime-400); transform: translateY(-1px); }
+  .mini-v1 b { text-transform: uppercase; letter-spacing: 0.16em; font-size: 13px; }
+  /* --- Lockup V2 --- */
+  .v2 { text-align: center; }
+  .v2 .cognome {
+    font-family: var(--font-display); font-size: clamp(56px, 10vw, 104px);
+    letter-spacing: 0.12em; line-height: 1; padding-left: 0.12em;
+  }
+  .v2 .riga { display: flex; align-items: center; gap: 14px; justify-content: center; margin-top: 16px; }
+  .v2 .riga::before, .v2 .riga::after { content: ""; height: 1px; width: 64px; background: var(--grafite-700); }
+  .v2 .settore { font-size: 13px; text-transform: uppercase; letter-spacing: 0.3em; color: var(--lime-400); padding-left: 0.3em; }
+  .mini-v2 { color: var(--avorio-50); font-size: 14px; letter-spacing: 0.22em; text-transform: uppercase; }
+  .mini-v2 span { color: var(--grafite-300); }
+  /* --- Lockup V3 --- */
+  .v3 { display: flex; align-items: center; gap: 22px; }
+  .v3 .mono {
+    width: 96px; height: 96px; flex: none;
+    border: 2px solid var(--lime-400);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-size: 56px; color: var(--lime-400);
+  }
+  .v3 .nome { font-family: var(--font-display); font-size: clamp(40px, 7vw, 68px); line-height: 1; }
+  .v3 .payoff { margin-top: 10px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.24em; color: var(--grafite-300); }
+  .mini-v3 { display: inline-flex; align-items: center; gap: 10px; color: var(--avorio-50); }
+  .mini-v3 .mono {
+    width: 30px; height: 30px; border: 2px solid var(--lime-400);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-size: 18px; color: var(--lime-400);
+  }
+  .mini-v3 b { font-size: 13px; text-transform: uppercase; letter-spacing: 0.16em; }
+  /* --- Lockup V4 --- */
+  .v4 { text-align: center; }
+  .v4 .r1 { font-family: var(--font-display); font-size: clamp(48px, 9vw, 84px); line-height: 1.05; }
+  .v4 .r1 em { font-style: normal; color: var(--lime-400); }
+  .v4 .payoff { margin-top: 12px; font-size: 13px; color: var(--grafite-300); }
+  .mini-v4 { font-family: var(--font-display); font-size: 19px; color: var(--avorio-50); }
+  .mini-v4 em { font-style: normal; color: var(--lime-400); }
+  /* --- Lockup V5 --- */
+  .v5 { text-align: center; }
+  .v5 .nome { font-family: var(--font-display); font-size: clamp(48px, 9vw, 84px); line-height: 1.05; }
+  .v5 .nome em { font-style: normal; color: var(--lime-400); }
+  .v5 .payoff { margin-top: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.24em; color: var(--grafite-300); }
+  .mini-v5 { font-family: var(--font-display); font-size: 19px; color: var(--avorio-50); }
+  .mini-v5 em { font-style: normal; color: var(--lime-400); }
+  .ibrido {
+    margin: 0 24px 24px; padding: 20px 24px;
+    border: 1px dashed var(--grafite-700);
+    display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: baseline; justify-content: space-between;
+  }
+  .ibrido p { font-size: 14px; color: var(--grafite-200); }
+  .ibrido .lock { font-family: var(--font-display); font-size: 22px; }
+  .ibrido .lock em { font-style: normal; color: var(--lime-400); }
+  .nota-finale {
+    margin-top: 40px; border: 1px solid var(--verde-700);
+    padding: 24px; font-size: 15px; color: var(--grafite-200);
+  }
+  .nota-finale strong { color: var(--avorio-50); }
+</style>
+</head>
+<body>
+<div class="pagina">
+
+  <p class="eyebrow">Studio nome e marchio · ottobre 2026</p>
+  <h1>Cinque direzioni di marchio, una sola da scegliere.</h1>
+  <p class="intro">
+    Tutte le varianti usano solo font di sistema e i token del sito (nessuna
+    dipendenza esterna), con payoff <em>"Consulenza energetica per imprese"</em>.
+    Punteggi e motivazioni nel documento <code>docs/studio-nome-marchio.md</code>.
+    La raccomandazione dello studio è la <strong>V1 · EnerVilla</strong>.
+  </p>
+
+  <div class="nota-finale" role="note" style="margin-top:32px">
+    <strong>Scelta del 06/10/2026: lockup ibrido "EnerVilla · Deep Energy".</strong>
+    Masterbrand coniato + descrittore evocativo, con payoff "Consulenza energetica
+    per imprese". Applicato a header, footer, titoli SEO, anteprime social e dati
+    strutturati. Restano: verifica UIBM/EUIPO e registrazione domini.
+  </div>
+
+  <!-- V1 -->
+  <section class="variante" aria-label="Variante 1">
+    <div class="variante-testa">
+      <h2>V1 · EnerVilla</h2>
+      <span class="tag ok">Raccomandata · 27/30</span>
+    </div>
+    <div class="lockup">
+      <div class="v1">
+        <p class="marchio"><span class="q" aria-hidden="true"></span>EnerVilla</p>
+        <p class="payoff">Consulenza energetica per imprese</p>
+      </div>
+    </div>
+    <div class="mock-header" aria-hidden="true">
+      <span class="mini-v1"><span class="q"></span><b>EnerVilla</b></span>
+      <span class="mock-nav"><span>Servizi</span><span>Gas al PSV</span><span>Chi sono</span><span>Contatti</span></span>
+    </div>
+    <div class="dettagli">
+      <div>
+        <h3>Perché funziona</h3>
+        <ul>
+          <li>Unica nelle ricerche, breve, dettabile al telefono</li>
+          <li>Il cognome diventa brand senza esporsi per esteso</li>
+          <li>Evoluzione naturale del segno attuale (quadrato lime)</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Favicon 32px</h3>
+        <p class="fav">
+          <svg width="32" height="32" viewBox="0 0 32 32" role="img" aria-label="Favicon EnerVilla"><rect width="32" height="32" fill="#060e19"/><rect x="6" y="6" width="9" height="9" fill="#212832"/><rect x="17" y="6" width="9" height="9" fill="#212832"/><rect x="6" y="17" width="9" height="9" fill="#2a624b"/><rect x="17" y="17" width="9" height="9" fill="#b8e948"/></svg>
+          <svg width="16" height="16" viewBox="0 0 32 32" role="img" aria-label="Favicon EnerVilla piccola"><rect width="32" height="32" fill="#060e19"/><rect x="6" y="6" width="9" height="9" fill="#212832"/><rect x="17" y="6" width="9" height="9" fill="#212832"/><rect x="6" y="17" width="9" height="9" fill="#2a624b"/><rect x="17" y="17" width="9" height="9" fill="#b8e948"/></svg>
+        </p>
+        <p style="margin-top:8px">Quella già in uso: resta invariata.</p>
+      </div>
+      <div>
+        <h3>Domini · payoff</h3>
+        <p><code>enervilla.it</code> + <code>enervilla.com</code> probabilmente liberi (verifica 06/10/2026).</p>
+        <p style="margin-top:8px">Payoff obbligatorio finché il marchio non è noto.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- V2 -->
+  <section class="variante" aria-label="Variante 2">
+    <div class="variante-testa">
+      <h2>V2 · Villa, istituzionale</h2>
+      <span class="tag alt">Alternativa autorevole</span>
+    </div>
+    <div class="lockup">
+      <div class="v2">
+        <p class="cognome">Villa</p>
+        <div class="riga"><p class="settore">Energia per imprese</p></div>
+      </div>
+    </div>
+    <div class="mock-header" aria-hidden="true">
+      <span class="mini-v2">Villa <span>· energia</span></span>
+      <span class="mock-nav"><span>Servizi</span><span>Gas al PSV</span><span>Chi sono</span><span>Contatti</span></span>
+    </div>
+    <div class="dettagli">
+      <div>
+        <h3>Perché funziona</h3>
+        <ul>
+          <li>Il cognome per esteso = massima responsabilità personale</li>
+          <li>Tono da studio professionale affermato</li>
+          <li>Funziona anche come firma su documenti e preventivi</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Favicon 32px</h3>
+        <p class="fav">
+          <svg width="32" height="32" viewBox="0 0 32 32" role="img" aria-label="Favicon V"><rect width="32" height="32" fill="#060e19"/><text x="16" y="24" text-anchor="middle" font-family="Palatino, Georgia, serif" font-size="22" fill="#b8e948">V</text></svg>
+          <svg width="16" height="16" viewBox="0 0 32 32" role="img" aria-label="Favicon V piccola"><rect width="32" height="32" fill="#060e19"/><text x="16" y="24" text-anchor="middle" font-family="Palatino, Georgia, serif" font-size="22" fill="#b8e948">V</text></svg>
+        </p>
+        <p style="margin-top:8px">"V" serif lime su fondo scuro.</p>
+      </div>
+      <div>
+        <h3>Limiti</h3>
+        <p>"Villa" da solo è poco distintivo online; richiede sempre il payoff. Adatta se il passaparola è sul cognome.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- V3 -->
+  <section class="variante" aria-label="Variante 3">
+    <div class="variante-testa">
+      <h2>V3 · Monogramma V + EnerVilla</h2>
+      <span class="tag alt">Più marcata</span>
+    </div>
+    <div class="lockup">
+      <div class="v3">
+        <span class="mono" aria-hidden="true">V</span>
+        <span>
+          <span class="nome">EnerVilla</span>
+          <span class="payoff" style="display:block">Consulenza energetica per imprese</span>
+        </span>
+      </div>
+    </div>
+    <div class="mock-header" aria-hidden="true">
+      <span class="mini-v3"><span class="mono">V</span><b>EnerVilla</b></span>
+      <span class="mock-nav"><span>Servizi</span><span>Gas al PSV</span><span>Chi sono</span><span>Contatti</span></span>
+    </div>
+    <div class="dettagli">
+      <div>
+        <h3>Perché funziona</h3>
+        <ul>
+          <li>La "V" diventa un segno autonomo (social, slide, favicon)</li>
+          <li>Stesso nome della V1, ma con più presenza</li>
+          <li>Il riquadro richiama cornici e bordi del sito</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Favicon 32px</h3>
+        <p class="fav">
+          <svg width="32" height="32" viewBox="0 0 32 32" role="img" aria-label="Favicon monogramma"><rect width="32" height="32" fill="#060e19"/><rect x="5" y="5" width="22" height="22" fill="none" stroke="#b8e948" stroke-width="2"/><text x="16" y="23" text-anchor="middle" font-family="Palatino, Georgia, serif" font-size="17" fill="#b8e948">V</text></svg>
+          <svg width="16" height="16" viewBox="0 0 32 32" role="img" aria-label="Favicon monogramma piccola"><rect width="32" height="32" fill="#060e19"/><rect x="5" y="5" width="22" height="22" fill="none" stroke="#b8e948" stroke-width="2"/><text x="16" y="23" text-anchor="middle" font-family="Palatino, Georgia, serif" font-size="17" fill="#b8e948">V</text></svg>
+        </p>
+        <p style="margin-top:8px">Monogramma in riquadro, leggibile anche a 16px.</p>
+      </div>
+      <div>
+        <h3>Limiti</h3>
+        <p>Più "disegnata" delle altre: da valutare se il tono deve restare ultra-sobrio.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- V4 -->
+  <section class="variante" aria-label="Variante 4">
+    <div class="variante-testa">
+      <h2>V4 · Villa Energia, fallback chiaro</h2>
+      <span class="tag alt">Massima chiarezza · 25/30</span>
+    </div>
+    <div class="lockup">
+      <div class="v4">
+        <p class="r1">Villa <em>Energia</em></p>
+        <p class="payoff">Consulenza energetica per imprese · Bologna</p>
+      </div>
+    </div>
+    <div class="mock-header" aria-hidden="true">
+      <span class="mini-v4">Villa <em>Energia</em></span>
+      <span class="mock-nav"><span>Servizi</span><span>Gas al PSV</span><span>Chi sono</span><span>Contatti</span></span>
+    </div>
+    <div class="dettagli">
+      <div>
+        <h3>Perché funziona</h3>
+        <ul>
+          <li>Si capisce al primo ascolto, zero spiegazioni</li>
+          <li>Cognome + settore: personale e autorevole</li>
+          <li>Domini <code>villaenergia.it</code> probabilmente liberi</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Favicon 32px</h3>
+        <p class="fav">
+          <svg width="32" height="32" viewBox="0 0 32 32" role="img" aria-label="Favicon VE"><rect width="32" height="32" fill="#060e19"/><text x="16" y="23" text-anchor="middle" font-family="Palatino, Georgia, serif" font-size="15" fill="#f2f0ea">V<tspan fill="#b8e948">E</tspan></text></svg>
+          <svg width="16" height="16" viewBox="0 0 32 32" role="img" aria-label="Favicon VE piccola"><rect width="32" height="32" fill="#060e19"/><text x="16" y="23" text-anchor="middle" font-family="Palatino, Georgia, serif" font-size="15" fill="#f2f0ea">V<tspan fill="#b8e948">E</tspan></text></svg>
+        </p>
+        <p style="margin-top:8px">Iniziali "VE", energia in lime.</p>
+      </div>
+      <div>
+        <h3>Limiti</h3>
+        <p>Meno distintivo di EnerVilla: "Villa" è un cognome diffuso e "energia" è generica.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- V5 -->
+  <section class="variante" aria-label="Variante 5">
+    <div class="variante-testa">
+      <h2>V5 · Deep Energy</h2>
+      <span class="tag ok">Scelto come descrittore · lockup ibrido</span>
+    </div>
+    <div class="lockup">
+      <div class="v5">
+        <p class="nome">Deep <em>Energy</em></p>
+        <p class="payoff">Consulenza energetica per imprese</p>
+      </div>
+    </div>
+    <div class="mock-header" aria-hidden="true">
+      <span class="mini-v5">Deep <em>Energy</em></span>
+      <span class="mock-nav"><span>Servizi</span><span>Gas al PSV</span><span>Chi sono</span><span>Contatti</span></span>
+    </div>
+    <div class="dettagli">
+      <div>
+        <h3>Meriti veri</h3>
+        <ul>
+          <li>Evoca profondità di analisi (dati, contratti, mercato)</li>
+          <li>Eco felice: "deep market" = mercato liquido e profondo</li>
+          <li>Breve, moderno, internazionale</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Perché no (dettagli nel §9)</h3>
+        <ul>
+          <li>5+ omonimi nel settore energia worldwide</li>
+          <li>SEO contro un termine generico; .com occupati</li>
+          <li>Marchio descrittivo: rischio rifiuto EUIPO</li>
+          <li>"Deep" si detta "con due e" a ogni telefonata</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Favicon 32px</h3>
+        <p class="fav">
+          <svg width="32" height="32" viewBox="0 0 32 32" role="img" aria-label="Favicon DE"><rect width="32" height="32" fill="#060e19"/><text x="16" y="23" text-anchor="middle" font-family="Palatino, Georgia, serif" font-size="15" fill="#f2f0ea">D<tspan fill="#b8e948">E</tspan></text></svg>
+          <svg width="16" height="16" viewBox="0 0 32 32" role="img" aria-label="Favicon DE piccola"><rect width="32" height="32" fill="#060e19"/><text x="16" y="23" text-anchor="middle" font-family="Palatino, Georgia, serif" font-size="15" fill="#f2f0ea">D<tspan fill="#b8e948">E</tspan></text></svg>
+        </p>
+        <p style="margin-top:8px">Iniziali "DE". Ipotesi puramente comparativa.</p>
+      </div>
+    </div>
+    <div class="ibrido">
+      <p><strong style="color:var(--avorio-50)">Lockup ufficiale dal 06/10/2026:</strong> masterbrand EnerVilla + descrittore Deep Energy, sempre con payoff nelle intestazioni.</p>
+      <p class="lock">EnerVilla · <em>Deep Energy</em></p>
+    </div>
+  </section>
+
+  <div class="nota-finale" role="note">
+    <strong>Come scegliere.</strong> Se l'obiettivo è costruire un brand che resti
+    in testa dopo un convegno o una telefonata → <strong>V1</strong> (o V3 se vuoi
+    un segno più marcato). Se l'obiettivo è la fiducia immediata sul cognome →
+    <strong>V2</strong> o <strong>V4</strong>. In tutti i casi: payoff obbligatorio
+    per 12–24 mesi, verifica UIBM/EUIPO prima dell'adozione, poi registrazione
+    del dominio. L'applicazione al sito richiede ~30 minuti (un solo file di
+    configurazione + favicon).
+  </div>
+
+</div>
+</body>
+</html>

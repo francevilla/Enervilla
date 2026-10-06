@@ -7,19 +7,15 @@ Legenda: `[ ]` riquadro/bordo, `≡` elenco, `→` direzione del flusso visivo.
 ┌──────────────────────────────────────────────────────────────┐
 │ HEADER  ▪ WORDMARK          [nav] [nav] [nav] [nav] (CONTATTI)│
 ├──────────────────────────────────────────────────────────────┤
-│ HERO                                                         │
+│ HERO (rev. ott-2026: testo + ritratto, niente split)           │
 │  eyebrow: ETICHETTA POSIZIONAMENTO (maiuscole, piccolo)      │
-│                                                              │
-│  ┌───────────────────────────┐   ┌────────────────────────┐  │
-│  │ H1 (enorme, serif)        │   │ FIGURA FLUSSO          │  │
-│  │                           │   │  ○ Consumi             │  │
-│  │ paragrafo introduttivo    │   │  │                     │  │
-│  │                           │   │  ○ Aggregazione        │  │
-│  │ (CTA primaria)(CTA2)(CTA3)│   │  │                     │  │
-│  └───────────────────────────┘   │  ○ Produttori          │  │
-│                                  │  │                     │  │
-│                                  │  ○ Consegna            │  │
-│                                  └────────────────────────┘  │
+│  H1 (enorme, serif, max 4 righe)                             │
+│  paragrafo introduttivo (≤ 40 parole)                        │
+│  (CTA primaria)(CTA secondaria) — max 2                      │
+│  ┌────────────────────────────────────────────────────────┐  │
+│  │ RITRATTO panoramico intero, in cornice con didascalia  │  │
+│  │ (mai ritagli sul volto, mai testo sopra la foto)       │  │
+│  └────────────────────────────────────────────────────────┘  │
 ├══════════════════════════════════════════════════════════════┣
 │ FASCIA SCURA (banda piena, 3 colonne separate da bordi)      │
 │  ┌──────────┬──────────────┬──────────────────┐              │
@@ -96,7 +92,12 @@ Legenda: `[ ]` riquadro/bordo, `≡` elenco, `→` direzione del flusso visivo.
 
 ## Note di implementazione (dal design plan)
 
-- Il ritmo si ottiene alternando fondi: avorio → grafite → avorio → verde
-  tenue → avorio → avorio → grafite → avorio → verde tenue.
-- Una sola CTA "solida" per schermata; le altre sempre a contorno.
-- La figura di flusso è CSS-only (`FlowDiagram`), non un'immagine.
+- Il ritmo si ottiene alternando fondi (rev. ott-2026): scuro (hero) →
+  superficie (posizionamento) → scuro (punto di partenza) → chiaro (acquisto)
+  → scuro (gas) → superficie (servizi) → chiaro compatto (EaaS) → superficie
+  (metodo) → chiaro (chiusura). Mai più di due sezioni scure consecutive con
+  lo stesso pattern.
+- Una sola CTA "solida" per schermata; le chiusure usano `Chiusura` (primaria
+  + link testuali), mai file di bottoni.
+- La figura di flusso è CSS-only (`FlowDiagram`) e vive solo in
+  `/acquisto-aggregato`; in home l'unica figura è il ritratto.

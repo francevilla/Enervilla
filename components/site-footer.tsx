@@ -1,5 +1,11 @@
 import Link from "next/link";
-import { collegamentiFooter, percorsoContatti, recapiti, site } from "@/lib/site";
+import {
+  collegamentiFooter,
+  marchio,
+  percorsoContatti,
+  recapiti,
+  site,
+} from "@/lib/site";
 
 /** Footer essenziale: posizionamento e collegamenti alle pagine reali. */
 export function SiteFooter() {
@@ -10,7 +16,11 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-[1.2fr_1fr]">
         <div>
           <p className="font-display text-2xl text-avorio-50">
-            {site.nome}
+            {marchio.nome}{" "}
+            <span className="text-grafite-300">· {marchio.descrittore}</span>
+          </p>
+          <p className="mt-2 text-xs uppercase tracking-[0.18em] text-grafite-300">
+            {marchio.payoff}
           </p>
           <p className="mt-3 max-w-sm text-sm leading-relaxed text-grafite-300">
             Aggregazione dei fabbisogni, relazione con i produttori,
@@ -80,7 +90,7 @@ export function SiteFooter() {
       <div className="border-t border-grafite-800">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-6 text-xs text-grafite-300 sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <p>
-            © {anno} {site.nome}. {site.posizionamento}.
+            © {anno} {marchio.lockup}. {site.posizionamento}.
           </p>
           <p>
             Sito informativo: recapiti, note legali e informativa privacy sono in

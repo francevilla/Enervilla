@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { CtaLink } from "./cta-link";
 
 type PageHeroProps = {
   etichetta: string;
@@ -22,7 +23,7 @@ export function PageHero({
         {/* Orientamento: sempre una via d'uscita verso la home. */}
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-grafite-500 transition-colors hover:text-lime-400"
+          className="inline-flex min-h-[44px] items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-grafite-300 transition-colors hover:text-lime-400"
         >
           <span aria-hidden="true">←</span> Home
         </Link>
@@ -110,7 +111,7 @@ export function SectionHeader({
       ) : null}
       <h2
         className={[
-          "mt-3 text-3xl leading-tight sm:text-4xl",
+          "mt-4 text-4xl leading-[1.1] sm:text-5xl",
           suChiaro ? "" : "text-avorio-50",
         ]
           .join(" ")
@@ -142,8 +143,8 @@ type CardProps = {
 type CardTono = "scuro" | "chiaro";
 
 const cardNumeri: Record<CardTono, string> = {
-  scuro: "text-grafite-500",
-  chiaro: "text-grafite-500",
+  scuro: "text-grafite-300",
+  chiaro: "text-verde-800",
 };
 const cardTitoli: Record<CardTono, string> = {
   scuro: "text-avorio-50",
@@ -166,7 +167,7 @@ export function Card({
     <div
       className={
         tono === "chiaro"
-          ? "border border-grafite-200 bg-avorio-50 p-6"
+          ? "border border-grafite-500 bg-avorio-50 p-6"
           : "border border-grafite-700 bg-grafite-900 p-6"
       }
     >
@@ -209,7 +210,7 @@ export function PassiVerticali({
         <li
           key={passo.titolo}
           className={`relative border-l pb-8 pl-6 last:pb-0 sm:pl-8 ${
-            suChiaro ? "border-grafite-200" : "border-grafite-700"
+            suChiaro ? "border-grafite-500" : "border-grafite-700"
           }`}
         >
           <span
@@ -235,5 +236,88 @@ export function PassiVerticali({
         </li>
       ))}
     </ol>
+  );
+}
+
+export type VoceChiusura = {
+  href: string;
+  etichetta: string;
+};
+
+type ChiusuraProps = {
+  titolo: string;
+  testo?: string;
+  /** Unica azione primaria della schermata. */
+  primaria: VoceChiusura;
+  /** Percorsi alternativi come link testuali: non competono con la primaria. */
+  secondari: VoceChiusura[];
+  tono?: "scuro" | "chiaro";
+};
+
+/**
+ * Chiusura di pagina: titolo + una sola CTA primaria + link secondari.
+ * Sostituisce le file di bottoni identici che affaticano la decisione:
+ * la primaria resta l'unico elemento solido, il resto è navigazione quieta.
+ */
+export function Chiusura({
+  titolo,
+  testo,
+  primaria,
+  secondari,
+  tono = "scuro",
+}: ChiusuraProps) {
+  const suChiaro = tono === "chiaro";
+
+  return (
+    <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+      <div className="max-w-2xl">
+        <h2
+          className={`text-3xl leading-tight sm:text-4xl ${
+            suChiaro ? "text-grafite-950" : "text-avorio-50"
+          }`}
+        >
+          {titolo}
+        </h2>
+        {testo ? (
+          <p
+            className={`mt-4 text-base leading-relaxed ${
+              suChiaro ? "text-grafite-700" : "text-grafite-200"
+            }`}
+          >
+            {testo}
+          </p>
+        ) : null}
+      </div>
+      <div className="lg:pb-1">
+        <CtaLink href={primaria.href} tono={tono}>
+          {primaria.etichetta}
+        </CtaLink>
+        <nav aria-label="Altre pagine" className="mt-5">
+          <p
+            className={`text-xs font-semibold uppercase tracking-[0.18em] ${
+              suChiaro ? "text-grafite-700" : "text-grafite-300"
+            }`}
+          >
+            Altre pagine
+          </p>
+          <ul className="mt-3 flex flex-wrap gap-x-6 gap-y-2">
+            {secondari.map((voce) => (
+              <li key={voce.href}>
+                <Link
+                  href={voce.href}
+                  className={
+                    suChiaro
+                      ? "text-sm text-grafite-700 underline underline-offset-4 hover:text-verde-800"
+                      : "text-sm text-grafite-200 underline underline-offset-4 hover:text-lime-400"
+                  }
+                >
+                  {voce.etichetta}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </div>
   );
 }
