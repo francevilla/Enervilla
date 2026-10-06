@@ -1,5 +1,5 @@
-# Next.js build artifacts
-.next/
+# Dependencies
+node_modules/
 
-# TypeScript build info
-*.tsbuildinfo
+# Build artifacts (Next.js)
+.next/

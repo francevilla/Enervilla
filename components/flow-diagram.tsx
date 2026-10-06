@@ -39,7 +39,7 @@ export function FlowDiagram() {
         aria-hidden="true"
         className="mt-6 flex items-center gap-2 border-t border-grafite-700 pt-4"
       >
-        <span className="h-1.5 w-8 bg-grafite-800" />
+        <span className="h-1.5 w-8 bg-brace-500" />
         <span className="h-1.5 w-8 bg-verde-600" />
         <span className="h-1.5 w-8 bg-verde-500" />
         <span className="h-1.5 w-8 bg-lime-400" />
