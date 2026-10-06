@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CtaLink } from "@/components/cta-link";
 import {
+  Chiusura,
   PageHero,
   PassiVerticali,
   Section,
@@ -180,23 +181,16 @@ export default function GasPsvPage() {
       </Section>
 
       <Section variante="chiaro" compatta>
-        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <h2 className="max-w-xl text-3xl text-grafite-950">
-            Il contratto va letto insieme al percorso di approvvigionamento.
-          </h2>
-          <div className="flex flex-wrap gap-3">
-            <CtaLink href="/contatti">Richiedi un primo confronto</CtaLink>
-            <CtaLink href="/servizi" variante="contorno">
-              Servizi alle imprese
-            </CtaLink>
-            <CtaLink href="/acquisto-aggregato" variante="contorno">
-              Acquisto aggregato
-            </CtaLink>
-            <CtaLink href="/energia-come-servizio" variante="contorno">
-              Energia come servizio
-            </CtaLink>
-          </div>
-        </div>
+        <Chiusura
+          tono="chiaro"
+          titolo="Il contratto va letto insieme al percorso di approvvigionamento."
+          primaria={{ href: "/contatti", etichetta: "Richiedi un primo confronto" }}
+          secondari={[
+            { href: "/servizi", etichetta: "Servizi alle imprese" },
+            { href: "/acquisto-aggregato", etichetta: "Acquisto aggregato" },
+            { href: "/energia-come-servizio", etichetta: "Energia come servizio" },
+          ]}
+        />
       </Section>
     </>
   );

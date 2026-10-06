@@ -65,11 +65,11 @@ export const metadata: Metadata = {
 };
 
 /**
- * Colori del tema del browser: il sito è a tema scuro fisso ("DarkVilla"),
- * quindi un unico valore coerente con la superficie principale di globals.css.
+ * Colore del tema del browser: il sito è a tema scuro fisso, quindi un unico
+ * valore uguale al fondo pagina (grafite-950, #060e19 calcolato dal token).
  */
 export const viewport: Viewport = {
-  themeColor: "#2a2f38",
+  themeColor: "#060e19",
 };
 
 export default function RootLayout({

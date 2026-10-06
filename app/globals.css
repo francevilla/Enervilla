@@ -1,51 +1,44 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------------
-   Sistema visivo del sito — variante "DarkVilla"
-   Calibrata sull'immagine reale docs/DarkVilla.jpg (recuperata dalla storia
-   git; copia servita in public/darkvilla-hero.jpg). Analisi cromatica
-   dell'immagine: ~85% dei pixel è blu-notte profondo (#060e19 → #121b27,
-   hue ≈ 255°, bassa saturazione); l'unica sorgente di luce è un bagliore
-   CALDO ambrato a dx-centro (centroide x≈0.68, colore medio #d5bbab,
-   hue ≈ 54°). Non c'è alcun verde/lime nella fotografia.
-   Conseguenze progettuali recepite:
-   - fondi e superfici derivati dai hex reali dell'immagine;
-   - l'accento d'interfaccia (CTA, etichette) resta il lime, ma è ora una
-     scelta dichiarata: funge da "finestra accesa" in un campo freddo dove
-     l'occhio non trova punti caldi; il calore letterale della foto
-     (--color-brace*) è usato per gradiente hero e dettagli;
-   - superfici come volumi che emergono dal buio, bordo sottile al posto
-     delle ombre; fasce chiare superstiti senza accenti lime.
-   Tipografia invariata: serif editoriale per i titoli, sans di sistema
-   per il testo. Nessun font esterno da scaricare.
+   Sistema visivo del sito — tema "DarkVilla".
+   "DarkVilla" = tema scuro + cognome del titolare (Villa): nessun riferimento
+   a edifici o ville. L'unica fotografia del sito è il ritratto del titolare
+   (public/darkvilla-hero.jpg, 1584×672), mostrato intero nell'hero della home.
+   Regole del tema:
+   - fondi blu-notte profondi (grafite-950/900), superfici appena più chiare;
+   - il lime è l'unico accento brillante (CTA primarie, etichette) e resta
+     l'unico punto luminoso nel campo scuro: max 2-3 occorrenze per schermata;
+   - superfici piatte, bordo sottile al posto delle ombre; le fasce avorio
+     sono eccezioni con CTA dedicate (verde-800 solido, mai lime);
+   - contrasto misurato (WCAG AA): il testo piccolo su scuro parte da
+     grafite-300 (6,48:1); grafite-500 è solo per bordi su chiaro (4,25:1).
+   Tipografia: serif editoriale per i titoli, sans di sistema per il testo.
+   Nessun font esterno da scaricare.
 --------------------------------------------------------------------------- */
 
 @theme {
-  /* Scala "grafite": ruoli SEMANTICI, calibrati sui blu-notte reali
-     dell'immagine (hue 255°, coerente con #060e19/#0c141e/#121b27). */
-  --color-grafite-950: oklch(0.162 0.027 255); /* sfondo: #060e19 esatto */
-  --color-grafite-900: oklch(0.22 0.026 256);  /* superficie: ~#121b27 */
-  --color-grafite-800: oklch(0.275 0.02 257);  /* bordo forte / hover: ~#1b212a */
-  --color-grafite-700: oklch(0.34 0.02 257);   /* bordo */
-  --color-grafite-500: oklch(0.55 0.015 255);  /* testo attenuato */
+  /* Scala "grafite": blu-notte a bassa saturazione (hue 255°).
+     Hex calcolati dai token oklch: #060e19, #131b27, #212832, #313842,
+     #6c727a, #9a9fa6, #c1c4c9, #dfe1e5. */
+  --color-grafite-950: oklch(0.162 0.027 255); /* sfondo pagina */
+  --color-grafite-900: oklch(0.22 0.026 256);  /* superficie */
+  --color-grafite-800: oklch(0.275 0.02 257);  /* divisori */
+  --color-grafite-700: oklch(0.34 0.02 257);   /* bordi su scuro */
+  --color-grafite-500: oklch(0.55 0.015 255);  /* SOLO bordi su chiaro (4,25:1); mai testo piccolo su scuro (3,57:1) */
   --color-grafite-300: oklch(0.7 0.012 255);   /* testo secondario */
   --color-grafite-200: oklch(0.82 0.008 255);  /* testo primario smorzato */
   --color-grafite-100: oklch(0.91 0.006 255);  /* testo ad alto contrasto */
   --color-grafite-50: oklch(0.965 0.004 255);  /* bianco sporco */
 
-  /* Avorio: testo e riempimenti chiari sul fondo scuro */
+  /* Avorio (#f2f0ea): testo chiaro su scuro e fondo delle fasce chiare. */
   --color-avorio-50: oklch(0.955 0.008 95);
   --color-avorio-100: oklch(0.92 0.01 95);
   --color-avorio-200: oklch(0.86 0.012 95);
 
-  /* Brace: calore estratto dalla luce della foto (bagliore #d5bbab,
-     toni medi #896858/#6e6462). Uso decorativo: gradiente hero e
-     dettagli — mai come colore di testo funzionale. */
-  --color-brace-500: oklch(0.546 0.049 47);  /* #896858 */
-  --color-brace-300: oklch(0.81 0.037 54);   /* #d5bbab */
-
-  /* Verde: famiglia luminosa per superfici d'accento SUL FONDO SCURO.
-     verde-900/800/700 restano profondi per le fasce chiare superstiti. */
+  /* Verde: nodi del flusso e struttura su scuro (600/500/300); toni profondi
+     (800/700) per testi e CTA solide sulle fasce chiare. Hex: #154433 (800),
+     #2a624b (700), #3f9b65 (600), #5dc879 (500), #96e498 (300). */
   --color-verde-900: oklch(0.28 0.05 165); /* testo scuro sopra lime */
   --color-verde-800: oklch(0.35 0.06 165);
   --color-verde-700: oklch(0.45 0.07 165);
@@ -55,9 +48,8 @@
   --color-verde-200: oklch(0.9 0.09 140);  /* tinte discrete su fondi scuri */
   --color-verde-100: oklch(0.94 0.05 135);
 
-  /* Lime: accento brillante delle CTA (solo su fondo scuro).
-     Scelta dichiarata contro la foto: unico punto caldo-verde in un
-     campo freddo, funzione di "finestra accesa". */
+  /* Lime (#b8e948): unico accento brillante — CTA primaria ed etichette
+     SOLO su fondo scuro (13,61:1 su grafite-950). Mai su avorio (1,25:1). */
   --color-lime-400: oklch(0.87 0.19 125);
 
   --font-sans: ui-sans-serif, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
@@ -73,10 +65,9 @@ html {
 
 body {
   background-color: var(--color-grafite-950);
-  /* Atmosfera DarkVilla calibrata sull'immagine: campo blu-notte freddo
-     con una sola sorgente calda a destra (come il bagliore della foto,
-     centroide x≈0.68), e leggera risalita di luce dal basso a sinistra
-     (terzo inferiore dell'immagine più chiaro del superiore). */
+  /* Profondità del campo scuro: leggera risalita di luce dall'alto e un
+     alito caldo in alto a destra, in equilibrio con i toni del ritratto.
+     Effetto volutamente quasi impercettibile. */
   background-image: radial-gradient(
       ellipse 45% 60% at 72% 30%,
       oklch(0.32 0.045 54 / 0.16),
@@ -108,9 +99,8 @@ summary:focus-visible {
 }
 
 /* Titoli: serif editoriale, peso contenuto e righe bilanciate.
-   Il colore avorio vale SUL FONDO SCURO (default del tema "DarkVilla");
-   dentro le fasce chiare sopravvissute (.fascia-chiara) i titoli tornano
-   ai colori grafite del tema originale. */
+   Avorio sul fondo scuro (default); dentro le fasce chiare (.fascia-chiara)
+   i titoli tornano grafite-950. */
 h1,
 h2,
 h3,
@@ -136,6 +126,14 @@ p {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+}
+
+/* background-attachment: fixed è scattoso su iOS: su mobile il fondo resta
+   fermo senza parallasse. */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
   }
 }
 

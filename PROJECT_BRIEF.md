@@ -59,16 +59,29 @@ esiste, il collegamento non esiste.
 
 ## 5. Scelte di design
 
-- **Palette:** grafite (base e testi), avorio (sfondi), verde profondo
-  (struttura e bordi), **lime** come unico accento e con uso parsimonioso.
+- **Tema "DarkVilla":** tema scuro + cognome del titolare (Villa). Palette:
+  grafite blu-notte (fondi e testi), avorio (testi chiari e fasce d'eccezione),
+  verde profondo (struttura, bordi, CTA su chiaro), **lime** come unico accento
+  brillante, solo su fondo scuro e con uso parsimonioso (max 2-3 per schermata).
 - **Tipografia:** serif di sistema per i titoli, sans di sistema per i testi.
   Nessun font scaricato dalla rete: il sito non dipende da servizi esterni.
 - **Impianto visivo:** bordi sottili e superfici piatte, nessuna ombra, nessuna
-  animazione decorativa.
+  animazione decorativa. Angoli netti ovunque, favicon compresa.
+- **Fotografia:** l'unica foto del sito è il ritratto del titolare
+  (`public/darkvilla-hero.jpg`), mostrato intero nell'hero della home, senza
+  ritagli sul volto e senza testo sovrapposto.
 - **Grafica astratta** del flusso di approvvigionamento (consumi → aggregazione →
-  produttori → consegna) realizzata **solo con CSS**, senza immagini.
+  produttori → consegna) realizzata **solo con CSS**, usata solo nella pagina
+  dedicata; nodi verdi con meta in lime.
+- **Gerarchia delle CTA:** una sola primaria per schermata (lime su scuro,
+  verde-800 pieno su fascia chiara); le chiusure usano il componente `Chiusura`
+  (una primaria + link testuali), mai file di bottoni.
+- **Marchio:** segnaposto "Energia per imprese" in `lib/site.ts` (`marchio`),
+  in attesa del nome pubblico definitivo.
 - **Accessibilità:** struttura semantica (heading, liste, `dl`), link "salta al
-  contenuto", stati di focus visibili, contrasto verificato sui fondi scuri.
+  contenuto", stati di focus visibili, menu mobile con blocco scorrimento e
+  contenimento del focus, target tattili ≥ 44px, contrasti misurati e
+  documentati in `docs/design-plan.md` §6.
 - **Anteprima social e SEO essenziale:** immagine di condivisione generata col
   codice (`app/opengraph-image.tsx`), sitemap e robots basati sul dominio
   impostato con `NEXT_PUBLIC_SITE_URL`, URL canonici, dati strutturati

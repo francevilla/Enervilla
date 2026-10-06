@@ -70,10 +70,10 @@ Da confermare con il titolare prima di pubblicare qualunque dettaglio su:
 
 | Elemento                                   | Stato    | Note |
 | ------------------------------------------ | -------- | ---- |
-| Foto professionale                         | mancante | Da inserire in `/chi-sono` con diritti d'uso chiari |
+| Foto professionale (ritratto del titolare) | **caricata e in uso** | `public/darkvilla-hero.jpg` (1584×672, ~40 KB), mostrata intera nell'hero della home con didascalia neutra (nessun nome pubblicato). Resta da confermare esplicitamente il consenso alla pubblicazione online |
 | Anteprima social (1200×630)                | completata | Generata col codice in `app/opengraph-image.tsx` (nessuna foto, palette grafite/avorio/verde/lime, flusso consumi → consegna) |
-| Riferimento visivo `docs/DarkVilla.jpg`    | **caricata e calibrata** | L'immagine è stata recuperata dalla cronologia git (upload del 05/10, poi cancellata in un commit successivo) e ripristinata in `docs/`, con copia servibile in `public/darkvilla-hero.jpg`. Palette ricalibrata sull'analisi cromatica reale: fondi blu-notte estratti dai pixel dominanti (#060e19/#0c141e/#121b27), famiglia "brace" nata dal bagliore caldo della finestra (#d5bbab), hero della home che usa la foto come quinta. Da confermare solo l'idoneità dell'immagine a uso pubblico (diritti/licenza). |
-| Logo o marchio                             | mancante | Il sito usa solo un segno grafico astratto |
+| Riferimento visivo `docs/DarkVilla.jpg`    | **archivio** | Copia originale del ritratto (qualità piena); la copia servita è `public/darkvilla-hero.jpg` (compressa, ~40 KB). Nota: "DarkVilla" è il nome del tema scuro + il cognome del titolare (Villa), nessun riferimento a edifici. Le vecchie note su "villa notturna / finestra accesa / bagliore caldo" descrivevano un'immagine inesistente e sono state rimosse ovunque. |
+| Logo o marchio                             | segnaposto | Header e anteprime social usano "Energia per imprese" da `lib/site.ts` (`marchio`), in attesa del nome pubblico definitivo scelto dal titolare |
 | Casi seguiti / referenze                    | assenti  | Solo con autorizzazione scritta dei clienti |
 | Loghi di produttori o partner              | assenti  | Da inserire solo con autorizzazione |
 

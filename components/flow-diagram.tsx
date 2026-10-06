@@ -1,14 +1,24 @@
 import { tappaDettagli } from "@/lib/site";
 
+/** Colore dei nodi: le tappe intermedie in verde, la meta (consegna) in lime. */
+const coloriNodi = [
+  "bg-verde-600",
+  "bg-verde-600",
+  "bg-verde-600",
+  "bg-lime-400",
+];
+
 /**
  * Visualizzazione astratta del flusso di approvvigionamento:
  * consumi → aggregazione → produttori → consegna.
  * Realizzata solo con CSS: nessuna immagine, nessuna animazione decorativa.
+ * Usata solo nella pagina /acquisto-aggregato (in home il contenuto è già
+ * raccontato dalle card dei quattro passaggi).
  */
 export function FlowDiagram() {
   return (
     <figure className="border border-grafite-700 bg-grafite-900 p-6 sm:p-8">
-      <figcaption className="text-xs font-semibold uppercase tracking-[0.18em] text-lime-400">
+      <figcaption className="text-xs font-semibold uppercase tracking-[0.18em] text-grafite-300">
         Flusso di approvvigionamento elettrico
       </figcaption>
 
@@ -20,9 +30,9 @@ export function FlowDiagram() {
           >
             <span
               aria-hidden="true"
-              className="absolute left-[-4.5px] top-[6px] block h-2 w-2 rounded-full bg-lime-400"
+              className={`absolute left-[-4px] top-[6px] block h-2 w-2 rounded-full ${coloriNodi[indice]}`}
             />
-            <span className="block text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-grafite-500">
+            <span className="block text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-grafite-300">
               {String(indice + 1).padStart(2, "0")}
             </span>
             <span className="mt-1 block font-display text-lg text-avorio-50">
@@ -34,16 +44,6 @@ export function FlowDiagram() {
           </li>
         ))}
       </ol>
-
-      <div
-        aria-hidden="true"
-        className="mt-6 flex items-center gap-2 border-t border-grafite-700 pt-4"
-      >
-        <span className="h-1.5 w-8 bg-brace-500" />
-        <span className="h-1.5 w-8 bg-verde-600" />
-        <span className="h-1.5 w-8 bg-verde-500" />
-        <span className="h-1.5 w-8 bg-lime-400" />
-      </div>
     </figure>
   );
 }

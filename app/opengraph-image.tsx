@@ -1,21 +1,21 @@
 import { ImageResponse } from "next/og";
-import { site, tappaDettagli } from "@/lib/site";
+import { marchio, site, tappaDettagli } from "@/lib/site";
 
 /**
  * Immagine di anteprima per le condivisioni sui social.
  * È disegnata con il codice (nessuna fotografia, nessun dato non verificato):
- * sfondo grafite, titolo in avorio e accento lime.
+ * sfondo grafite, titolo in avorio e accento lime. Gli hex sono quelli
+ * calcolati dai token oklch di app/globals.css.
  */
 export const alt = `${site.nome} — ${site.posizionamento}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const grafite = "#0a121d"; // blu-notte reale di DarkVilla.jpg (~#060e19/#0c141e)
-const avorio = "#f4f2ed";
-const grafiteChiaro = "#b9bfc4";
-const brace = "#d5bbab"; // bagliore caldo della finestra accesa (estratto dalla foto)
-const verde = "#2f7a5f";
-const lime = "#a3d977";
+const grafite = "#060e19"; // grafite-950
+const avorio = "#f2f0ea"; // avorio-50
+const grafiteChiaro = "#9a9fa6"; // grafite-300
+const verde = "#3f9b65"; // verde-600
+const lime = "#b8e948"; // lime-400
 
 export default function OpengraphImage() {
   return new ImageResponse(
@@ -28,10 +28,10 @@ export default function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           backgroundColor: grafite,
-          /* Composizione coerente con DarkVilla.jpg: campo freddo buio
-             con una sola sorgente calda in alto a destra. */
+          /* Campo scuro con leggera risalita di luce in alto, come il fondo
+             pagina (vedi app/globals.css). */
           backgroundImage:
-            "radial-gradient(ellipse 55% 70% at 82% 12%, rgba(213,187,171,0.14), transparent)",
+            "radial-gradient(ellipse 80% 50% at 50% -10%, rgba(154,159,166,0.12), transparent)",
           padding: "72px 80px",
           color: avorio,
         }}
@@ -46,7 +46,7 @@ export default function OpengraphImage() {
               color: grafiteChiaro,
             }}
           >
-            Energia per imprese
+            {`${marchio.principale} ${marchio.secondaria}`}
           </div>
         </div>
 
@@ -75,7 +75,7 @@ export default function OpengraphImage() {
           <div style={{ fontSize: 28, color: avorio }}>
             {tappaDettagli[1].titolo}
           </div>
-          <div style={{ width: 28, height: 2, backgroundColor: brace }} />
+          <div style={{ width: 28, height: 2, backgroundColor: verde }} />
           <div style={{ fontSize: 28, color: avorio }}>
             {tappaDettagli[2].titolo}
           </div>

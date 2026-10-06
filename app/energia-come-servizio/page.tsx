@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { CtaLink } from "@/components/cta-link";
 import {
   Card,
+  Chiusura,
   PageHero,
   PassiVerticali,
   Section,
@@ -249,7 +250,7 @@ export default function EnergiaComeServizioPage() {
               accanto valgono in entrambi i casi.
             </p>
             <div>
-              <CtaLink href="/servizi" variante="contorno" suFondoScuro>
+              <CtaLink href="/servizi" variante="contorno">
                 Come lavoro su contratti, diagnosi ed efficienza
               </CtaLink>
             </div>
@@ -257,21 +258,15 @@ export default function EnergiaComeServizioPage() {
         </div>
       </Section>
 
-      <Section variante="superficie" compatta>
-        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <h2 className="max-w-xl text-3xl text-avorio-50">
-            Hai un&apos;offerta EaaS davanti? Partiamo dalle clausole.
-          </h2>
-          <div className="flex flex-wrap gap-3">
-            <CtaLink href="/contatti">Richiedi un primo confronto</CtaLink>
-            <CtaLink href="/servizi" variante="contorno">
-              Servizi alle imprese
-            </CtaLink>
-            <CtaLink href="/gas-psv" variante="contorno">
-              Gas al PSV
-            </CtaLink>
-          </div>
-        </div>
+      <Section compatta>
+        <Chiusura
+          titolo="Hai un'offerta EaaS davanti? Partiamo dalle clausole."
+          primaria={{ href: "/contatti", etichetta: "Richiedi un primo confronto" }}
+          secondari={[
+            { href: "/servizi", etichetta: "Servizi alle imprese" },
+            { href: "/gas-psv", etichetta: "Gas al PSV" },
+          ]}
+        />
       </Section>
     </>
   );

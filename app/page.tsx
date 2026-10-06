@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { CtaLink } from "@/components/cta-link";
-import { FlowDiagram } from "@/components/flow-diagram";
-import { Card, Section, SectionHeader } from "@/components/section";
+import { Card, Chiusura, Section, SectionHeader } from "@/components/section";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -77,54 +76,44 @@ const metodo = [
 export default function HomePage() {
   return (
     <>
-      {/* 1. Hero — quinta visiva DarkVilla: la villa al buio con una sola
-          finestra accesa (l'immagine di riferimento, servita da public/).
-          Il testo resta a sinistra come nella composizione della foto;
-          il FlowDiagram prosegue sotto la banda d'immagine. */}
+      {/* 1. Hero: posizionamento + ritratto del titolare.
+          La foto panoramica (1584×672) è mostrata intera dentro una cornice,
+          senza ritagli sul volto e senza testo sovrapposto. */}
       <section className="border-b border-grafite-800">
-        <div className="relative isolate overflow-hidden border-b border-grafite-800">
-          <Image
-            src="/darkvilla-hero.jpg"
-            alt="Architettura residenziale di notte: volumi chiari emergono dal buio blu, illuminati da una sola finestra accesa"
-            fill
-            priority
-            sizes="100vw"
-            className="hidden h-full w-full object-cover opacity-60 sm:block"
-          />
-          {/* Velature per garantire il contrasto del testo (WCAG AA):
-              scurisce ulteriormente il fondo dietro la colonna di testo. */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 -z-10 bg-gradient-to-r from-grafite-950 via-grafite-950/85 to-grafite-950/30 sm:to-transparent"
-          />
-          <div className="mx-auto grid max-w-6xl gap-14 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-lime-400">
-                {site.etichetta}
-              </p>
-              <h1 className="mt-6 text-4xl leading-[1.08] text-avorio-50 sm:text-5xl lg:text-6xl">
-                Porto le imprese più vicine al mercato dell&apos;energia.
-              </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-grafite-200">
-                Aggrego i fabbisogni delle imprese, le metto in relazione con i
-                produttori e seguo i passaggi necessari
-                all&apos;approvvigionamento e alla consegna dell&apos;energia. Per
-                il gas, opero sul PSV per conto dei clienti. Mi occupo anche di
-                contratti, diagnosi ed efficienza energetica.
-              </p>
-              <div className="mt-9 flex flex-wrap gap-3">
-                <CtaLink href="/contatti">Richiedi un primo confronto</CtaLink>
-                <CtaLink href="/acquisto-aggregato" variante="contorno">
-                  Scopri l&apos;acquisto aggregato
-                </CtaLink>
-                <CtaLink href="/gas-psv" variante="contorno">
-                  Approfondisci il PSV
-                </CtaLink>
-              </div>
-            </div>
-
-            <FlowDiagram />
+        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-lime-400">
+            {site.etichetta}
+          </p>
+          <h1 className="mt-6 max-w-4xl text-4xl leading-[1.08] text-avorio-50 sm:text-5xl lg:text-6xl">
+            Porto le imprese più vicine al mercato dell&apos;energia.
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-grafite-200">
+            Aggrego i fabbisogni delle imprese e li metto in relazione con i
+            produttori, seguendo l&apos;approvvigionamento fino alla consegna.
+            Per il gas opero sul PSV; seguo anche contratti, diagnosi ed
+            efficienza energetica.
+          </p>
+          <div className="mt-9 flex flex-wrap gap-3">
+            <CtaLink href="/contatti">Richiedi un primo confronto</CtaLink>
+            <CtaLink href="/acquisto-aggregato" variante="contorno">
+              Scopri l&apos;acquisto aggregato
+            </CtaLink>
           </div>
+          <figure className="mt-14 border border-grafite-700 bg-grafite-900 p-3 sm:p-4">
+            <Image
+              src="/darkvilla-hero.jpg"
+              alt="Ritratto del consulente energetico"
+              width={1584}
+              height={672}
+              priority
+              sizes="100vw"
+              className="h-auto w-full"
+            />
+            <figcaption className="flex flex-wrap items-baseline justify-between gap-2 px-1 pb-1 pt-3 text-xs uppercase tracking-[0.18em] text-grafite-300">
+              <span>Il consulente</span>
+              <span>{site.posizionamento}</span>
+            </figcaption>
+          </figure>
         </div>
       </section>
 
@@ -155,7 +144,7 @@ export default function HomePage() {
         <div className="mt-12 grid gap-px overflow-hidden border border-grafite-700 md:grid-cols-2">
           {variabiliCosto.map((voce, indice) => (
             <div key={voce.titolo} className="bg-grafite-900 p-6 sm:p-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-grafite-500">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-grafite-300">
                 {String(indice + 1).padStart(2, "0")}
               </p>
               <h3 className="mt-3 text-xl text-avorio-50">{voce.titolo}</h3>
@@ -210,7 +199,7 @@ export default function HomePage() {
         </ol>
 
         <div className="mt-10">
-          <CtaLink href="/acquisto-aggregato">
+          <CtaLink href="/acquisto-aggregato" tono="chiaro">
             Come funziona l&apos;acquisto aggregato
           </CtaLink>
         </div>
@@ -281,7 +270,7 @@ export default function HomePage() {
       </Section>
 
       {/* 6. Servizi alle imprese */}
-      <Section>
+      <Section variante="superficie">
         <SectionHeader
           etichetta="Aree di lavoro"
           titolo="Contrattualistica, diagnosi, efficienza."
@@ -320,39 +309,45 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* 6b. Energia come servizio (EaaS) */}
-      <Section>
+      {/* 6b. Energia come servizio (EaaS): inserto chiaro per spezzare la
+          sequenza scura e segnalare un tema distinto, con pagina dedicata. */}
+      <Section variante="chiaro" compatta>
         <SectionHeader
+          tono="chiaro"
           etichetta="Energy as a Service"
           titolo="Quando l'offerta non è più solo un volume: i servizi dentro il contratto."
           introduzione="Nell'EaaS l'impresa non compra soltanto energia: compra consulenza, impianti, monitoraggio, in cambio di un canone o di una quota dei risparmi. Il modello è solido quando il contratto lo è: prima di firmare servono baseline documentata, perimetro esplicito e rischi assegnati."
         />
-        <ul className="mt-8 space-y-4 text-sm leading-relaxed text-grafite-200">
-          <li className="border-l-2 border-verde-600 pl-4">
+        <ul className="mt-8 space-y-4 text-sm leading-relaxed text-grafite-700">
+          <li className="border-l-2 border-verde-700 pl-4">
             Due forme contrattuali tipiche — abbonamento e contratto a
             prestazione — spostano il rischio di prezzo e di quantità in modo
             diverso tra le parti.
           </li>
-          <li className="border-l-2 border-verde-600 pl-4">
+          <li className="border-l-2 border-verde-700 pl-4">
             Il valore dipende da quattro verifiche preliminari: baseline dei
             consumi, perimetro dei servizi, allocazione dei rischi, condizioni
             di uscita.
           </li>
-          <li className="border-l-2 border-verde-600 pl-4">
+          <li className="border-l-2 border-verde-700 pl-4">
             Il mio ruolo su questi percorsi è la parte di analisi e
             contrattualistica, non la vendita di impianti: gli interventi
             tecnici restano a chi li esegue.
           </li>
         </ul>
         <div className="mt-8">
-          <CtaLink href="/energia-come-servizio" variante="contorno">
+          <CtaLink
+            href="/energia-come-servizio"
+            variante="contorno"
+            tono="chiaro"
+          >
             Che cosa è l&apos;energia come servizio
           </CtaLink>
         </div>
       </Section>
 
       {/* 7. Metodo di lavoro */}
-      <Section>
+      <Section variante="superficie">
         <SectionHeader
           etichetta="Metodo"
           titolo="Dati, analisi, opzioni, decisione."
@@ -370,34 +365,20 @@ export default function HomePage() {
         </ol>
       </Section>
 
-      {/* 8. CTA finali verso pagine reali */}
+      {/* 8. Chiusura verso pagine reali */}
       <Section variante="chiaro" compatta>
-        <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-          <div className="max-w-2xl">
-            <h2 className="text-3xl text-grafite-950 sm:text-4xl">Da dove si parte, in pratica.</h2>
-            <p className="mt-4 text-base leading-relaxed text-grafite-700">
-              Se l&apos;impresa acquista energia elettrica per più siti, il
-              punto di partenza è l&apos;acquisto aggregato. Se il consumo è
-              prevalentemente gas, il punto di partenza è il PSV. Per ogni area
-              di lavoro c&apos;è una pagina con quello che comprende.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3 md:flex-col md:items-start">
-            <CtaLink href="/contatti">Richiedi un primo confronto</CtaLink>
-            <CtaLink href="/acquisto-aggregato" variante="contorno">
-              Acquisto aggregato
-            </CtaLink>
-            <CtaLink href="/gas-psv" variante="contorno">
-              Gas al PSV
-            </CtaLink>
-            <CtaLink href="/energia-come-servizio" variante="contorno">
-              Energia come servizio
-            </CtaLink>
-            <CtaLink href="/servizi" variante="contorno">
-              Servizi alle imprese
-            </CtaLink>
-          </div>
-        </div>
+        <Chiusura
+          tono="chiaro"
+          titolo="Da dove si parte, in pratica."
+          testo="Se l'impresa acquista energia elettrica per più siti, il punto di partenza è l'acquisto aggregato. Se il consumo è prevalentemente gas, il punto di partenza è il PSV. Per ogni area di lavoro c'è una pagina con quello che comprende."
+          primaria={{ href: "/contatti", etichetta: "Richiedi un primo confronto" }}
+          secondari={[
+            { href: "/acquisto-aggregato", etichetta: "Acquisto aggregato" },
+            { href: "/gas-psv", etichetta: "Gas al PSV" },
+            { href: "/energia-come-servizio", etichetta: "Energia come servizio" },
+            { href: "/servizi", etichetta: "Servizi alle imprese" },
+          ]}
+        />
       </Section>
     </>
   );

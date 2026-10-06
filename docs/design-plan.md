@@ -82,3 +82,53 @@ Dalla relazione consulenze (P0→P3) incrociata con i wireframe:
 - Wordmark definitivo: il marchio "enervilla" non è confermato; il segnaposto
   attuale (quadrato verde + "Energia per imprese") resta finché il titolare
   sceglie il nome pubblico.
+
+---
+
+## 6. Revisione design — ottobre 2026 (audit web-design-engineer)
+
+**Chiarimento fondativo.** "DarkVilla" è il tema scuro + il cognome del titolare
+(Villa): nessun riferimento a edifici. Il file `DarkVilla.jpg` è il ritratto
+del titolare, non una villa notturna. Tutte le note precedenti su "villa al
+buio / finestra accesa / bagliore caldo / analisi cromatica dei pixel"
+descrivevano un'immagine inesistente e sono state rimosse dal codice e dai
+documenti. L'alt-text dell'hero che descriveva architettura residenziale era
+falso ed è stato corretto.
+
+### Interventi
+
+| # | Criticità | Fix |
+|---|---|---|
+| 1 | Ritratto usato come sfondo full-bleed con testo sopra, nascosto su mobile, alt falso | Hero ristrutturato: testo + ritratto panoramico mostrato intero in cornice con didascalia neutra ("Il consulente", nessun nome pubblicato); intro ridotta a ~30 parole, 2 CTA |
+| 2 | CTA secondarie invisibili sulle fasce chiare (testo avorio su avorio, hover lime su avorio 1,25:1); prop `suFondoScuro` morta | `CtaLink` con `tono="scuro"\|"chiaro"`: solida chiara = verde-800 pieno, contorno chiara = testo grafite-900; prop morta rimossa |
+| 3 | Chiusure con 4-5 bottoni identici in competizione | Nuovo componente `Chiusura` (una primaria + link testuali "Altre pagine"), usato in tutte le 7 pagine |
+| 4 | Tre nomi diversi (header, title, package) | Segnaposto unico `marchio` in `lib/site.ts`, usato da header e anteprime social |
+| 5 | Tunnel scuro in home (§5→§7 identiche) | Ritmo: servizi e metodo su `superficie`, EaaS come inserto chiaro compatto; ritocchi analoghi in `/chi-sono`, `/acquisto-aggregato`, `/contatti`, `/energia-come-servizio` |
+| 6 | H2/corpo a 2× (sotto soglia squint-test 2,5×) | H2 a 36/48px (2,25× su mobile per titoli lunghi, 2,67× da `sm` in su) |
+| 7 | FlowDiagram: 4 nodi lime identici + barre decorative senza significato | Nodi verdi con meta in lime, didascalia quieta, barre rimosse; diagramma solo in `/acquisto-aggregato` |
+| 8 | Menu mobile senza scroll-lock né focus-trap, target < 44px | Blocco scorrimento, focus iniziale, contenimento Tab, Escape con ripristino focus, `min-h-[44px]` su tutti gli interattivi |
+| 9 | Nav desktop a rischio wrap a 768-900px | Breakpoint `md` → `lg` per nav completa/hamburger |
+| 10 | Favicon cliché (barre crescenti) + angoli arrotondati vs sito sharp | Nuovo segno 2×2 "una finestra accesa", angoli netti, hex dai token |
+| 11 | `themeColor` e hex OG non allineati ai token | `#060e19` ovunque; OG con hex calcolati + `marchio` |
+| 12 | `/chi-sono` citava un percorso repo interno (`docs/...`) | Frase rimossa (il visitatore non ha il repo) |
+| 13 | `/contatti` con `<a>` interni (full reload) | Sostituiti con `Link` |
+| 14 | Bordi `grafite-200` invisibili su avorio (Card/PassiVerticali chiari) | Bordi chiari a `grafite-500` (4,25:1, ok per non-testo) |
+| 15 | `background-attachment: fixed` scattoso su iOS | `scroll` sotto 768px |
+| 16 | Asset duplicati (2× ~392 KB) + file junk | Un solo `darkvilla-hero.jpg` compresso a ~40 KB; duplicati e `publics` rimossi |
+
+### Contrasti misurati (oklch → sRGB, WCAG)
+
+| Coppia | Rapporto | Esito |
+|---|---|---|
+| grafite-300 su grafite-900 (testi piccoli su scuro) | 6,48:1 | ✅ AA |
+| grafite-500 su grafite-900 (vecchi testi piccoli) | 3,57:1 | ❌ → migrati a grafite-300 |
+| lime-400 su grafite-950 (eyebrow, testo bottone: grafite-950 su lime) | 13,61:1 | ✅ |
+| verde-300 su grafite-900 (link) | 11,44:1 | ✅ |
+| avorio-50 su verde-800 (nuova solida chiara) | 9,63:1 | ✅ |
+| grafite-900 su avorio-50 (nuova contorno chiara) | 15,19:1 | ✅ |
+| verde-800 su avorio-50 (eyebrow chiare, numeri) | 9,63:1 | ✅ |
+| lime-400 su avorio-50 (vecchia hover/CTA su chiaro) | 1,25:1 | ❌ → vietato, vedi fix #2 |
+| grafite-500 su avorio-50 (bordi chiari, soglia non-testo 3:1) | 4,25:1 | ✅ |
+
+Regola conseguente (già nei commenti di `globals.css`): su scuro il testo
+piccolo parte da grafite-300; grafite-500 solo per bordi su chiaro.

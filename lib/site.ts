@@ -10,6 +10,17 @@ export const site = {
   posizionamento: "Bologna · Operatività nazionale",
 } as const;
 
+/**
+ * Segnaposto del marchio nell'header e nelle anteprime social, in attesa del
+ * nome pubblico definitivo (vedi docs/informazioni-da-confermare.md §5).
+ * "Energia per imprese" è la forma breve coerente con site.nome: un solo
+ * punto da aggiornare quando il titolare sceglie il marchio.
+ */
+export const marchio = {
+  principale: "Energia",
+  secondaria: "per imprese",
+} as const;
+
 export type VoceMenu = {
   href: string;
   etichetta: string;
