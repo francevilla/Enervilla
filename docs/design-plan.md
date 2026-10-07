@@ -197,3 +197,27 @@ e assenza di motion). I dettagli e il copy completo sono in
 Il resto delle regole di progetto resta valido: nessun recapito, caso cliente,
 risparmio aziendale o dato legale viene inventato; le CTA puntano a pagine reali;
 le preferenze di accessibilità prevalgono sugli effetti visivi.
+
+---
+
+## 10. Applicazione visiva V5 — ottobre 2026
+
+La V5 pura ("Deep Energy" come masterbrand) resta sconsigliata dallo studio
+(15/30 contro 27/30, §9.4: omonimi, SEO, EUIPO, dettatura). Applicato invece
+lo **stile visivo V5 al lockup ibrido ufficiale**: serif editoriale di sistema,
+"Deep Energy" in champagne, payoff in maiuscoletto grigio — come nella riga
+"Lockup ufficiale" di `docs/marchio-varianti.html`. Coerente con la direzione
+C-Level / Quiet Luxury (§9): niente maiuscoletto sans, niente quadrato (era lo
+stile V1).
+
+| Elemento | Prima (stile V1) | Dopo (stile V5) |
+|---|---|---|
+| Header | Quadrato champagne + "ENERVILLA" sans maiuscolo (descrittore nascosto su mobile) | Serif "EnerVilla · Deep Energy", descrittore champagne con hover schiarente, sempre intero anche su mobile |
+| Footer | Serif con descrittore grigio | Serif con descrittore champagne; payoff maiuscoletto invariato |
+| Anteprima social (OG) | Quadrato + lockup maiuscolo grigio | Lockup serif champagne + payoff maiuscoletto |
+| Didascalia ritratto (hero) | Testo fisso monocromo | Da `marchio` in `lib/site.ts`, descrittore champagne |
+| Favicon | 2×2 con angolo champagne | **Invariata** (geometria): la "DE" in tavola è un'ipotesi puramente comparativa; solo `aria-label` aggiornato al lockup |
+| Titoli SEO / JSON-LD | Lockup testuale | Invariati (testo, nessuno stile) |
+
+Nota: la tavola `docs/marchio-varianti.html` mostra ancora l'accento lime
+(pre-C-Level); è conservata come documento storico dello studio.

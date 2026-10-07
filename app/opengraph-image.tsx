@@ -36,17 +36,32 @@ export default function OpengraphImage() {
           color: avorio,
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: "18px" }}>
-          <div style={{ width: 22, height: 22, backgroundColor: champagne }} />
+        {/*
+          Lockup V5: serif editoriale con descrittore in champagne + payoff in
+          maiuscoletto, come nella tavola docs/marchio-varianti.html. Niente
+          quadrato (era lo stile V1).
+        */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
           <div
             style={{
-              fontSize: 26,
-              letterSpacing: 8,
+              display: "flex",
+              fontFamily: "Georgia, 'Times New Roman', serif",
+              fontSize: 40,
+            }}
+          >
+            {marchio.nome}
+            <span style={{ color: grafiteChiaro }}> · </span>
+            <span style={{ color: champagne }}>{marchio.descrittore}</span>
+          </div>
+          <div
+            style={{
+              fontSize: 20,
+              letterSpacing: 6,
               textTransform: "uppercase",
               color: grafiteChiaro,
             }}
           >
-            {marchio.lockup}
+            {marchio.payoff}
           </div>
         </div>
 

@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CtaLink } from "@/components/cta-link";
 import { Card, Chiusura, Section, SectionHeader } from "@/components/section";
-import { site } from "@/lib/site";
+import { marchio, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: {
@@ -159,7 +159,12 @@ export default function HomePage() {
                 sizes="(max-width: 1024px) 100vw, 45vw"
               />
               <figcaption>
-                <span>EnerVilla · Deep Energy</span>
+                <span>
+                  {marchio.nome} ·{" "}
+                  <span className="text-champagne-400">
+                    {marchio.descrittore}
+                  </span>
+                </span>
                 <span>Bologna / Italia</span>
               </figcaption>
             </figure>

@@ -85,18 +85,26 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-grafite-800 bg-grafite-950/90 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-4 sm:px-8">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-5 py-4 sm:gap-6 sm:px-8">
+        {/*
+          Lockup ibrido ufficiale in stile V5 (tavola docs/marchio-varianti.html):
+          serif editoriale, descrittore in champagne. Niente quadrato (era lo
+          stile V1) e niente maiuscoletto: la V5 è puramente tipografica, in
+          linea con la direzione C-Level / Quiet Luxury.
+        */}
         <Link
           href="/"
-          className="group flex min-h-[44px] items-baseline gap-2 text-avorio-50"
+          className="group flex min-h-[44px] items-center whitespace-nowrap font-display text-base text-avorio-50 sm:text-xl"
           aria-label="Torna alla home"
         >
-          <span className="block h-3 w-3 translate-y-[-1px] bg-champagne-400 transition-colors group-hover:bg-champagne-300" />
-          <span className="text-sm font-semibold uppercase tracking-[0.16em]">
-            {marchio.nome}
-          </span>
-          <span className="hidden text-sm uppercase tracking-[0.16em] text-grafite-300 sm:inline">
-            · {marchio.descrittore}
+          <span>
+            {marchio.nome}{" "}
+            <span aria-hidden="true" className="text-grafite-300">
+              ·
+            </span>{" "}
+            <span className="text-champagne-400 transition-colors group-hover:text-champagne-300">
+              {marchio.descrittore}
+            </span>
           </span>
         </Link>
 
@@ -152,7 +160,7 @@ export function SiteHeader() {
           onClick={() => setMenuAperto((aperto) => !aperto)}
           aria-expanded={menuAperto}
           aria-controls="menu-mobile"
-          className="flex min-h-[44px] items-center gap-2 border border-grafite-700 px-3 py-2 text-xs font-medium uppercase tracking-[0.12em] text-avorio-50 lg:hidden"
+          className="flex min-h-[44px] shrink-0 items-center gap-2 border border-grafite-700 px-3 py-2 text-xs font-medium uppercase tracking-[0.12em] text-avorio-50 lg:hidden"
         >
           <span aria-hidden="true" className="flex flex-col gap-[3px]">
             <span className="block h-px w-4 bg-avorio-50" />

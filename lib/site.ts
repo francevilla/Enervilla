@@ -15,6 +15,8 @@ export const site = {
  * "EnerVilla · Deep Energy" — masterbrand coniato + descrittore evocativo
  * (vedi docs/studio-nome-marchio.md §9-§10). Il payoff resta la dicitura
  * descrittiva, per SEO e chiarezza. Un solo punto da aggiornare.
+ * Stile visivo: V5 della tavola (serif editoriale, descrittore in champagne;
+ * vedi docs/design-plan.md §10). Favicon 2×2 invariata per continuità.
  * Restano: verifica anteriorità UIBM/EUIPO e registrazione domini.
  */
 export const marchio = {

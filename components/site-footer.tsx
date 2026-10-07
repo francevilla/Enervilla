@@ -15,9 +15,13 @@ export function SiteFooter() {
     <footer className="mt-24 border-t border-grafite-800 bg-grafite-950 text-grafite-200">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-[1.2fr_1fr]">
         <div>
+          {/* Lockup V5: serif con descrittore in champagne + payoff in maiuscoletto. */}
           <p className="font-display text-2xl text-avorio-50">
             {marchio.nome}{" "}
-            <span className="text-grafite-300">· {marchio.descrittore}</span>
+            <span aria-hidden="true" className="text-grafite-300">
+              ·
+            </span>{" "}
+            <span className="text-champagne-400">{marchio.descrittore}</span>
           </p>
           <p className="mt-2 text-xs uppercase tracking-[0.18em] text-grafite-300">
             {marchio.payoff}
