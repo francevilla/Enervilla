@@ -10,7 +10,7 @@ import { collegamentiFooter } from "@/lib/site";
 export default function NotFound() {
   return (
     <Section>
-      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-lime-400">
+      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-champagne-400">
         Errore 404
       </p>
       <SectionHeader
@@ -29,7 +29,7 @@ export default function NotFound() {
             <li key={voce.href}>
               <Link
                 href={voce.href}
-                className="block border border-grafite-700 bg-grafite-900 px-4 py-3 text-sm text-grafite-200 transition-colors hover:border-lime-400 hover:text-avorio-50"
+                className="block border border-grafite-700 bg-grafite-900 px-4 py-3 text-sm text-grafite-200 transition-colors hover:border-champagne-400 hover:text-avorio-50"
               >
                 {voce.etichetta}
               </Link>

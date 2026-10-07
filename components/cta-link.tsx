@@ -8,21 +8,21 @@ type CtaLinkProps = {
   /**
    * Tono del fondo che ospita la CTA: "scuro" (default) sui fondi grafite,
    * "chiaro" dentro le fasce avorio. Ogni combinazione è verificata per
-   * contrasto WCAG AA (vedi docs/design-plan.md §6): testo grafite-950 su
-   * lime-400 (13,6:1), avorio-50 su verde-800 (9,6:1), grafite-900 su
-   * avorio-50 (15,2:1).
+   * contrasto WCAG AA (vedi docs/brief-direzione-creativa-c-level.md): testo
+   * grafite-950 su champagne-400 (circa 9,6:1), avorio-50 su verde-800
+   * (9,6:1), grafite-900 su avorio-50 (15,2:1).
    */
   tono?: "scuro" | "chiaro";
 };
 
 const stili = {
   solida: {
-    scuro: "bg-lime-400 text-grafite-950 hover:bg-verde-300",
+    scuro: "bg-champagne-400 text-grafite-950 hover:bg-champagne-300",
     chiaro: "bg-verde-800 text-avorio-50 hover:bg-verde-700",
   },
   contorno: {
     scuro:
-      "border border-grafite-700 text-avorio-50 hover:border-lime-400 hover:text-lime-400",
+      "border border-grafite-700 text-avorio-50 hover:border-champagne-400 hover:text-champagne-400",
     chiaro:
       "border border-grafite-500 text-grafite-900 hover:border-verde-800 hover:text-verde-800",
   },
@@ -31,7 +31,7 @@ const stili = {
 /**
  * Pulsante-collegamento verso una pagina reale del sito.
  * Regola di gerarchia: la variante "solida" è sempre l'unica CTA primaria
- * della schermata — lime brillante su fondo scuro, verde-800 pieno su fascia
+ * della schermata — champagne su fondo scuro, verde-800 pieno su fascia
  * chiara. La variante "contorno" segnala azioni secondarie e non compete
  * con la primaria. Nelle chiusure di pagina preferire il componente
  * Chiusura (una primaria + link testuali) alle file di bottoni.

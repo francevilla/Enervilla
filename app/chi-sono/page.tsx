@@ -27,7 +27,7 @@ export default function ChiSonoPage() {
       <PageHero
         etichetta="Chi sono"
         titolo="Un referente tecnico, non un intermediario di passaggio."
-        introduzione="Lavoro da oltre vent'anni nella consulenza energetica per le imprese. Mi occupo di come l'energia viene acquistata, contrattualizzata e consegnata, con un rapporto diretto con i produttori e con i siti dei clienti."
+        introduzione="Mi occupo di consulenza energetica per le imprese: di come l'energia viene acquistata, contrattualizzata e consegnata, in relazione diretta con i produttori e con i siti dei clienti."
       >
         <p className="text-xs uppercase tracking-[0.18em] text-grafite-300">
           {site.posizionamento}
@@ -118,7 +118,7 @@ export default function ChiSonoPage() {
               verificati. I recapiti ufficiali verranno pubblicati nella pagina{" "}
               <Link
                 href="/contatti"
-                className="font-medium text-verde-300 underline underline-offset-4 hover:text-lime-400"
+                className="font-medium text-verde-300 underline underline-offset-4 hover:text-champagne-400"
               >
                 Contatti
               </Link>{" "}

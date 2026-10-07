@@ -109,7 +109,7 @@ export const recapiti: Recapiti = {
  * Aggiornarla a mano quando cambiano i testi: evita che il sito dichiari
  * ai crawler una modifica mai avvenuta.
  */
-export const ultimaModificaContenuti = new Date("2026-10-06");
+export const ultimaModificaContenuti = new Date("2026-10-07");
 
 /**
  * Dati strutturati (JSON-LD) per i motori di ricerca.
@@ -124,7 +124,7 @@ export const datiStrutturati = {
   name: marchio.lockup,
   alternateName: site.nome,
   description:
-    "Consulenza energetica per imprese: aggregazione dei fabbisogni, relazione con i produttori, contrattualistica, diagnosi ed efficienza energetica. Approvvigionamento gas con operatività sul PSV e impostazione di percorsi energia come servizio (EaaS).",
+    "Consulenza energetica per imprese: approvvigionamento elettrico aggregato e gas sul PSV, contrattualistica, diagnosi ed efficienza energetica, con attenzione a costi, profili di consumo e rischio.",
   areaServed: {
     "@type": "Country",
     name: "Italia",

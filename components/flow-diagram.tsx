@@ -1,11 +1,11 @@
 import { tappaDettagli } from "@/lib/site";
 
-/** Colore dei nodi: le tappe intermedie in verde, la meta (consegna) in lime. */
+/** Colore dei nodi: tappe intermedie in verde, meta (consegna) in champagne. */
 const coloriNodi = [
   "bg-verde-600",
   "bg-verde-600",
   "bg-verde-600",
-  "bg-lime-400",
+  "bg-champagne-400",
 ];
 
 /**

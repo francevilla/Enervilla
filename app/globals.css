@@ -1,61 +1,69 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------------
-   Sistema visivo del sito — tema "DarkVilla".
-   "DarkVilla" = tema scuro + cognome del titolare (Villa): nessun riferimento
-   a edifici o ville. L'unica fotografia del sito è il ritratto del titolare
-   (public/darkvilla-hero.jpg, 1584×672), mostrato intero nell'hero della home.
-   Regole del tema:
-   - fondi blu-notte profondi (grafite-950/900), superfici appena più chiare;
-   - il lime è l'unico accento brillante (CTA primarie, etichette) e resta
-     l'unico punto luminoso nel campo scuro: max 2-3 occorrenze per schermata;
-   - superfici piatte, bordo sottile al posto delle ombre; le fasce avorio
-     sono eccezioni con CTA dedicate (verde-800 solido, mai lime);
-   - contrasto misurato (WCAG AA): il testo piccolo su scuro parte da
-     grafite-300 (6,48:1); grafite-500 è solo per bordi su chiaro (4,25:1).
-   Tipografia: serif editoriale per i titoli, sans di sistema per il testo.
-   Nessun font esterno da scaricare.
+   DarkVilla / Quiet Engineering
+   Grafite blu-notte, avorio e un solo accento champagne. La luce di fondo è
+   animata lentamente; resta decorativa, a basso contrasto e viene disattivata
+   quando il sistema richiede movimento ridotto. Nessuna dipendenza esterna.
 --------------------------------------------------------------------------- */
 
 @theme {
-  /* Scala "grafite": blu-notte a bassa saturazione (hue 255°).
-     Hex calcolati dai token oklch: #060e19, #131b27, #212832, #313842,
-     #6c727a, #9a9fa6, #c1c4c9, #dfe1e5. */
-  --color-grafite-950: oklch(0.162 0.027 255); /* sfondo pagina */
-  --color-grafite-900: oklch(0.22 0.026 256);  /* superficie */
-  --color-grafite-800: oklch(0.275 0.02 257);  /* divisori */
-  --color-grafite-700: oklch(0.34 0.02 257);   /* bordi su scuro */
-  --color-grafite-500: oklch(0.55 0.015 255);  /* SOLO bordi su chiaro (4,25:1); mai testo piccolo su scuro (3,57:1) */
-  --color-grafite-300: oklch(0.7 0.012 255);   /* testo secondario */
-  --color-grafite-200: oklch(0.82 0.008 255);  /* testo primario smorzato */
-  --color-grafite-100: oklch(0.91 0.006 255);  /* testo ad alto contrasto */
-  --color-grafite-50: oklch(0.965 0.004 255);  /* bianco sporco */
+  /* Blu-notte a bassa saturazione. */
+  --color-grafite-950: oklch(0.162 0.027 255);
+  --color-grafite-900: oklch(0.22 0.026 256);
+  --color-grafite-800: oklch(0.275 0.02 257);
+  --color-grafite-700: oklch(0.34 0.02 257);
+  --color-grafite-500: oklch(0.55 0.015 255);
+  --color-grafite-300: oklch(0.7 0.012 255);
+  --color-grafite-200: oklch(0.82 0.008 255);
+  --color-grafite-100: oklch(0.91 0.006 255);
+  --color-grafite-50: oklch(0.965 0.004 255);
 
-  /* Avorio (#f2f0ea): testo chiaro su scuro e fondo delle fasce chiare. */
+  /* Avorio: testo ad alto contrasto e superfici d'eccezione. */
   --color-avorio-50: oklch(0.955 0.008 95);
   --color-avorio-100: oklch(0.92 0.01 95);
   --color-avorio-200: oklch(0.86 0.012 95);
 
-  /* Verde: nodi del flusso e struttura su scuro (600/500/300); toni profondi
-     (800/700) per testi e CTA solide sulle fasce chiare. Hex: #154433 (800),
-     #2a624b (700), #3f9b65 (600), #5dc879 (500), #96e498 (300). */
-  --color-verde-900: oklch(0.28 0.05 165); /* testo scuro sopra lime */
+  /* Verde profondo: struttura, orientamento e CTA sulle superfici chiare. */
+  --color-verde-900: oklch(0.28 0.05 165);
   --color-verde-800: oklch(0.35 0.06 165);
   --color-verde-700: oklch(0.45 0.07 165);
   --color-verde-600: oklch(0.62 0.12 155);
-  --color-verde-500: oklch(0.75 0.15 150); /* accento principale */
-  --color-verde-300: oklch(0.85 0.13 145); /* accento chiaro / link */
-  --color-verde-200: oklch(0.9 0.09 140);  /* tinte discrete su fondi scuri */
+  --color-verde-500: oklch(0.75 0.15 150);
+  --color-verde-300: oklch(0.85 0.13 145);
+  --color-verde-200: oklch(0.9 0.09 140);
   --color-verde-100: oklch(0.94 0.05 135);
 
-  /* Lime (#b8e948): unico accento brillante — CTA primaria ed etichette
-     SOLO su fondo scuro (13,61:1 su grafite-950). Mai su avorio (1,25:1). */
-  --color-lime-400: oklch(0.87 0.19 125);
+  /* Champagne satinato: accento di navigazione, focus e CTA su fondo scuro.
+     #d7b174 circa; contrasto > 9:1 sul fondo grafite. */
+  --color-champagne-400: oklch(0.78 0.09 78);
+  --color-champagne-300: oklch(0.85 0.07 82);
 
   --font-sans: ui-sans-serif, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
     Arial, sans-serif;
-  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
-    "Times New Roman", serif;
+  --font-display: "Iowan Old Style", "Bodoni 72", "Didot",
+    "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+@keyframes energy-ambience {
+  0% {
+    background-position: 78% 6%, 13% 48%, 0 0;
+  }
+  100% {
+    background-position: 64% 19%, 19% 57%, 0 0;
+  }
+}
+
+@keyframes scroll-lift {
+  from {
+    opacity: 0.78;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 html {
@@ -63,44 +71,45 @@ html {
   scroll-behavior: smooth;
 }
 
+section[id] {
+  scroll-margin-top: 7rem;
+}
+
 body {
   background-color: var(--color-grafite-950);
-  /* Profondità del campo scuro: leggera risalita di luce dall'alto e un
-     alito caldo in alto a destra, in equilibrio con i toni del ritratto.
-     Effetto volutamente quasi impercettibile. */
-  background-image: radial-gradient(
-      ellipse 45% 60% at 72% 30%,
-      oklch(0.32 0.045 54 / 0.16),
-      transparent
+  background-image:
+    radial-gradient(
+      ellipse 42% 42% at 76% 12%,
+      oklch(0.58 0.105 78 / 0.095),
+      transparent 72%
     ),
     radial-gradient(
-      ellipse 80% 50% at 50% -10%,
-      oklch(0.3 0.035 255 / 0.55),
-      transparent
+      ellipse 54% 48% at 10% 52%,
+      oklch(0.32 0.045 255 / 0.22),
+      transparent 72%
     ),
     linear-gradient(var(--color-grafite-950), var(--color-grafite-950));
-  background-attachment: fixed;
+  background-size: 145% 135%, 130% 145%, 100% 100%;
+  background-position: 78% 6%, 13% 48%, 0 0;
+  animation: energy-ambience 54s ease-in-out infinite alternate;
   color: var(--color-avorio-50);
   font-family: var(--font-sans);
   text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background-color: var(--color-lime-400);
+  background-color: var(--color-champagne-400);
   color: var(--color-grafite-950);
 }
 
 a:focus-visible,
 button:focus-visible,
 summary:focus-visible {
-  outline: 2px solid var(--color-lime-400);
+  outline: 2px solid var(--color-champagne-400);
   outline-offset: 3px;
   border-radius: 2px;
 }
 
-/* Titoli: serif editoriale, peso contenuto e righe bilanciate.
-   Avorio sul fondo scuro (default); dentro le fasce chiare (.fascia-chiara)
-   i titoli tornano grafite-950. */
 h1,
 h2,
 h3,
@@ -123,17 +132,310 @@ p {
   text-wrap: pretty;
 }
 
+/* Hero: reticolo tecnico molto leggero, dietro al contenuto e non interattivo. */
+.hero-engineering {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hero-engineering::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, oklch(0.82 0.008 255 / 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(0.82 0.008 255 / 0.055) 1px, transparent 1px);
+  background-size: 68px 68px;
+  content: "";
+  mask-image: linear-gradient(90deg, #000 0%, transparent 94%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-code,
+.technical-label {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.11em;
+}
+
+.hero-portrait-frame {
+  border: 1px solid var(--color-grafite-700);
+  background: linear-gradient(
+    150deg,
+    oklch(0.28 0.03 255 / 0.9),
+    oklch(0.2 0.025 255 / 0.92)
+  );
+  padding: clamp(0.6rem, 1.3vw, 1rem);
+}
+
+.hero-portrait-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hero-portrait-frame figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border-top: 1px solid var(--color-grafite-700);
+  margin-top: 0.85rem;
+  padding: 0.85rem 0.15rem 0.1rem;
+  color: var(--color-grafite-300);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.hero-sequence {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 0;
+  padding-left: 0;
+  border: 1px solid var(--color-grafite-800);
+  background: oklch(0.22 0.026 256 / 0.7);
+  list-style: none;
+}
+
+.hero-sequence li {
+  padding: 0.85rem 0.7rem;
+  color: var(--color-grafite-300);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.hero-sequence li + li {
+  border-left: 1px solid var(--color-grafite-800);
+}
+
+/* Snapshot di mercato: numeri documentati, non una promessa commerciale. */
+.market-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid var(--color-grafite-700);
+  background: var(--color-grafite-700);
+}
+
+.market-card {
+  grid-column: span 3;
+  min-height: 18rem;
+  background: linear-gradient(
+    155deg,
+    oklch(0.24 0.027 256),
+    oklch(0.2 0.026 256)
+  );
+  padding: clamp(1.2rem, 2vw, 1.7rem);
+  transition:
+    background-color 220ms ease,
+    transform 220ms ease,
+    border-color 220ms ease;
+}
+
+.market-card__value {
+  color: var(--color-champagne-400);
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 4.2vw, 4.35rem);
+  letter-spacing: -0.045em;
+  line-height: 1;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.market-card__source {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--color-grafite-300);
+  font-size: 0.72rem;
+  line-height: 1.4;
+  text-decoration: underline;
+  text-decoration-color: var(--color-grafite-700);
+  text-underline-offset: 0.25rem;
+  transition: color 180ms ease, text-decoration-color 180ms ease;
+}
+
+.market-card__source:hover {
+  color: var(--color-champagne-300);
+  text-decoration-color: var(--color-champagne-400);
+}
+
+/* Griglia volutamente asimmetrica: approvvigionamento occupa il blocco forte,
+   contratti e decarbonizzazione si leggono come due livelli complementari. */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.service-card {
+  position: relative;
+  display: flex;
+  min-height: 15rem;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--color-grafite-700);
+  background:
+    radial-gradient(ellipse at 100% 0%, oklch(0.52 0.075 78 / 0.075), transparent 54%),
+    linear-gradient(150deg, oklch(0.24 0.027 256), oklch(0.2 0.026 256));
+  padding: clamp(1.4rem, 2.5vw, 2.25rem);
+  transition:
+    border-color 240ms ease,
+    background-color 240ms ease,
+    transform 240ms cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+
+.service-card--supply {
+  grid-column: span 7;
+  grid-row: span 2;
+  min-height: 31rem;
+}
+
+.service-card--contracts,
+.service-card--performance {
+  grid-column: span 5;
+}
+
+.service-card:hover,
+.service-card:focus-within {
+  transform: translateY(-3px);
+  border-color: var(--color-champagne-400);
+  background-color: var(--color-grafite-900);
+}
+
+.service-card__index {
+  color: var(--color-champagne-400);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+}
+
+.service-card__link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--color-avorio-100);
+  font-size: 0.84rem;
+  text-decoration: underline;
+  text-decoration-color: var(--color-grafite-700);
+  text-underline-offset: 0.28rem;
+  transition: color 180ms ease, text-decoration-color 180ms ease;
+}
+
+.service-card__link:hover {
+  color: var(--color-champagne-300);
+  text-decoration-color: var(--color-champagne-400);
+}
+
+.service-card__arrow {
+  display: inline-block;
+  transition: transform 180ms ease;
+}
+
+.service-card__link:hover .service-card__arrow {
+  transform: translateX(3px);
+}
+
+.service-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.service-card__tags span {
+  border: 1px solid var(--color-grafite-700);
+  padding: 0.45rem 0.65rem;
+  color: var(--color-grafite-200);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+/* Progressione allo scroll: enhancement CSS-only, contenuti sempre visibili
+   nei browser senza scroll timelines e con prefers-reduced-motion. */
+@supports (animation-timeline: view()) {
+  .scroll-lift {
+    animation: scroll-lift 1s linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 82%;
+  }
+}
+
+@media (max-width: 960px) {
+  .market-card {
+    grid-column: span 6;
+    min-height: 16rem;
+  }
+
+  .service-card--supply {
+    grid-column: span 7;
+  }
+
+  .service-card--contracts,
+  .service-card--performance {
+    grid-column: span 5;
+  }
+}
+
+@media (max-width: 680px) {
+  .market-card {
+    grid-column: span 12;
+    min-height: 0;
+  }
+
+  .service-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .service-card--supply,
+  .service-card--contracts,
+  .service-card--performance {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: 0;
+  }
+
+  .hero-sequence li {
+    padding-inline: 0.25rem;
+    font-size: 0.54rem;
+    letter-spacing: 0.06em;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-}
 
-/* background-attachment: fixed è scattoso su iOS: su mobile il fondo resta
-   fermo senza parallasse. */
-@media (max-width: 768px) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
   body {
-    background-attachment: scroll;
+    animation: none;
+    background-position: 70% 10%, 12% 50%, 0 0;
+  }
+
+  .scroll-lift {
+    animation: none !important;
   }
 }
-

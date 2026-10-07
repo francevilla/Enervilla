@@ -16,8 +16,8 @@ function classeVoce(percorso: string, attivo: boolean) {
   return [
     "flex min-h-[44px] items-center border-b-2 px-3 py-2 text-sm transition-colors",
     attivo
-      ? "border-lime-400 font-semibold text-avorio-50"
-      : "border-transparent text-grafite-300 hover:border-lime-400/60 hover:text-avorio-50",
+      ? "border-champagne-400 font-semibold text-avorio-50"
+      : "border-transparent text-grafite-300 hover:border-champagne-400/60 hover:text-avorio-50",
   ].join(" ");
 }
 
@@ -91,7 +91,7 @@ export function SiteHeader() {
           className="group flex min-h-[44px] items-baseline gap-2 text-avorio-50"
           aria-label="Torna alla home"
         >
-          <span className="block h-3 w-3 translate-y-[-1px] bg-lime-400 transition-colors group-hover:bg-verde-300" />
+          <span className="block h-3 w-3 translate-y-[-1px] bg-champagne-400 transition-colors group-hover:bg-champagne-300" />
           <span className="text-sm font-semibold uppercase tracking-[0.16em]">
             {marchio.nome}
           </span>
@@ -126,8 +126,8 @@ export function SiteHeader() {
                 }
                 className={
                   percorsoCorrente === percorsoContatti
-                    ? "ml-2 flex min-h-[44px] items-center bg-lime-400 px-4 py-2 text-sm font-medium text-grafite-950 transition-colors hover:bg-verde-300"
-                    : "ml-2 flex min-h-[44px] items-center border border-grafite-700 px-4 py-2 text-sm font-medium text-avorio-50 transition-colors hover:border-lime-400 hover:text-lime-400"
+                    ? "ml-2 flex min-h-[44px] items-center bg-champagne-400 px-4 py-2 text-sm font-medium text-grafite-950 transition-colors hover:bg-champagne-300"
+                    : "ml-2 flex min-h-[44px] items-center border border-grafite-700 px-4 py-2 text-sm font-medium text-avorio-50 transition-colors hover:border-champagne-400 hover:text-champagne-400"
                 }
               >
                 Contatti
@@ -137,7 +137,7 @@ export function SiteHeader() {
               <li>
                 <a
                   href={`mailto:${recapiti.email}`}
-                  className="ml-2 hidden min-h-[44px] items-center border border-grafite-700 px-4 py-2 text-sm font-medium text-avorio-50 transition-colors hover:border-lime-400 hover:text-lime-400 xl:flex"
+                  className="ml-2 hidden min-h-[44px] items-center border border-grafite-700 px-4 py-2 text-sm font-medium text-avorio-50 transition-colors hover:border-champagne-400 hover:text-champagne-400 xl:flex"
                 >
                   {recapiti.email}
                 </a>
@@ -177,7 +177,7 @@ export function SiteHeader() {
                 onClick={() => setMenuAperto(false)}
                 className={
                   percorsoCorrente === "/"
-                    ? "flex min-h-[44px] items-center border-l-2 border-lime-400 py-3 pl-3 text-sm font-semibold text-avorio-50"
+                    ? "flex min-h-[44px] items-center border-l-2 border-champagne-400 py-3 pl-3 text-sm font-semibold text-avorio-50"
                     : "flex min-h-[44px] items-center border-l-2 border-transparent py-3 pl-3 text-sm text-grafite-300"
                 }
                 aria-current={percorsoCorrente === "/" ? "page" : undefined}
@@ -192,7 +192,7 @@ export function SiteHeader() {
                   onClick={() => setMenuAperto(false)}
                   className={
                     percorsoCorrente === voce.href
-                      ? "flex min-h-[44px] items-center border-l-2 border-lime-400 py-3 pl-3 text-sm font-semibold text-avorio-50"
+                      ? "flex min-h-[44px] items-center border-l-2 border-champagne-400 py-3 pl-3 text-sm font-semibold text-avorio-50"
                       : "flex min-h-[44px] items-center border-l-2 border-transparent py-3 pl-3 text-sm text-grafite-300"
                   }
                   aria-current={
@@ -209,7 +209,7 @@ export function SiteHeader() {
                 onClick={() => setMenuAperto(false)}
                 className={
                   percorsoCorrente === percorsoContatti
-                    ? "flex min-h-[44px] items-center border-l-2 border-lime-400 py-3 pl-3 text-sm font-semibold text-avorio-50"
+                    ? "flex min-h-[44px] items-center border-l-2 border-champagne-400 py-3 pl-3 text-sm font-semibold text-avorio-50"
                     : "flex min-h-[44px] items-center border-l-2 border-transparent py-3 pl-3 text-sm text-grafite-300"
                 }
                 aria-current={

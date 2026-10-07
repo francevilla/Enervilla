@@ -18,8 +18,11 @@ Il sito deve:
   elettrica**, **approvvigionamento gas sul PSV**, **contrattualistica,
   diagnosi ed efficienza energetica**;
 - risultare sobrio, credibile e professionale, senza toni pubblicitari;
-- **non contenere dati inventati**: nessun numero, prezzo, percentuale di
-  risparmio, logo, nome di cliente o riferimento normativo non verificato.
+- **non contenere dati inventati**: nessun risultato, prezzo, percentuale di
+  risparmio, logo o nome cliente attribuito al consulente senza prova. Sono
+  ammessi riferimenti macroeconomici esterni se fonte, periodo, campione e
+  limiti sono espliciti; non vanno presentati come risultati garantiti o dati
+  live.
 
 ## 2. Pubblico di riferimento
 
@@ -39,14 +42,17 @@ Il sito deve:
 | `/energia-come-servizio` | Energia come servizio (EaaS): definizione, contratti, perimetro del ruolo |
 | `/servizi`           | Contrattualistica, diagnosi energetiche, efficienza energetica             |
 | `/chi-sono`          | Profilo professionale, aree di competenza, regole di lavoro                |
+| `/contatti`          | Primo confronto, dati utili e recapiti solo se confermati                   |
 
 La navigazione è definita in un unico punto (`lib/site.ts`): se una pagina non
 esiste, il collegamento non esiste.
 
 ## 4. Regole editoriali (vincolanti)
 
-1. **Nessun dato non verificato.** Niente volumi, risparmi, prezzi o elenchi di
-   clienti se non forniti dal titolare e documentabili.
+1. **Nessun dato non verificato.** Niente risultati, volumi, risparmi, prezzi
+   o referenze attribuiti all'attività senza documentazione. I benchmark di
+   mercato esterni devono avere fonte, data, perimetro e disclaimer; mai
+   trasformarli in promesse o in un feed real-time.
 2. **Linguaggio concreto e sobrio**, in italiano. Frasi brevi, nessun
    superlativo.
 3. **Distinguere sempre** fra: fatti documentati, ipotesi dichiarate e
@@ -59,36 +65,31 @@ esiste, il collegamento non esiste.
 
 ## 5. Scelte di design
 
-- **Tema "DarkVilla":** tema scuro + cognome del titolare (Villa). Palette:
-  grafite blu-notte (fondi e testi), avorio (testi chiari e fasce d'eccezione),
-  verde profondo (struttura, bordi, CTA su chiaro), **lime** come unico accento
-  brillante, solo su fondo scuro e con uso parsimonioso (max 2-3 per schermata).
-- **Tipografia:** serif di sistema per i titoli, sans di sistema per i testi.
-  Nessun font scaricato dalla rete: il sito non dipende da servizi esterni.
-- **Impianto visivo:** bordi sottili e superfici piatte, nessuna ombra, nessuna
-  animazione decorativa. Angoli netti ovunque, favicon compresa.
-- **Fotografia:** l'unica foto del sito è il ritratto del titolare
-  (`public/darkvilla-hero.jpg`), mostrato intero nell'hero della home, senza
-  ritagli sul volto e senza testo sovrapposto.
-- **Grafica astratta** del flusso di approvvigionamento (consumi → aggregazione →
-  produttori → consegna) realizzata **solo con CSS**, usata solo nella pagina
-  dedicata; nodi verdi con meta in lime.
-- **Gerarchia delle CTA:** una sola primaria per schermata (lime su scuro,
-  verde-800 pieno su fascia chiara); le chiusure usano il componente `Chiusura`
-  (una primaria + link testuali), mai file di bottoni.
-- **Marchio ufficiale:** lockup ibrido "EnerVilla · Deep Energy" (masterbrand
-  + descrittore) con payoff "Consulenza energetica per imprese", definito in
-  `lib/site.ts` (`marchio`) e applicato a header, footer, titoli, OG e dati
-  strutturati. Favicon 2×2 invariata (coerente con qualsiasi nome).
-- **Accessibilità:** struttura semantica (heading, liste, `dl`), link "salta al
-  contenuto", stati di focus visibili, menu mobile con blocco scorrimento e
-  contenimento del focus, target tattili ≥ 44px, contrasti misurati e
-  documentati in `docs/design-plan.md` §6.
-- **Anteprima social e SEO essenziale:** immagine di condivisione generata col
-  codice (`app/opengraph-image.tsx`), sitemap e robots basati sul dominio
-  impostato con `NEXT_PUBLIC_SITE_URL`, URL canonici, dati strutturati
-  essenziali, colori del tema del browser, icona del sito in palette, pagina
-  404 guidata alle pagine reali.
+- **Tema "DarkVilla · Quiet Engineering":** blu-notte/antracite desaturato,
+  avorio, verde profondo per struttura e superfici chiare, champagne satinato
+  come accento singolo. Un bagliore champagne radiale si muove lentamente sul
+  fondo (54 secondi, contrasto basso); non ci sono gradienti vistosi o ombre.
+- **Tipografia:** serif editoriale di sistema per i titoli, sans-serif tecnica
+  per il corpo e monospace per indici, misure e metadati. Nessun font esterno.
+- **Composizione:** hero asimmetrico, griglia di servizi 7/5 con un pilastro
+  dominante e due complementari, reticolo tecnico tenue, bordi sottili e
+  superfici piatte.
+- **Micro-interazioni:** lievi transizioni su focus/hover e reveal basato su
+  scroll timeline CSS; contenuti sempre leggibili se l'effetto non è supportato.
+  `prefers-reduced-motion` disattiva animazioni, transizioni e scroll dolce.
+- **Fotografia:** ritratto professionale confermato in `public/darkvilla-hero.jpg`,
+  inserito in una cornice separata dal testo (nessuna scritta sovrapposta).
+- **Gerarchia delle CTA:** una sola primaria per schermata (champagne su scuro,
+  verde-800 su fascia chiara); le chiusure usano `Chiusura` (una primaria e
+  link testuali). Nessun modulo o pulsante inattivo.
+- **Marchio ufficiale:** lockup "EnerVilla · Deep Energy" e payoff
+  "Consulenza energetica per imprese", centralizzati in `lib/site.ts`.
+- **Metriche e accessibilità:** ogni benchmark macroeconomico è collegato alla
+  fonte e presenta periodo/perimetro; nessun numero è attribuito a EnerVilla.
+  Markup semantico, skip link, focus visibile, target ≥ 44px, menu mobile con
+  contenimento del focus e rispetto delle preferenze di movimento ridotto.
+- **SEO essenziale:** OG generata dal codice, sitemap, robots, canonical e dati
+  strutturati; dominio configurato con `NEXT_PUBLIC_SITE_URL`.
 
 ## 6. Tecnologia
 
@@ -121,6 +122,6 @@ npx tsc --noEmit  # controllo dei tipi
 ## 8. Da completare prima della pubblicazione
 
 - Recapiti, dati fiscali e note legali (informativa privacy, cookie policy).
-- Foto del professionista e verifica di eventuali riferimenti normativi, da
-  citare solo se confermati.
+- Aggiornamento periodico dei dati di mercato e verifica delle fonti prima di
+  ogni revisione dei benchmark statici; non esiste un collegamento a un feed live.
 - Casi seguiti o referenze, solo se autorizzati per iscritto.
