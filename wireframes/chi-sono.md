@@ -24,7 +24,7 @@
 │  ≡ elenco numerato verticale, una regola per voce            │
 ├══════════════════════════════════════════════════════════════┣
 │ CTA FINALE (banda scura compatta)                            │
-│  H2 breve + (CTA primaria lime → /contatti)                  │
+│  H2 breve + (CTA primaria champagne → /contatti)                  │
 │              + link contorno → /servizi                      │
 ├──────────────────────────────────────────────────────────────┤
 │ FOOTER                                                       │

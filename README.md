@@ -5,8 +5,10 @@ Sito professionale per un consulente energetico con base a **Bologna** e
 energia elettrica, approvvigionamento gas sul PSV, contrattualistica, diagnosi
 ed efficienza energetica.
 
-Il sito è statico e non contiene dati inventati: recapiti, numeri e riferimenti
-legali verranno inseriti solo dopo conferma (vedi
+Il sito è statico e non contiene dati aziendali inventati. I benchmark
+macroeconomici sono esterni, datati, collegati alle fonti e non sono risultati
+garantiti per i clienti. Recapiti, dati legali e informazioni professionali
+vengono inseriti solo dopo conferma (vedi
 [`docs/informazioni-da-confermare.md`](docs/informazioni-da-confermare.md)).
 
 ## Pagine
@@ -18,7 +20,8 @@ legali verranno inseriti solo dopo conferma (vedi
 | `/gas-psv`          | Approvvigionamento gas con operatività sul PSV                         |
 | `/energia-come-servizio` | Energia come servizio (EaaS): definizione, contratti, perimetro     |
 | `/servizi`          | Contrattualistica, diagnosi energetiche, efficienza energetica         |
-| `/chi-sono`         | Profilo professionale, aree di competenza, regole di lavoro            |
+| `/chi-sono`          | Profilo professionale, aree di competenza, regole di lavoro            |
+| `/contatti`          | Primo confronto, informazioni utili e recapiti se confermati            |
 
 ## Come eseguire il progetto
 
@@ -54,7 +57,7 @@ app/
   sitemap.ts            mappa del sito (sitemap.xml)
   robots.ts             regole per i motori di ricerca (robots.txt)
   opengraph-image.tsx   anteprima social 1200×630 generata col codice
-  icon.svg              icona del sito nella palette grafite/verde/lime
+  icon.svg              icona del sito nella palette grafite/verde/champagne
   globals.css           palette, tipografia e stili di base
 components/
   site-header.tsx       intestazione con menu (unico componente interattivo)
@@ -86,3 +89,5 @@ PROJECT_BRIEF.md        obiettivi, regole editoriali e scelte di design
   editoriali, design e stato del progetto.
 - [`docs/informazioni-da-confermare.md`](docs/informazioni-da-confermare.md) —
   dati e documenti mancanti, da confermare prima della pubblicazione.
+- [`docs/brief-direzione-creativa-c-level.md`](docs/brief-direzione-creativa-c-level.md) —
+  sitemap, wireframe, copy, fonti e sistema visivo aggiornati.

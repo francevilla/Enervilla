@@ -5,8 +5,9 @@ disponibile o non verificabile. Serve a distinguere in modo netto tra contenuti
 pronti e contenuti in attesa di conferma da parte del titolare.
 
 Regola di lavoro: nulla di quanto segue va pubblicato finché non arriva una
-conferma esplicita. In assenza di conferma, le sezioni restano come sono: prive
-di recapiti, numeri e riferimenti legali.
+conferma esplicita. In assenza di conferma, restano assenti i recapiti,
+le metriche riferite al consulente e i riferimenti legali. I soli numeri
+macroeconomici pubblicati sono benchmark esterni con fonte, periodo e limiti.
 
 ---
 
@@ -27,7 +28,7 @@ di recapiti, numeri e riferimenti legali.
 
 | Voce                                             | Stato    | Note |
 | ------------------------------------------------ | -------- | ---- |
-| Anni di esperienza (oggi scritto "oltre vent'anni") | da confermare | Verificare il numero esatto o mantenere la formula generica |
+| Anni di esperienza professionale | da confermare | Il numero è stato rimosso dal profilo finché non verrà documentato |
 | Titolo di studio e iscrizioni ad albi/elenchi     | mancante | Da inserire solo se pertinente e documentabile |
 | Certificazioni (es. EGE, ESCo, altre)             | mancante | Richiedono riferimento all'ente e anno |
 | Percorso professionale (tappe sintetiche)         | mancante | Nessun datore di lavoro va citato senza autorizzazione |
@@ -71,7 +72,7 @@ Da confermare con il titolare prima di pubblicare qualunque dettaglio su:
 | Elemento                                   | Stato    | Note |
 | ------------------------------------------ | -------- | ---- |
 | Foto professionale (ritratto del titolare) | **caricata e in uso** | `public/darkvilla-hero.jpg` (1584×672, ~40 KB), mostrata intera nell'hero della home con didascalia neutra (nessun nome pubblicato). Consenso esplicito del titolare alla pubblicazione online confermato il 06/10/2026. |
-| Anteprima social (1200×630)                | completata | Generata col codice in `app/opengraph-image.tsx` (nessuna foto, palette grafite/avorio/verde/lime, flusso consumi → consegna) |
+| Anteprima social (1200×630)                | completata | Generata col codice in `app/opengraph-image.tsx` (nessuna foto, palette grafite/avorio/verde/champagne, flusso consumi → consegna) |
 | Riferimento visivo `docs/DarkVilla.jpg`    | **archivio** | Copia originale del ritratto (qualità piena); la copia servita è `public/darkvilla-hero.jpg` (compressa, ~40 KB). Nota: "DarkVilla" è il nome del tema scuro + il cognome del titolare (Villa), nessun riferimento a edifici. Le vecchie note su "villa notturna / finestra accesa / bagliore caldo" descrivevano un'immagine inesistente e sono state rimosse ovunque. |
 | Logo o marchio | **adottato 06/10/2026** | Lockup ibrido ufficiale «EnerVilla · Deep Energy» in `lib/site.ts` (`marchio`: nome + descrittore + lockup + payoff). Restano: verifica anteriorità UIBM/EUIPO con professionista; registrazione enervilla.it (+ .com difensivo) |
 | Casi seguiti / referenze                    | assenti  | Solo con autorizzazione scritta dei clienti |

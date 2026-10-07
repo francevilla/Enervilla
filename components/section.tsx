@@ -23,11 +23,11 @@ export function PageHero({
         {/* Orientamento: sempre una via d'uscita verso la home. */}
         <Link
           href="/"
-          className="inline-flex min-h-[44px] items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-grafite-300 transition-colors hover:text-lime-400"
+          className="inline-flex min-h-[44px] items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-grafite-300 transition-colors hover:text-champagne-400"
         >
           <span aria-hidden="true">←</span> Home
         </Link>
-        <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-lime-400">
+        <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-champagne-400">
           {etichetta}
         </p>
         <h1 className="mt-5 max-w-4xl text-4xl leading-[1.1] text-avorio-50 sm:text-5xl">
@@ -84,7 +84,7 @@ type SectionHeaderProps = {
   titolo: string;
   introduzione?: string;
   /** Tema "DarkVilla": il default è su fondo scuro (titolo avorio, etichetta
-   *  lime). Passare tono="chiaro" solo dentro le fasce sopravvissute chiare,
+   *  champagne). Passare tono="chiaro" solo dentro le fasce chiare,
    *  dove valgono i colori del tema originale avorio/grafite. */
   tono?: "scuro" | "chiaro";
 };
@@ -103,7 +103,7 @@ export function SectionHeader({
         <p
           className={[
             "text-xs font-semibold uppercase tracking-[0.2em]",
-            suChiaro ? "text-verde-800" : "text-lime-400",
+            suChiaro ? "text-verde-800" : "text-champagne-400",
           ].join(" ")}
         >
           {etichetta}
@@ -308,7 +308,7 @@ export function Chiusura({
                   className={
                     suChiaro
                       ? "text-sm text-grafite-700 underline underline-offset-4 hover:text-verde-800"
-                      : "text-sm text-grafite-200 underline underline-offset-4 hover:text-lime-400"
+                      : "text-sm text-grafite-200 underline underline-offset-4 hover:text-champagne-400"
                   }
                 >
                   {voce.etichetta}

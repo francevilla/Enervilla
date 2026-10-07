@@ -1,39 +1,43 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CtaLink } from "@/components/cta-link";
-import { Chiusura, PageHero, Section } from "@/components/section";
-import { recapiti, site } from "@/lib/site";
+import {
+  Chiusura,
+  PageHero,
+  Section,
+  SectionHeader,
+} from "@/components/section";
+import { recapiti } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contatti",
   description:
-    "Come contattare la consulenza energetica per imprese con base a Bologna: cosa scrivere nella prima richiesta, quali informazioni servono per un primo confronto su elettricità, gas al PSV, contratti ed efficienza.",
+    "Avvia un confronto su approvvigionamento elettrico e gas, contratti, profili di consumo o progetti di efficienza industriale. Perimetro, dati e scadenze sono il punto di partenza.",
   alternates: {
     canonical: "/contatti",
   },
 };
 
-/** Cosa serve davvero per impostare un primo confronto serio. */
 const informazioniUtili = [
   {
-    titolo: "I siti e i punti di prelievo",
+    titolo: "Perimetro dei siti",
     testo:
-      "Numero dei siti produttivi e dei POD (e dei PDR, se c'è gas): è il dato che definisce subito se esiste un perimetro aggregabile.",
+      "Quanti stabilimenti sono coinvolti e quali POD elettrici o PDR gas rientrano nella valutazione.",
   },
   {
-    titolo: "Volumi e consumi indicativi",
+    titolo: "Consumi disponibili",
     testo:
-      "Anche solo un ordine di grandezza annuo in MWh o Smc, oppure le ultime bollette: serve a capire il profilo, non a fare preventivi.",
+      "Volumi annui o mensili, profili orari se disponibili, bollette recenti e principali stagionalità produttive.",
   },
   {
-    titolo: "Contratti attuali e scadenze",
+    titolo: "Contratti e scadenze",
     testo:
-      "Fornitore, tipo di offerta, data di scadenza o di rinnovo automatico: determina i tempi reali di qualsiasi azione.",
+      "Fornitore, formula di prezzo, durata e finestre di rinnovo. Anche una sola scadenza può definire il calendario delle opzioni.",
   },
   {
-    titolo: "Il motivo della richiesta",
+    titolo: "Decisione da prendere",
     testo:
-      "Una domanda concreta — prezzo, clausole, continuità di servizio, diagnosi — aiuta a rispondere nel merito fin dalla prima risposta.",
+      "Rinegoziare, acquistare, leggere un'esposizione, ridurre i consumi o valutare un modello di servizio: una domanda circoscritta orienta l'analisi.",
   },
 ];
 
@@ -44,9 +48,9 @@ export default function ContattiPage() {
   return (
     <>
       <PageHero
-        etichetta="Contatti"
-        titolo="Scrivimi quando hai una domanda concreta."
-        introduzione="Non ci sono moduli da compilare né campagne da seguire. Se l'impresa acquista energia per più siti, gestisce gas, o vuole leggere meglio i contratti in essere, il modo più efficace è descrivere la situazione: si parte dai dati, non dalle promesse."
+        etichetta="Contatti · Primo confronto"
+        titolo="Una valutazione utile comincia da un perimetro chiaro."
+        introduzione="Se stai valutando una fornitura, rivedendo un contratto o impostando un percorso di efficienza, il primo passaggio è mettere a fuoco siti, consumi, scadenze e vincoli produttivi. Non serve una presentazione: bastano i dati disponibili e la decisione da prendere."
       >
         {recapiti.email ? (
           <CtaLink href={`mailto:${recapiti.email}`}>
@@ -55,45 +59,24 @@ export default function ContattiPage() {
         ) : null}
       </PageHero>
 
-      {/* Stato attuale: recapiti non ancora pubblicati (nessun dato inventato). */}
       {nessunRecapito ? (
         <Section variante="superficie">
-          <div className="border border-verde-600 bg-grafite-900 p-6 sm:p-8">
-            <h2 className="text-2xl text-avorio-50">
-              Recapiti in fase di pubblicazione
+          <div className="border border-grafite-700 bg-grafite-900 p-6 sm:p-8">
+            <p className="technical-label text-xs uppercase text-champagne-400">
+              Canale diretto
+            </p>
+            <h2 className="mt-4 text-2xl text-avorio-50">
+              Recapiti in fase di conferma.
             </h2>
             <p className="mt-4 max-w-3xl text-sm leading-relaxed text-grafite-200">
-              Gli indirizzi di contatto di {site.nome.toLowerCase()} non sono
-              ancora pubblicati su questo sito: verranno inseriti appena il
-              titolare li conferma ufficialmente, insieme ai riferimenti fiscali
-              e all&apos;informativa privacy. Nel frattempo le pagine del sito
-              descrivono metodo e aree di lavoro:{" "}
-              <Link
-                href="/acquisto-aggregato"
-                className="font-medium text-verde-300 underline underline-offset-4 hover:text-lime-400"
-              >
-                acquisto aggregato
-              </Link>
-              ,{" "}
-              <Link
-                href="/gas-psv"
-                className="font-medium text-verde-300 underline underline-offset-4 hover:text-lime-400"
-              >
-                gas al PSV
-              </Link>{" "}
-              e{" "}
-              <Link
-                href="/servizi"
-                className="font-medium text-verde-300 underline underline-offset-4 hover:text-lime-400"
-              >
-                servizi
-              </Link>{" "}
-              rispondono già alle domande tecniche più frequenti.
+              Email, telefono e profili professionali verranno pubblicati solo
+              dopo la conferma del titolare. Non utilizziamo moduli dimostrativi
+              o recapiti provvisori. Nel frattempo, le pagine di servizio
+              chiariscono il perimetro delle attività e i passaggi previsti.
             </p>
           </div>
         </Section>
       ) : (
-        /* Blocco recapiti: appare automaticamente quando i dati sono confermati. */
         <Section variante="superficie">
           <dl className="grid gap-px overflow-hidden border border-grafite-700 sm:grid-cols-3">
             {recapiti.email ? (
@@ -104,7 +87,7 @@ export default function ContattiPage() {
                 <dd className="mt-3">
                   <a
                     href={`mailto:${recapiti.email}`}
-                    className="font-medium break-all text-verde-300 underline underline-offset-4 hover:text-lime-400"
+                    className="break-all font-medium text-verde-300 underline underline-offset-4 hover:text-champagne-400"
                   >
                     {recapiti.email}
                   </a>
@@ -119,7 +102,7 @@ export default function ContattiPage() {
                 <dd className="mt-3">
                   <a
                     href={`tel:${recapiti.telefono.replace(/[^+\d]/g, "")}`}
-                    className="font-medium text-verde-300 underline underline-offset-4 hover:text-lime-400"
+                    className="font-medium text-verde-300 underline underline-offset-4 hover:text-champagne-400"
                   >
                     {recapiti.telefono}
                   </a>
@@ -136,7 +119,7 @@ export default function ContattiPage() {
                     href={recapiti.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-medium text-verde-300 underline underline-offset-4 hover:text-lime-400"
+                    className="font-medium text-verde-300 underline underline-offset-4 hover:text-champagne-400"
                   >
                     Profilo professionale
                   </a>
@@ -147,48 +130,96 @@ export default function ContattiPage() {
         </Section>
       )}
 
-      {/* Come scrivere una richiesta utile. */}
-      <Section>
-        <div className="max-w-3xl">
-          <h2 className="text-3xl text-avorio-50 sm:text-4xl">
-            Cosa serve per il primo confronto.
-          </h2>
-          <p className="mt-5 text-base leading-relaxed text-grafite-200 sm:text-lg">
-            Una richiesta ben impostata vale più di qualunque modulo: queste
-            sono le informazioni che permettono di capire subito se e come si
-            può lavorare.
-          </p>
-        </div>
+      <Section id="primo-confronto">
+        <SectionHeader
+          etichetta="Preparare il confronto"
+          titolo="Poche informazioni, ma quelle giuste."
+          introduzione="Un primo esame può partire dai documenti già disponibili. L'obiettivo non è formulare un'offerta al buio: è capire il perimetro, i tempi e la domanda tecnica o economica da risolvere."
+        />
 
-        <ul className="mt-12 grid gap-px overflow-hidden border border-grafite-700 md:grid-cols-2">
-          {informazioniUtili.map((voce) => (
-            <li key={voce.titolo} className="bg-grafite-900 p-6 sm:p-8">
-              <h3 className="text-xl text-avorio-50">{voce.titolo}</h3>
+        <ol className="mt-10 grid gap-px overflow-hidden border border-grafite-700 sm:grid-cols-2">
+          {informazioniUtili.map((voce, indice) => (
+            <li
+              key={voce.titolo}
+              className="bg-grafite-900 p-6 sm:p-8"
+            >
+              <p className="technical-label text-xs text-champagne-400">
+                PASSAGGIO / {String(indice + 1).padStart(2, "0")}
+              </p>
+              <h3 className="mt-4 text-xl text-avorio-50">{voce.titolo}</h3>
               <p className="mt-3 text-sm leading-relaxed text-grafite-200">
                 {voce.testo}
               </p>
             </li>
           ))}
-        </ul>
+        </ol>
 
-        <p className="mt-8 max-w-3xl text-sm leading-relaxed text-grafite-300">
-          Le informazioni inviate servono solo a valutare la richiesta e non
-          vengono condivise con terzi. L&apos;informativa privacy completa sarà
-          pubblicata insieme ai recapiti ufficiali.
+        <p className="mt-7 max-w-3xl border-l border-champagne-400/70 pl-4 text-sm leading-relaxed text-grafite-300">
+          Per tutelare i dati commerciali, non inviare bollette o documenti
+          riservati attraverso canali non concordati. L&apos;informativa privacy
+          e i riferimenti legali devono essere pubblicati prima di raccogliere
+          dati personali tramite il sito.
         </p>
       </Section>
 
-      {/* Chiusura: ritorno ai percorsi di lavoro. */}
-      <Section variante="superficie" compatta>
+      <Section variante="chiaro" compatta>
         <Chiusura
-          titolo="Prima di scrivere, forse la tua risposta è già in una pagina."
-          primaria={{ href: "/acquisto-aggregato", etichetta: "Acquisto aggregato" }}
+          tono="chiaro"
+          titolo="Prima del contatto, inquadra la decisione."
+          testo="Elettricità, gas, contratto o efficienza: ogni percorso ha una pagina dedicata con perimetro, passaggi e limiti esplicitati."
+          primaria={{
+            href: "/acquisto-aggregato",
+            etichetta: "Approfondisci l'approvvigionamento",
+          }}
           secondari={[
             { href: "/gas-psv", etichetta: "Gas al PSV" },
+            { href: "/servizi", etichetta: "Servizi alle imprese" },
             { href: "/energia-come-servizio", etichetta: "Energia come servizio" },
-            { href: "/chi-sono", etichetta: "Chi sono" },
+            { href: "/chi-sono", etichetta: "Profilo professionale" },
           ]}
         />
+      </Section>
+
+      <Section compatta>
+        <p className="max-w-3xl text-sm leading-relaxed text-grafite-300">
+          {recapiti.email ? (
+            <>
+              Per un primo confronto puoi scrivere a{" "}
+              <a
+                href={`mailto:${recapiti.email}`}
+                className="text-avorio-100 underline underline-offset-4 hover:text-champagne-400"
+              >
+                {recapiti.email}
+              </a>
+              .
+            </>
+          ) : (
+            <>
+              Per il quadro dei servizi consulta le pagine su{" "}
+              <Link
+                href="/acquisto-aggregato"
+                className="text-avorio-100 underline underline-offset-4 hover:text-champagne-400"
+              >
+                acquisto aggregato
+              </Link>
+              ,{" "}
+              <Link
+                href="/gas-psv"
+                className="text-avorio-100 underline underline-offset-4 hover:text-champagne-400"
+              >
+                gas al PSV
+              </Link>{" "}
+              e{" "}
+              <Link
+                href="/servizi"
+                className="text-avorio-100 underline underline-offset-4 hover:text-champagne-400"
+              >
+                servizi alle imprese
+              </Link>
+              .
+            </>
+          )}
+        </p>
       </Section>
     </>
   );

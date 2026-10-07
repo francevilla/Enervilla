@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { CtaLink } from "@/components/cta-link";
 import { Card, Chiusura, Section, SectionHeader } from "@/components/section";
 import { site } from "@/lib/site";
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
     absolute: "Consulenza energetica per imprese · Bologna | EnerVilla · Deep Energy",
   },
   description:
-    "Aggrego i fabbisogni delle imprese, le metto in relazione con i produttori e seguo i passaggi necessari all'approvvigionamento e alla consegna dell'energia. Per il gas opero sul PSV per conto dei clienti.",
+    "Affianco CEO, CFO e responsabili tecnici nelle decisioni su approvvigionamento elettrico e gas, contratti, rischio energetico ed efficienza industriale.",
   alternates: {
     canonical: "/",
   },
@@ -17,113 +18,166 @@ export const metadata: Metadata = {
 
 const posizionamento = [
   { titolo: "Bologna", dettaglio: "Base operativa" },
-  { titolo: "Operatività nazionale", dettaglio: "Imprese in tutta Italia" },
+  { titolo: "Italia", dettaglio: "Operatività nazionale" },
+  { titolo: "Industria", dettaglio: "Imprese e siti produttivi" },
+];
+
+/**
+ * Indicatori di contesto, non risultati aziendali né dati live.
+ * Le finestre temporali e le fonti sono esplicitate nelle rispettive card.
+ */
+const segnaliMercato = [
   {
-    titolo: "Consulenza per imprese",
-    dettaglio: "Siti produttivi e forniture industriali",
+    valore: "≈5×",
+    titolo: "Oscillazioni giornaliere",
+    testo:
+      "Nel 2025 le variazioni giornaliere dei prezzi wholesale elettrici sono state circa cinque volte quelle del 2020.",
+    periodo: "Mercato elettrico UE · 2025 vs 2020",
+    fonte: "ACER · Monitoring Report 2026",
+    url: "https://www.acer.europa.eu/news/expanding-eu-energy-market-integration-key-global-competitiveness-and-decarbonisation",
+  },
+  {
+    valore: "≈1,5×",
+    titolo: "Prezzo industriale UE / USA",
+    testo:
+      "Nel primo semestre 2025, il prezzo finale medio dell'elettricità per l'industria UE era circa una volta e mezzo quello statunitense.",
+    periodo: "Prezzi industriali · 1° semestre 2025",
+    fonte: "ACER · Monitoring Report 2026",
+    url: "https://www.acer.europa.eu/news/expanding-eu-energy-market-integration-key-global-competitiveness-and-decarbonisation",
+  },
+  {
+    valore: "11%",
+    titolo: "Risparmio energetico osservato",
+    testo:
+      "Media dei primi anni in oltre 300 casi di energy management analizzati in 40 Paesi. È un benchmark di letteratura, non una previsione per il singolo sito.",
+    periodo: "Casi studio · primi anni di attuazione",
+    fonte: "IEA · Industrial energy management, 2025",
+    url: "https://www.iea.org/commentaries/industrial-facilities-could-save-billions-by-implementing-energy-management",
+  },
+  {
+    valore: "−55%",
+    titolo: "Obiettivo climatico UE al 2030",
+    testo:
+      "Riduzione netta delle emissioni UE rispetto al 1990. Gli obblighi e i percorsi delle singole imprese dipendono da settore e normativa applicabile.",
+    periodo: "Obiettivo UE · 2030 vs 1990",
+    fonte: "Commissione europea · obiettivo climatico UE",
+    url: "https://energy.ec.europa.eu/topics/energy-efficiency/energy-efficiency-targets-directive-and-rules/energy-efficiency-directive_en",
   },
 ];
 
 const variabiliCosto = [
   {
-    titolo: "Struttura del contratto",
+    titolo: "Formula economica",
     testo:
-      "Durata, indicizzazione, clausole di rinnovo e condizioni di uscita pesano sul costo reale della fornitura, non solo sul prezzo del mese.",
+      "Indice, spread, corrispettivi e componenti di rete: il confronto è utile solo quando perimetro e unità di misura coincidono.",
   },
   {
-    titolo: "Profilo di consumo",
+    titolo: "Profilo del carico",
     testo:
-      "Due imprese con lo stesso volume annuo possono avere profili orari molto diversi, e il profilo cambia il valore economico della fornitura.",
+      "Volumi, fasce orarie e stagionalità descrivono quando l'impresa consuma, non soltanto quanto consuma in un anno.",
   },
   {
-    titolo: "Struttura dell'approvvigionamento",
+    titolo: "Esposizione e orizzonte",
     testo:
-      "Chi fornisce il volume, con quale orizzonte temporale e con quali strumenti è parte della decisione, non un dettaglio tecnico.",
+      "Tempi di acquisto, quota esposta e aggiornamento del prezzo definiscono il rapporto tra flessibilità e rischio di mercato.",
   },
   {
-    titolo: "Condizioni economiche",
+    titolo: "Obblighi contrattuali",
     testo:
-      "Il prezzo unitario è una delle voci in gioco: va letto insieme agli oneri, ai corrispettivi e agli obblighi previsti dal contratto.",
+      "Durata, rinnovi, tolleranze, garanzie e condizioni di uscita possono modificare il costo effettivo e i margini di manovra.",
   },
 ];
 
-const metodo = [
+const fasiMetodo = [
   {
-    titolo: "Dati",
-    numero: "Fase 01",
+    titolo: "Baseline",
+    numero: "01 · DATI",
     testo:
-      "Raccolta di consumi, forniture attive, contratti in essere e vincoli dei siti. È la base di tutto il lavoro successivo.",
+      "Consumi, siti, POD e PDR, contratti e scadenze diventano un quadro leggibile e condiviso.",
   },
   {
-    titolo: "Analisi",
-    numero: "Fase 02",
+    titolo: "Esposizione",
+    numero: "02 · RISCHIO",
     testo:
-      "Lettura dei profili e della struttura contrattuale: cosa si sta pagando davvero e con quali margini di intervento.",
+      "Separiamo le componenti di prezzo, i vincoli operativi e ciò che l'impresa può — o non può — modificare.",
   },
   {
-    titolo: "Opzioni",
-    numero: "Fase 03",
+    titolo: "Scenari",
+    numero: "03 · OPZIONI",
     testo:
-      "Costruzione delle alternative possibili, ognuna con vantaggi, limiti e condizioni da rispettare.",
+      "Le alternative vengono confrontate su ipotesi esplicite: costo, orizzonte, flessibilità e impatto produttivo.",
   },
   {
     titolo: "Decisione",
-    numero: "Fase 04",
+    numero: "04 · CONTROLLO",
     testo:
-      "L'impresa sceglie con le informazioni in mano. Poi seguo i passaggi operativi fino alla consegna.",
+      "Il management sceglie con i trade-off in chiaro. I risultati si verificano rispetto alla baseline concordata.",
   },
 ];
+
 export default function HomePage() {
   return (
     <>
-      {/* 1. Hero: posizionamento + ritratto del titolare.
-          La foto panoramica (1584×672) è mostrata intera dentro una cornice,
-          senza ritagli sul volto e senza testo sovrapposto. */}
-      <section className="border-b border-grafite-800">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-lime-400">
-            {site.etichetta}
-          </p>
-          <h1 className="mt-6 max-w-4xl text-4xl leading-[1.08] text-avorio-50 sm:text-5xl lg:text-6xl">
-            Porto le imprese più vicine al mercato dell&apos;energia.
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-grafite-200">
-            Aggrego i fabbisogni delle imprese e li metto in relazione con i
-            produttori, seguendo l&apos;approvvigionamento fino alla consegna.
-            Per il gas opero sul PSV; seguo anche contratti, diagnosi ed
-            efficienza energetica.
-          </p>
-          <div className="mt-9 flex flex-wrap gap-3">
-            <CtaLink href="/contatti">Richiedi un primo confronto</CtaLink>
-            <CtaLink href="/acquisto-aggregato" variante="contorno">
-              Scopri l&apos;acquisto aggregato
-            </CtaLink>
+      <section className="hero-engineering border-b border-grafite-800">
+        <div className="hero-content mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-champagne-400">
+              {site.etichetta}
+            </p>
+            <p className="hero-code mt-8 text-[0.68rem] uppercase text-grafite-300">
+              Strategia energetica / 01—03
+            </p>
+            <h1 className="mt-5 max-w-3xl text-4xl leading-[1.06] text-avorio-50 sm:text-5xl lg:text-[4.25rem]">
+              Il costo dell&apos;energia si governa a monte.
+            </h1>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-grafite-200 sm:text-lg">
+              Affianco CEO, CFO e responsabili tecnici nella lettura di
+              approvvigionamenti, contratti e consumi. Dati, profili, condizioni
+              e rischi entrano nello stesso quadro decisionale.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <CtaLink href="/contatti">Apri un confronto</CtaLink>
+              <CtaLink href="#valore" variante="contorno">
+                Leggi il quadro di mercato
+              </CtaLink>
+            </div>
+            <p className="mt-7 max-w-xl border-l border-champagne-400/70 pl-4 text-sm leading-relaxed text-grafite-300">
+              Dalla fornitura elettrica e gas alla valutazione degli interventi
+              di efficienza: una prospettiva tecnica, con attenzione alla
+              stabilità economica e alla decarbonizzazione.
+            </p>
           </div>
-          <figure className="mt-14 border border-grafite-700 bg-grafite-900 p-3 sm:p-4">
-            <Image
-              src="/darkvilla-hero.jpg"
-              alt="Ritratto del consulente energetico"
-              width={1584}
-              height={672}
-              priority
-              sizes="100vw"
-              className="h-auto w-full"
-            />
-            <figcaption className="flex flex-wrap items-baseline justify-between gap-2 px-1 pb-1 pt-3 text-xs uppercase tracking-[0.18em] text-grafite-300">
-              <span>Il consulente</span>
-              <span>{site.posizionamento}</span>
-            </figcaption>
-          </figure>
+
+          <div className="lg:pl-2">
+            <figure className="hero-portrait-frame">
+              <Image
+                src="/darkvilla-hero.jpg"
+                alt="Ritratto del consulente energetico"
+                width={1584}
+                height={672}
+                priority
+                sizes="(max-width: 1024px) 100vw, 45vw"
+              />
+              <figcaption>
+                <span>EnerVilla · Deep Energy</span>
+                <span>Bologna / Italia</span>
+              </figcaption>
+            </figure>
+            <ol className="hero-sequence mt-3" aria-label="Sequenza di lavoro">
+              <li>01 · Profili</li>
+              <li>02 · Rischi</li>
+              <li>03 · Decisioni</li>
+            </ol>
+          </div>
         </div>
       </section>
 
-      {/* 2. Fascia di posizionamento, senza numeri inventati */}
       <Section variante="superficie" compatta>
         <dl className="grid gap-px overflow-hidden border border-grafite-800 sm:grid-cols-3">
           {posizionamento.map((voce) => (
             <div
               key={voce.titolo}
-              className="border-b border-grafite-800 bg-grafite-900 p-6 last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0"
+              className="border-b border-grafite-800 bg-grafite-900 p-5 last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0 sm:p-6"
             >
               <dt className="font-display text-xl text-avorio-50">
                 {voce.titolo}
@@ -133,230 +187,183 @@ export default function HomePage() {
           ))}
         </dl>
       </Section>
-      {/* 3. Perché non basta guardare il prezzo unitario */}
-      <Section>
-        <SectionHeader
-          etichetta="Il punto di partenza"
-          titolo="Il prezzo unitario non racconta tutta la fornitura."
-          introduzione="Guardare soltanto il prezzo al megawattora porta a confrontare offerte che non sono confrontabili. Per capire cosa si sta firmando servono quattro elementi letti insieme."
-        />
 
-        <div className="mt-12 grid gap-px overflow-hidden border border-grafite-700 md:grid-cols-2">
-          {variabiliCosto.map((voce, indice) => (
-            <div key={voce.titolo} className="bg-grafite-900 p-6 sm:p-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-grafite-300">
-                {String(indice + 1).padStart(2, "0")}
-              </p>
-              <h3 className="mt-3 text-xl text-avorio-50">{voce.titolo}</h3>
+      <Section id="valore">
+        <div className="grid gap-7 lg:grid-cols-[1fr_0.72fr] lg:items-end">
+          <SectionHeader
+            etichetta="Valore quantificabile · riferimenti di mercato"
+            titolo="La qualità della decisione comincia dalla qualità dei dati."
+            introduzione="Quattro riferimenti esterni aiutano a leggere il contesto di approvvigionamento, competitività, efficienza e transizione industriale. Non sono risultati attribuiti a EnerVilla né previsioni per una singola impresa."
+          />
+          <p className="technical-label border-l border-champagne-400/70 pl-4 text-[0.66rem] uppercase leading-relaxed text-grafite-300 lg:justify-self-end">
+            Rilevazioni pubblicate 2025—2026
+            <br />
+            Ultimo aggiornamento: 07.10.2026
+          </p>
+        </div>
+
+        <div className="market-grid mt-10">
+          {segnaliMercato.map((segnale, indice) => (
+            <article className="market-card scroll-lift" key={segnale.titolo}>
+              <div className="flex items-start justify-between gap-3">
+                <p className="market-card__value">{segnale.valore}</p>
+                <span className="technical-label pt-1 text-[0.62rem] text-grafite-300">
+                  REF / {String(indice + 1).padStart(2, "0")}
+                </span>
+              </div>
+              <h3 className="mt-5 text-xl text-avorio-50">{segnale.titolo}</h3>
               <p className="mt-3 text-sm leading-relaxed text-grafite-200">
-                {voce.testo}
+                {segnale.testo}
               </p>
-            </div>
+              <p className="technical-label mt-5 text-[0.61rem] uppercase leading-relaxed text-grafite-300">
+                {segnale.periodo}
+              </p>
+              <a
+                className="market-card__source mt-3"
+                href={segnale.url}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                Fonte: {segnale.fonte}
+                <span aria-hidden="true">↗</span>
+              </a>
+            </article>
           ))}
         </div>
 
-        <p className="mt-8 max-w-3xl text-sm leading-relaxed text-grafite-200">
-          Non lavoro su promesse di risultato: lavoro sulla lettura corretta
-          della fornitura, sul confronto tra alternative possibili e sulla
-          chiarezza di quello che viene firmato.
+        <p className="mt-6 max-w-4xl text-xs leading-relaxed text-grafite-300">
+          La Direttiva europea sull&apos;efficienza energetica fissa inoltre un
+          obiettivo UE di riduzione del consumo finale di almeno l&apos;11,7% al
+          2030 rispetto alle proiezioni 2020. È un obiettivo di sistema, non
+          automaticamente il target di una singola impresa. I dati qui sopra
+          sono una fotografia documentata, non un feed di prezzi in tempo reale;
+          i risultati economici si stimano soltanto sulla baseline e sui
+          contratti di ciascuna azienda. {" "}
+          <a
+            href="https://energy.ec.europa.eu/topics/energy-efficiency/energy-efficiency-targets-directive-and-rules/energy-efficiency-targets_en"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="text-avorio-100 underline underline-offset-4 hover:text-champagne-400"
+          >
+            Fonte: Commissione europea, obiettivi di efficienza energetica
+          </a>
+          .
         </p>
       </Section>
 
-      {/* 4. Acquisto elettrico aggregato in quattro passaggi */}
-      <Section variante="chiaro">
+      <Section id="servizi" variante="superficie">
         <SectionHeader
-          tono="chiaro"
-          etichetta="Acquisto aggregato"
-          titolo="Dai consumi reali a un acquisto trattato insieme."
-          introduzione="Fabbisogni piccoli e separati difficilmente ottengono condizioni interessanti. Riuniti, diventano un perimetro che i produttori valutano."
+          etichetta="Tre aree, un solo perimetro decisionale"
+          titolo="Dall&apos;acquisto alla performance degli impianti."
+          introduzione="Le attività si articolano in tre pilastri: approvvigionamento, governo contrattuale del rischio e riduzione strutturale dei consumi. Il perimetro viene definito insieme all&apos;impresa."
         />
 
-        <ol className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          <li>
-            <Card tono="chiaro" titolo="Analisi dei consumi" numero="Passaggio 01">
-              Raccolta e lettura dei dati di consumo dei siti: volumi, profili
-              orari, stagionalità e vincoli tecnici.
-            </Card>
-          </li>
-          <li>
-            <Card tono="chiaro" titolo="Aggregazione dei fabbisogni" numero="Passaggio 02">
-              I consumi di più imprese vengono riuniti in un unico perimetro di
-              acquisto, con regole chiare su volumi e durata.
-            </Card>
-          </li>
-          <li>
-            <Card tono="chiaro" titolo="Confronto e trattativa" numero="Passaggio 03">
-              Confronto tra le proposte dei produttori e trattativa sulle
-              condizioni, con attenzione alla struttura del contratto.
-            </Card>
-          </li>
-          <li>
-            <Card tono="chiaro" titolo="Passaggi di consegna" numero="Passaggio 04">
-              Coordinamento delle attività necessarie perché l&apos;energia
-              elettrica arrivi ai siti nei tempi previsti.
-            </Card>
-          </li>
-        </ol>
-
-        <div className="mt-10">
-          <CtaLink href="/acquisto-aggregato" tono="chiaro">
-            Come funziona l&apos;acquisto aggregato
-          </CtaLink>
-        </div>
-      </Section>
-
-
-      {/* 5. Gas al PSV */}
-      <Section>
-        <div className="grid gap-12 lg:grid-cols-[1fr_0.85fr]">
-          <div>
-            <SectionHeader
-              etichetta="Gas"
-              titolo="Approvvigionamento del gas con operatività sul PSV."
-              introduzione="Per le imprese che consumano gas posso operare sul PSV per conto del cliente: il punto di scambio virtuale dove il gas viene negoziato prima di arrivare al contatore."
-            />
-            <ul className="mt-8 space-y-4 text-sm leading-relaxed text-grafite-200">
-              <li className="border-l-2 border-verde-600 pl-4">
-                La gestione sul PSV riguarda volume e tempi, con riferimento
-                alle quotazioni di mercato.
-              </li>
-              <li className="border-l-2 border-verde-600 pl-4">
-                Il risultato dipende dal profilo di consumo, dall&apos;orizzonte
-                scelto e dalla situazione di mercato nel momento in cui si
-                decide.
-              </li>
-              <li className="border-l-2 border-verde-600 pl-4">
-                È un&apos;attività con una componente di rischio: va impostata
-                insieme al cliente e in modo trasparente, non presentata come
-                una garanzia di prezzo.
-              </li>
-            </ul>
-            <div className="mt-8">
-              <CtaLink href="/gas-psv" variante="contorno">
-                Come viene impostato il servizio gas
-              </CtaLink>
+        <div className="service-grid mt-12">
+          <article className="service-card service-card--supply scroll-lift">
+            <p className="service-card__index">01 / APPROVVIGIONAMENTO</p>
+            <h3 className="mt-7 max-w-xl text-3xl leading-tight text-avorio-50 sm:text-4xl">
+              Energia acquistata secondo il profilo reale dei siti.
+            </h3>
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-grafite-200 sm:text-base">
+              Aggregazione dei fabbisogni elettrici e operatività sul PSV per il
+              gas. Volumi, profili e tempi di acquisto vengono letti prima di
+              confrontare le condizioni di fornitura.
+            </p>
+            <div className="service-card__tags mt-7">
+              <span>Elettricità aggregata</span>
+              <span>Gas al PSV</span>
             </div>
-          </div>
+            <div className="mt-auto flex flex-wrap gap-x-7 gap-y-2 pt-8">
+              <Link className="service-card__link" href="/acquisto-aggregato">
+                Acquisto elettrico <span className="service-card__arrow" aria-hidden="true">→</span>
+              </Link>
+              <Link className="service-card__link" href="/gas-psv">
+                Gas al PSV <span className="service-card__arrow" aria-hidden="true">→</span>
+              </Link>
+            </div>
+          </article>
 
-          <aside className="border border-grafite-700 bg-grafite-900 p-6 sm:p-8">
-            <h3 className="text-lg text-avorio-50">Vocabolario essenziale</h3>
-            <dl className="mt-5 space-y-4 text-sm leading-relaxed text-grafite-200">
-              <div>
-                <dt className="font-semibold text-avorio-100">PSV</dt>
-                <dd>
-                  Punto di scambio virtuale: il riferimento dove il gas viene
-                  negoziato sul mercato all&apos;ingrosso italiano.
-                </dd>
-              </div>
-              <div>
-                <dt className="font-semibold text-avorio-100">
-                  Profilo di consumo
-                </dt>
-                <dd>
-                  Come il consumo si distribuisce nell&apos;anno e nelle ore,
-                  non solo quanto è grande in totale.
-                </dd>
-              </div>
-              <div>
-                <dt className="font-semibold text-avorio-100">Consegna</dt>
-                <dd>
-                  L&apos;insieme dei passaggi tecnici e amministrativi che
-                  rendono operativa la fornitura sui siti.
-                </dd>
-              </div>
-            </dl>
-          </aside>
+          <article className="service-card service-card--contracts scroll-lift">
+            <p className="service-card__index">02 / CONTRATTI E RISCHIO</p>
+            <h3 className="mt-5 text-2xl leading-tight text-avorio-50">
+              Condizioni leggibili prima della firma.
+            </h3>
+            <p className="mt-4 text-sm leading-relaxed text-grafite-200">
+              Indicizzazioni, scadenze, rinnovi, tolleranze e clausole di uscita
+              diventano elementi confrontabili. L&apos;attenzione è sul costo
+              complessivo e sull&apos;esposizione, non sul solo prezzo unitario.
+            </p>
+            <div className="mt-auto pt-6">
+              <Link className="service-card__link" href="/servizi">
+                Analisi contrattuale <span className="service-card__arrow" aria-hidden="true">→</span>
+              </Link>
+            </div>
+          </article>
+
+          <article className="service-card service-card--performance scroll-lift">
+            <p className="service-card__index">03 / EFFICIENZA E DECARBONIZZAZIONE</p>
+            <h3 className="mt-5 text-2xl leading-tight text-avorio-50">
+              Consumi misurati. Interventi prioritizzati.
+            </h3>
+            <p className="mt-4 text-sm leading-relaxed text-grafite-200">
+              Dalla diagnosi alle ipotesi di intervento, con una baseline chiara
+              e indicatori coerenti con la produzione. I percorsi EaaS vengono
+              valutati in base a perimetro, responsabilità e verifica dei
+              risultati.
+            </p>
+            <div className="mt-auto flex flex-wrap gap-x-7 gap-y-2 pt-6">
+              <Link className="service-card__link" href="/servizi">
+                Efficienza energetica <span className="service-card__arrow" aria-hidden="true">→</span>
+              </Link>
+              <Link className="service-card__link" href="/energia-come-servizio">
+                Energia come servizio <span className="service-card__arrow" aria-hidden="true">→</span>
+              </Link>
+            </div>
+          </article>
         </div>
       </Section>
 
-      {/* 6. Servizi alle imprese */}
-      <Section variante="superficie">
+      <Section id="lettura">
         <SectionHeader
-          etichetta="Aree di lavoro"
-          titolo="Contrattualistica, diagnosi, efficienza."
+          etichetta="Lettura del costo e del rischio"
+          titolo="Il prezzo è una variabile. Il contratto è il sistema."
+          introduzione="Confrontare offerte significa normalizzare perimetro, profilo e condizioni. Quattro piani di lettura aiutano CFO, Operations e funzione energia a decidere sulla stessa base."
         />
-        <div className="mt-12 grid gap-px overflow-hidden border border-grafite-800 md:grid-cols-3">
-          <div className="border-b border-grafite-800 bg-grafite-900 p-6 sm:p-8 md:border-b-0 md:border-r">
-            <h3 className="text-xl text-avorio-50">Contrattualistica</h3>
-            <p className="mt-3 text-sm leading-relaxed text-grafite-300">
-              Analisi e gestione dei contratti di fornitura: struttura,
-              clausole, durata, condizioni di uscita e coerenza con il profilo
-              di consumo dei siti.
-            </p>
-          </div>
-          <div className="border-b border-grafite-800 bg-grafite-900 p-6 sm:p-8 md:border-b-0 md:border-r">
-            <h3 className="text-xl text-avorio-50">Diagnosi energetiche</h3>
-            <p className="mt-3 text-sm leading-relaxed text-grafite-300">
-              Lettura sistematica dei consumi e degli impianti, per capire dove
-              si concentra l&apos;energia e quali interventi conviene valutare.
-            </p>
-          </div>
-          <div className="bg-grafite-900 p-6 sm:p-8">
-            <h3 className="text-xl text-avorio-50">Efficienza energetica</h3>
-            <p className="mt-3 text-sm leading-relaxed text-grafite-300">
-              Supporto sulle iniziative di efficienza: priorità, coerenza con
-              l&apos;attività produttiva e verifica dei risultati nel tempo.
-            </p>
-          </div>
+
+        <div className="mt-10 grid gap-px overflow-hidden border border-grafite-700 sm:grid-cols-2">
+          {variabiliCosto.map((voce, indice) => (
+            <article
+              className="scroll-lift bg-grafite-900 p-6 sm:p-8"
+              key={voce.titolo}
+            >
+              <p className="technical-label text-xs text-champagne-400">
+                DIMENSIONE / {String(indice + 1).padStart(2, "0")}
+              </p>
+              <h3 className="mt-4 text-2xl text-avorio-50">{voce.titolo}</h3>
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-grafite-200">
+                {voce.testo}
+              </p>
+            </article>
+          ))}
         </div>
-        <div className="mt-10 flex flex-wrap gap-3">
-          <CtaLink href="/servizi">
-            Vai ai servizi
-          </CtaLink>
-          <CtaLink href="/energia-come-servizio" variante="contorno">
-            Energia come servizio (EaaS)
-          </CtaLink>
-        </div>
+        <p className="mt-7 max-w-3xl text-sm leading-relaxed text-grafite-300">
+          L&apos;analisi non elimina la volatilità e non sostituisce le decisioni
+          del management. Rende esplicite le alternative, le ipotesi e i rischi
+          assunti dall&apos;impresa; quando i dati lo consentono, riporta la spesa
+          anche al costo energetico per unità prodotta.
+        </p>
       </Section>
 
-      {/* 6b. Energia come servizio (EaaS): inserto chiaro per spezzare la
-          sequenza scura e segnalare un tema distinto, con pagina dedicata. */}
-      <Section variante="chiaro" compatta>
+      <Section id="metodo" variante="superficie">
         <SectionHeader
-          tono="chiaro"
-          etichetta="Energy as a Service"
-          titolo="Quando l'offerta non è più solo un volume: i servizi dentro il contratto."
-          introduzione="Nell'EaaS l'impresa non compra soltanto energia: compra consulenza, impianti, monitoraggio, in cambio di un canone o di una quota dei risparmi. Il modello è solido quando il contratto lo è: prima di firmare servono baseline documentata, perimetro esplicito e rischi assegnati."
-        />
-        <ul className="mt-8 space-y-4 text-sm leading-relaxed text-grafite-700">
-          <li className="border-l-2 border-verde-700 pl-4">
-            Tre strutture tipiche — abbonamento, contratto a prestazione,
-            fornitura gestita — spostano rischi e pagamenti in modo diverso
-            tra le parti.
-          </li>
-          <li className="border-l-2 border-verde-700 pl-4">
-            Il valore dipende da quattro verifiche preliminari: baseline dei
-            consumi, perimetro dei servizi, allocazione dei rischi, condizioni
-            di uscita.
-          </li>
-          <li className="border-l-2 border-verde-700 pl-4">
-            Il mio ruolo su questi percorsi è la parte di analisi e
-            contrattualistica, non la vendita di impianti: gli interventi
-            tecnici restano a chi li esegue.
-          </li>
-        </ul>
-        <div className="mt-8">
-          <CtaLink
-            href="/energia-come-servizio"
-            variante="contorno"
-            tono="chiaro"
-          >
-            Che cosa è l&apos;energia come servizio
-          </CtaLink>
-        </div>
-      </Section>
-
-      {/* 7. Metodo di lavoro */}
-      <Section variante="superficie">
-        <SectionHeader
-          etichetta="Metodo"
-          titolo="Dati, analisi, opzioni, decisione."
-          introduzione="Quattro fasi verificabili, senza scorciatoie: prima si raccolgono e si leggono i dati, poi si costruiscono le alternative, infine decide l'impresa."
+          etichetta="Metodo di lavoro"
+          titolo="Quattro passaggi, una decisione tracciabile."
+          introduzione="Dal dato di partenza alla verifica: ogni fase produce un output che può essere discusso con amministrazione, direzione e responsabili di stabilimento."
         />
 
-        <ol className="mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
-          {metodo.map((fase) => (
-            <li key={fase.titolo}>
+        <ol className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+          {fasiMetodo.map((fase) => (
+            <li className="scroll-lift" key={fase.numero}>
               <Card titolo={fase.titolo} numero={fase.numero}>
                 {fase.testo}
               </Card>
@@ -365,22 +372,20 @@ export default function HomePage() {
         </ol>
       </Section>
 
-      {/* 8. Chiusura verso pagine reali */}
       <Section variante="chiaro" compatta>
         <Chiusura
           tono="chiaro"
-          titolo="Da dove si parte, in pratica."
-          testo="Se l'impresa acquista energia elettrica per più siti, il punto di partenza è l'acquisto aggregato. Se il consumo è prevalentemente gas, il punto di partenza è il PSV. Per ogni area di lavoro c'è una pagina con quello che comprende."
-          primaria={{ href: "/contatti", etichetta: "Richiedi un primo confronto" }}
+          titolo="Una valutazione utile comincia da un perimetro misurabile."
+          testo="Per il primo confronto sono sufficienti i siti coinvolti, i consumi disponibili, le scadenze contrattuali e la decisione da prendere. Il quadro si costruisce sui dati dell'impresa, non su percentuali preconfezionate."
+          primaria={{ href: "/contatti", etichetta: "Definisci il perimetro" }}
           secondari={[
-            { href: "/acquisto-aggregato", etichetta: "Acquisto aggregato" },
+            { href: "/acquisto-aggregato", etichetta: "Elettricità aggregata" },
             { href: "/gas-psv", etichetta: "Gas al PSV" },
-            { href: "/energia-come-servizio", etichetta: "Energia come servizio" },
             { href: "/servizi", etichetta: "Servizi alle imprese" },
+            { href: "/chi-sono", etichetta: "Profilo professionale" },
           ]}
         />
       </Section>
     </>
   );
 }
-

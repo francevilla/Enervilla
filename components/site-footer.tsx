@@ -34,7 +34,7 @@ export function SiteFooter() {
             <p className="mt-4 text-sm">
               <a
                 href={`mailto:${recapiti.email}`}
-                className="text-avorio-100 underline-offset-4 hover:text-lime-400 hover:underline"
+                className="text-avorio-100 underline-offset-4 hover:text-champagne-400 hover:underline"
               >
                 {recapiti.email}
               </a>
@@ -44,7 +44,7 @@ export function SiteFooter() {
             <p className="mt-2 text-sm">
               <a
                 href={`tel:${recapiti.telefono.replace(/[^+\d]/g, "")}`}
-                className="text-avorio-100 underline-offset-4 hover:text-lime-400 hover:underline"
+                className="text-avorio-100 underline-offset-4 hover:text-champagne-400 hover:underline"
               >
                 {recapiti.telefono}
               </a>
@@ -56,7 +56,7 @@ export function SiteFooter() {
                 href={recapiti.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-avorio-100 underline-offset-4 hover:text-lime-400 hover:underline"
+                className="text-avorio-100 underline-offset-4 hover:text-champagne-400 hover:underline"
               >
                 LinkedIn
               </a>
@@ -75,8 +75,8 @@ export function SiteFooter() {
                   href={voce.href}
                   className={
                     voce.href === percorsoContatti
-                      ? "text-sm font-semibold text-avorio-50 underline-offset-4 hover:text-lime-400 hover:underline"
-                      : "text-sm text-avorio-100 underline-offset-4 hover:text-lime-400 hover:underline"
+                      ? "text-sm font-semibold text-avorio-50 underline-offset-4 hover:text-champagne-400 hover:underline"
+                      : "text-sm text-avorio-100 underline-offset-4 hover:text-champagne-400 hover:underline"
                   }
                 >
                   {voce.etichetta}

@@ -25,6 +25,15 @@ operativo, tracciabile e rieseguibile.
    codice, ogni scelta estetica deve essere motivata nel piano (palette, tipo,
    layout, motion).
 3. **Vincoli del sito non negoziabili** (da `PROJECT_BRIEF.md`): nessun dato
-   inventato, palette grafite/avorio/verde/lime, font di sistema, nessuna
-   dipendenza di rete, nessuna animazione decorativa, CTA solo verso pagine reali.
+   inventato, palette grafite/avorio/verde/champagne, font di sistema, nessuna
+   dipendenza di rete, motion leggero con `prefers-reduced-motion`, CTA solo verso pagine reali.
 4. Dopo l'implementazione: `npm run lint`, `npx tsc --noEmit`, `npm run build`.
+
+
+### Revisione 7 ottobre 2026
+
+Il workflow ora usa la direzione C-Level/Quiet Engineering documentata in
+[`docs/brief-direzione-creativa-c-level.md`](brief-direzione-creativa-c-level.md):
+champagne al posto del lime, gradiente ambientale lento, reveal scroll CSS
+progressivo e benchmark esterni datati. La revisione mantiene il vincolo di
+nessun risultato aziendale inventato.

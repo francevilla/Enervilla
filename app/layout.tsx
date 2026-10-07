@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     template: "%s | EnerVilla · Deep Energy",
   },
   description:
-    "Aggregazione dei fabbisogni energetici delle imprese, relazione diretta con i produttori, contrattualistica, diagnosi energetiche ed efficienza. Base a Bologna, operatività nazionale.",
+    "Consulenza energetica per imprese: approvvigionamento elettrico aggregato, gas al PSV, contratti, rischio energetico ed efficienza. Base a Bologna, operatività nazionale.",
   applicationName: "EnerVilla · Deep Energy",
   alternates: {
     canonical: "/",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     siteName: "EnerVilla · Deep Energy",
     title: "Consulenza energetica per imprese · Bologna | EnerVilla · Deep Energy",
     description:
-      "Aggrego i fabbisogni delle imprese, le metto in relazione con i produttori e seguo i passaggi necessari all'approvvigionamento e alla consegna dell'energia.",
+      "Affianco CEO, CFO e responsabili tecnici nelle decisioni su approvvigionamento elettrico e gas, contratti, rischio energetico ed efficienza industriale.",
     // L'immagine è generata da app/opengraph-image.tsx; dichiararla qui rende
     // l'anteprima affidabile anche su piattaforme che leggono solo i tag OG.
     images: [
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Consulenza energetica per imprese · Bologna | EnerVilla · Deep Energy",
     description:
-      "Aggregazione dei fabbisogni, relazione con i produttori, contrattualistica, diagnosi ed efficienza energetica. Gas gestito sul PSV.",
+      "Approvvigionamento elettrico aggregato, gas al PSV, contrattualistica, rischio energetico ed efficienza industriale.",
     images: ["/opengraph-image"],
   },
   robots: {
@@ -93,7 +93,7 @@ export default function RootLayout({
         />
         <a
           href="#contenuto"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-lime-400 focus:px-4 focus:py-2 focus:text-grafite-950"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-champagne-400 focus:px-4 focus:py-2 focus:text-grafite-950"
         >
           Vai al contenuto principale
         </a>

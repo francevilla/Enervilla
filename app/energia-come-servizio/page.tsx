@@ -336,7 +336,7 @@ export default function EnergiaComeServizioPage() {
                 href={voce.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-medium text-verde-300 underline underline-offset-4 hover:text-lime-400"
+                className="font-medium text-verde-300 underline underline-offset-4 hover:text-champagne-400"
               >
                 {voce.titolo}
                 <span aria-hidden="true"> ↗</span>

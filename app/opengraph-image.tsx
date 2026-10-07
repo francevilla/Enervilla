@@ -4,8 +4,8 @@ import { marchio, site, tappaDettagli } from "@/lib/site";
 /**
  * Immagine di anteprima per le condivisioni sui social.
  * È disegnata con il codice (nessuna fotografia, nessun dato non verificato):
- * sfondo grafite, titolo in avorio e accento lime. Gli hex sono quelli
- * calcolati dai token oklch di app/globals.css.
+ * sfondo grafite, titolo in avorio e accento champagne, in coerenza con
+ * i token oklch di app/globals.css.
  */
 export const alt = `${marchio.lockup} — ${site.nome}`;
 export const size = { width: 1200, height: 630 };
@@ -15,7 +15,7 @@ const grafite = "#060e19"; // grafite-950
 const avorio = "#f2f0ea"; // avorio-50
 const grafiteChiaro = "#9a9fa6"; // grafite-300
 const verde = "#3f9b65"; // verde-600
-const lime = "#b8e948"; // lime-400
+const champagne = "#d7b174"; // champagne-400
 
 export default function OpengraphImage() {
   return new ImageResponse(
@@ -37,7 +37,7 @@ export default function OpengraphImage() {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "18px" }}>
-          <div style={{ width: 22, height: 22, backgroundColor: lime }} />
+          <div style={{ width: 22, height: 22, backgroundColor: champagne }} />
           <div
             style={{
               fontSize: 26,
@@ -79,7 +79,7 @@ export default function OpengraphImage() {
           <div style={{ fontSize: 28, color: avorio }}>
             {tappaDettagli[2].titolo}
           </div>
-          <div style={{ width: 28, height: 2, backgroundColor: lime }} />
+          <div style={{ width: 28, height: 2, backgroundColor: champagne }} />
           <div style={{ fontSize: 28, color: avorio }}>
             {tappaDettagli[3].titolo}
           </div>

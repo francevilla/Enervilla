@@ -171,3 +171,29 @@ template `%s | EnerVilla · Deep Energy` nelle interne), `applicationName`,
 OG (`siteName`/title) e JSON-LD (`name` = lockup, `alternateName` =
 dicitura). Favicon 2×2 invariata.
 Restano: verifica UIBM/EUIPO e registrazione domini.
+
+---
+
+## 9. Revisione della direzione creativa — 7 ottobre 2026
+
+La richiesta C-Level/Quiet Luxury aggiorna il sistema visivo e la homepage. Per
+palette, animazione, griglia e metriche pubblicate, questa revisione **sostituisce
+le scelte precedenti** descritte nei §§2, 5 e 6 (in particolare lime come accento
+e assenza di motion). I dettagli e il copy completo sono in
+[`docs/brief-direzione-creativa-c-level.md`](brief-direzione-creativa-c-level.md).
+
+- Accento principale aggiornato da lime a champagne (`#d7b174` circa), con
+  contrasto misurato di circa 9,6:1 su `grafite-950`.
+- Gradiente champagne a bassa opacità, animato in 54 secondi; `prefers-reduced-motion`
+  lo disattiva.
+- Servizi in griglia asimmetrica 7/5; reveal allo scroll solo dove supportato,
+  con contenuto sempre visibile nel fallback.
+- Indicatori macroeconomici pubblici pubblicabili solo con fonte, periodo,
+  perimetro e disclaimer. Non sono risultati del consulente e non costituiscono
+  un feed real-time; vedi la policy delle fonti nel documento creativo.
+- La fotografia del titolare resta separata dal testo e non viene coperta da
+  sovrapposizioni.
+
+Il resto delle regole di progetto resta valido: nessun recapito, caso cliente,
+risparmio aziendale o dato legale viene inventato; le CTA puntano a pagine reali;
+le preferenze di accessibilità prevalgono sugli effetti visivi.
