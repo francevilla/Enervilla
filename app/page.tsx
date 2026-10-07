@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { CtaLink } from "@/components/cta-link";
+import { LeadCaptureForm } from "@/components/lead-capture-form";
 import { Card, Chiusura, Section, SectionHeader } from "@/components/section";
+import { getLeadCaptureConfig } from "@/lib/lead-config";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -115,7 +117,11 @@ const fasiMetodo = [
   },
 ];
 
+export const dynamic = "force-dynamic";
+
 export default function HomePage() {
+  const configurazioneLead = getLeadCaptureConfig();
+
   return (
     <>
       <section className="hero-engineering border-b border-grafite-800">
@@ -136,7 +142,7 @@ export default function HomePage() {
               e rischi entrano nello stesso quadro decisionale.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <CtaLink href="/contatti">Apri un confronto</CtaLink>
+              <CtaLink href="#richiesta">Descrivi il tuo contesto</CtaLink>
               <CtaLink href="#valore" variante="contorno">
                 Leggi il quadro di mercato
               </CtaLink>
@@ -377,7 +383,7 @@ export default function HomePage() {
           tono="chiaro"
           titolo="Una valutazione utile comincia da un perimetro misurabile."
           testo="Per il primo confronto sono sufficienti i siti coinvolti, i consumi disponibili, le scadenze contrattuali e la decisione da prendere. Il quadro si costruisce sui dati dell'impresa, non su percentuali preconfezionate."
-          primaria={{ href: "/contatti", etichetta: "Definisci il perimetro" }}
+          primaria={{ href: "#richiesta", etichetta: "Descrivi il tuo contesto" }}
           secondari={[
             { href: "/acquisto-aggregato", etichetta: "Elettricità aggregata" },
             { href: "/gas-psv", etichetta: "Gas al PSV" },
@@ -385,6 +391,59 @@ export default function HomePage() {
             { href: "/chi-sono", etichetta: "Profilo professionale" },
           ]}
         />
+      </Section>
+
+      <Section id="richiesta" variante="superficie">
+        <div className="grid gap-10 xl:grid-cols-[0.76fr_1.24fr] xl:items-start xl:gap-14">
+          <div className="xl:sticky xl:top-32">
+            <p className="technical-label text-[0.66rem] uppercase text-champagne-400">
+              Primo inquadramento · Energia per imprese
+            </p>
+            <h2 className="mt-5 max-w-xl text-4xl leading-[1.08] text-avorio-50 sm:text-5xl">
+              Parti dal profilo dei tuoi siti.
+            </h2>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-grafite-200">
+              Un breve quadro di azienda, ruolo, consumi e priorità aiuta a
+              capire quale confronto ha senso avviare. Non è un preventivo
+              automatico e non richiede documenti in questa fase.
+            </p>
+            <ol className="lead-context__steps">
+              <li>
+                <span>01</span>
+                <div>
+                  <h3>Chi decide</h3>
+                  <p>Ruolo, azienda e settore danno contesto alla richiesta.</p>
+                </div>
+              </li>
+              <li>
+                <span>02</span>
+                <div>
+                  <h3>Qual è il perimetro</h3>
+                  <p>Siti e fasce di consumo sono indicativi: puoi lasciare i dati non disponibili.</p>
+                </div>
+              </li>
+              <li>
+                <span>03</span>
+                <div>
+                  <h3>Qual è la priorità</h3>
+                  <p>Ambito e orizzonte aiutano a orientare il primo ricontatto.</p>
+                </div>
+              </li>
+            </ol>
+            <p className="mt-7 max-w-xl border-l border-champagne-400/70 pl-4 text-sm leading-relaxed text-grafite-300">
+              Non inserire POD, PDR, bollette o informazioni riservate. Gli
+              eventuali documenti si condividono in seguito su un canale
+              concordato.
+            </p>
+          </div>
+
+          <LeadCaptureForm
+            attiva={configurazioneLead.attiva}
+            privacyUrl={configurazioneLead.privacyUrl}
+            accessKey={configurazioneLead.accessKey}
+            idPrefix="home-lead"
+          />
+        </div>
       </Section>
     </>
   );

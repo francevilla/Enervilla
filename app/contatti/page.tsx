@@ -1,225 +1,161 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CtaLink } from "@/components/cta-link";
-import {
-  Chiusura,
-  PageHero,
-  Section,
-  SectionHeader,
-} from "@/components/section";
-import { recapiti } from "@/lib/site";
+import { LeadCaptureForm } from "@/components/lead-capture-form";
+import { PageHero, Section, SectionHeader } from "@/components/section";
+import { getLeadCaptureConfig } from "@/lib/lead-config";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Contatti",
+  title: "Primo confronto",
   description:
-    "Avvia un confronto su approvvigionamento elettrico e gas, contratti, profili di consumo o progetti di efficienza industriale. Perimetro, dati e scadenze sono il punto di partenza.",
+    "Racconta il profilo della tua impresa, i siti coinvolti, i consumi indicativi e la decisione energetica da prendere. Una richiesta strutturata per un primo inquadramento.",
   alternates: {
     canonical: "/contatti",
   },
 };
 
-const informazioniUtili = [
+const passaggiDopoInvio = [
   {
-    titolo: "Perimetro dei siti",
+    numero: "01 / PERIMETRO",
+    titolo: "Il contesto viene letto insieme alla richiesta.",
     testo:
-      "Quanti stabilimenti sono coinvolti e quali POD elettrici o PDR gas rientrano nella valutazione.",
+      "Ruolo, azienda, siti, ambito e orizzonte aiutano a capire quali informazioni sono già disponibili e quali mancano.",
   },
   {
-    titolo: "Consumi disponibili",
+    numero: "02 / INQUADRAMENTO",
+    titolo: "Nessuna offerta automatica.",
     testo:
-      "Volumi annui o mensili, profili orari se disponibili, bollette recenti e principali stagionalità produttive.",
+      "Il modulo non calcola prezzi o risparmi: serve a orientare il primo confronto sui temi pertinenti per l'impresa.",
   },
   {
-    titolo: "Contratti e scadenze",
+    numero: "03 / DOCUMENTI",
+    titolo: "I file si condividono in un secondo momento.",
     testo:
-      "Fornitore, formula di prezzo, durata e finestre di rinnovo. Anche una sola scadenza può definire il calendario delle opzioni.",
-  },
-  {
-    titolo: "Decisione da prendere",
-    testo:
-      "Rinegoziare, acquistare, leggere un'esposizione, ridurre i consumi o valutare un modello di servizio: una domanda circoscritta orienta l'analisi.",
+      "Non caricare bollette, contratti, POD o PDR. Se necessari, i documenti verranno richiesti attraverso un canale concordato.",
   },
 ];
 
+const pagineServizio = [
+  { href: "/acquisto-aggregato", etichetta: "Acquisto elettrico aggregato" },
+  { href: "/gas-psv", etichetta: "Gas al PSV" },
+  { href: "/servizi", etichetta: "Contratti ed efficienza" },
+  { href: "/energia-come-servizio", etichetta: "Energia come servizio" },
+];
+
 export default function ContattiPage() {
-  const nessunRecapito =
-    !recapiti.email && !recapiti.telefono && !recapiti.linkedin;
+  const configurazioneLead = getLeadCaptureConfig();
 
   return (
     <>
       <PageHero
-        etichetta="Contatti · Primo confronto"
-        titolo="Una valutazione utile comincia da un perimetro chiaro."
-        introduzione="Se stai valutando una fornitura, rivedendo un contratto o impostando un percorso di efficienza, il primo passaggio è mettere a fuoco siti, consumi, scadenze e vincoli produttivi. Non serve una presentazione: bastano i dati disponibili e la decisione da prendere."
+        etichetta="Richiesta · Primo inquadramento"
+        titolo="Un confronto utile parte dal profilo dell'impresa."
+        introduzione="Indica chi sei, quanti siti sono coinvolti, quali temi vuoi affrontare e in che tempi. Le fasce di consumo sono indicative: bastano i dati che hai già, senza allegare documenti o condividere informazioni riservate."
       >
-        {recapiti.email ? (
-          <CtaLink href={`mailto:${recapiti.email}`}>
-            Scrivi a {recapiti.email}
-          </CtaLink>
-        ) : null}
+        <CtaLink href="#richiesta">Compila il profilo aziendale</CtaLink>
       </PageHero>
 
-      {nessunRecapito ? (
-        <Section variante="superficie">
-          <div className="border border-grafite-700 bg-grafite-900 p-6 sm:p-8">
-            <p className="technical-label text-xs uppercase text-champagne-400">
-              Canale diretto
+      <Section id="richiesta" variante="superficie">
+        <div className="grid gap-10 xl:grid-cols-[0.76fr_1.24fr] xl:items-start xl:gap-14">
+          <div className="xl:sticky xl:top-32">
+            <p className="technical-label text-[0.66rem] uppercase text-champagne-400">
+              Richiesta strutturata / B2B
             </p>
-            <h2 className="mt-4 text-2xl text-avorio-50">
-              Recapiti in fase di conferma.
+            <h2 className="mt-5 max-w-xl text-4xl leading-[1.08] text-avorio-50 sm:text-5xl">
+              Poche informazioni, quelle che orientano.
             </h2>
-            <p className="mt-4 max-w-3xl text-sm leading-relaxed text-grafite-200">
-              Email, telefono e profili professionali verranno pubblicati solo
-              dopo la conferma del titolare. Non utilizziamo moduli dimostrativi
-              o recapiti provvisori. Nel frattempo, le pagine di servizio
-              chiariscono il perimetro delle attività e i passaggi previsti.
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-grafite-200">
+              Le risposte servono a capire se il tema è approvvigionamento,
+              rischio contrattuale o performance energetica e quale perimetro
+              considerare nel primo scambio.
+            </p>
+            <ol className="lead-context__steps">
+              <li>
+                <span>01</span>
+                <div>
+                  <h3>Profilo</h3>
+                  <p>Ruolo, settore e numero di siti coinvolti.</p>
+                </div>
+              </li>
+              <li>
+                <span>02</span>
+                <div>
+                  <h3>Priorità</h3>
+                  <p>Area di interesse, fasce energetiche indicative e tempistica.</p>
+                </div>
+              </li>
+              <li>
+                <span>03</span>
+                <div>
+                  <h3>Primo inquadramento</h3>
+                  <p>Nessun calcolo automatico, promessa di risparmio o richiesta di allegati.</p>
+                </div>
+              </li>
+            </ol>
+            <p className="mt-7 max-w-xl border-l border-champagne-400/70 pl-4 text-sm leading-relaxed text-grafite-300">
+              Le fasce di consumo non sono soglie di accesso. Se non conosci un
+              dato, puoi lasciarlo non indicato; il form non richiede POD, PDR
+              o documenti di fornitura.
             </p>
           </div>
-        </Section>
-      ) : (
-        <Section variante="superficie">
-          <dl className="grid gap-px overflow-hidden border border-grafite-700 sm:grid-cols-3">
-            {recapiti.email ? (
-              <div className="bg-grafite-900 p-6">
-                <dt className="text-xs font-semibold uppercase tracking-[0.2em] text-grafite-300">
-                  Email
-                </dt>
-                <dd className="mt-3">
-                  <a
-                    href={`mailto:${recapiti.email}`}
-                    className="break-all font-medium text-verde-300 underline underline-offset-4 hover:text-champagne-400"
-                  >
-                    {recapiti.email}
-                  </a>
-                </dd>
-              </div>
-            ) : null}
-            {recapiti.telefono ? (
-              <div className="bg-grafite-900 p-6">
-                <dt className="text-xs font-semibold uppercase tracking-[0.2em] text-grafite-300">
-                  Telefono
-                </dt>
-                <dd className="mt-3">
-                  <a
-                    href={`tel:${recapiti.telefono.replace(/[^+\d]/g, "")}`}
-                    className="font-medium text-verde-300 underline underline-offset-4 hover:text-champagne-400"
-                  >
-                    {recapiti.telefono}
-                  </a>
-                </dd>
-              </div>
-            ) : null}
-            {recapiti.linkedin ? (
-              <div className="bg-grafite-900 p-6">
-                <dt className="text-xs font-semibold uppercase tracking-[0.2em] text-grafite-300">
-                  LinkedIn
-                </dt>
-                <dd className="mt-3">
-                  <a
-                    href={recapiti.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-medium text-verde-300 underline underline-offset-4 hover:text-champagne-400"
-                  >
-                    Profilo professionale
-                  </a>
-                </dd>
-              </div>
-            ) : null}
-          </dl>
-        </Section>
-      )}
 
-      <Section id="primo-confronto">
+          <LeadCaptureForm
+            attiva={configurazioneLead.attiva}
+            privacyUrl={configurazioneLead.privacyUrl}
+            accessKey={configurazioneLead.accessKey}
+            idPrefix="contatti-lead"
+          />
+        </div>
+      </Section>
+
+      <Section id="dopo-invio">
         <SectionHeader
-          etichetta="Preparare il confronto"
-          titolo="Poche informazioni, ma quelle giuste."
-          introduzione="Un primo esame può partire dai documenti già disponibili. L'obiettivo non è formulare un'offerta al buio: è capire il perimetro, i tempi e la domanda tecnica o economica da risolvere."
+          etichetta="Dopo l'invio"
+          titolo="La richiesta diventa un punto di partenza, non un'offerta al buio."
+          introduzione="Le informazioni raccolte sono essenziali per circoscrivere la domanda. Ogni analisi successiva dipende da dati e condizioni effettivamente disponibili."
         />
 
-        <ol className="mt-10 grid gap-px overflow-hidden border border-grafite-700 sm:grid-cols-2">
-          {informazioniUtili.map((voce, indice) => (
-            <li
-              key={voce.titolo}
-              className="bg-grafite-900 p-6 sm:p-8"
-            >
-              <p className="technical-label text-xs text-champagne-400">
-                PASSAGGIO / {String(indice + 1).padStart(2, "0")}
+        <ol className="mt-10 grid gap-px overflow-hidden border border-grafite-700 md:grid-cols-3">
+          {passaggiDopoInvio.map((passaggio) => (
+            <li className="bg-grafite-900 p-6 sm:p-7" key={passaggio.numero}>
+              <p className="technical-label text-[0.63rem] text-champagne-400">
+                {passaggio.numero}
               </p>
-              <h3 className="mt-4 text-xl text-avorio-50">{voce.titolo}</h3>
+              <h3 className="mt-4 text-xl text-avorio-50">
+                {passaggio.titolo}
+              </h3>
               <p className="mt-3 text-sm leading-relaxed text-grafite-200">
-                {voce.testo}
+                {passaggio.testo}
               </p>
             </li>
           ))}
         </ol>
-
-        <p className="mt-7 max-w-3xl border-l border-champagne-400/70 pl-4 text-sm leading-relaxed text-grafite-300">
-          Per tutelare i dati commerciali, non inviare bollette o documenti
-          riservati attraverso canali non concordati. L&apos;informativa privacy
-          e i riferimenti legali devono essere pubblicati prima di raccogliere
-          dati personali tramite il sito.
-        </p>
       </Section>
 
       <Section variante="chiaro" compatta>
-        <Chiusura
+        <SectionHeader
           tono="chiaro"
-          titolo="Prima del contatto, inquadra la decisione."
-          testo="Elettricità, gas, contratto o efficienza: ogni percorso ha una pagina dedicata con perimetro, passaggi e limiti esplicitati."
-          primaria={{
-            href: "/acquisto-aggregato",
-            etichetta: "Approfondisci l'approvvigionamento",
-          }}
-          secondari={[
-            { href: "/gas-psv", etichetta: "Gas al PSV" },
-            { href: "/servizi", etichetta: "Servizi alle imprese" },
-            { href: "/energia-come-servizio", etichetta: "Energia come servizio" },
-            { href: "/chi-sono", etichetta: "Profilo professionale" },
-          ]}
+          etichetta="Approfondimenti"
+          titolo="Vuoi chiarire il perimetro prima di inviare la richiesta?"
+          introduzione="Consulta l'area più vicina alla decisione che stai valutando."
         />
-      </Section>
-
-      <Section compatta>
-        <p className="max-w-3xl text-sm leading-relaxed text-grafite-300">
-          {recapiti.email ? (
-            <>
-              Per un primo confronto puoi scrivere a{" "}
-              <a
-                href={`mailto:${recapiti.email}`}
-                className="text-avorio-100 underline underline-offset-4 hover:text-champagne-400"
-              >
-                {recapiti.email}
-              </a>
-              .
-            </>
-          ) : (
-            <>
-              Per il quadro dei servizi consulta le pagine su{" "}
-              <Link
-                href="/acquisto-aggregato"
-                className="text-avorio-100 underline underline-offset-4 hover:text-champagne-400"
-              >
-                acquisto aggregato
-              </Link>
-              ,{" "}
-              <Link
-                href="/gas-psv"
-                className="text-avorio-100 underline underline-offset-4 hover:text-champagne-400"
-              >
-                gas al PSV
-              </Link>{" "}
-              e{" "}
-              <Link
-                href="/servizi"
-                className="text-avorio-100 underline underline-offset-4 hover:text-champagne-400"
-              >
-                servizi alle imprese
-              </Link>
-              .
-            </>
-          )}
-        </p>
+        <nav aria-label="Approfondimenti sui servizi" className="mt-7">
+          <ul className="grid gap-3 sm:grid-cols-2">
+            {pagineServizio.map((pagina) => (
+              <li key={pagina.href}>
+                <Link
+                  className="flex min-h-[52px] items-center justify-between gap-4 border border-grafite-500 bg-avorio-50 px-4 py-3 text-sm font-medium text-grafite-900 transition-colors hover:border-verde-800 hover:text-verde-800"
+                  href={pagina.href}
+                >
+                  {pagina.etichetta}
+                  <span aria-hidden="true">↗</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </Section>
     </>
   );

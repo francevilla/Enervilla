@@ -17,6 +17,7 @@ Il sito deve:
 - presentare i tre ambiti di lavoro: **acquisto aggregato di energia
   elettrica**, **approvvigionamento gas sul PSV**, **contrattualistica,
   diagnosi ed efficienza energetica**;
+- raccogliere richieste B2B qualificate con un modulo in home e in `/contatti`;
 - risultare sobrio, credibile e professionale, senza toni pubblicitari;
 - **non contenere dati inventati**: nessun risultato, prezzo, percentuale di
   risparmio, logo o nome cliente attribuito al consulente senza prova. Sono
@@ -42,7 +43,7 @@ Il sito deve:
 | `/energia-come-servizio` | Energia come servizio (EaaS): definizione, contratti, perimetro del ruolo |
 | `/servizi`           | Contrattualistica, diagnosi energetiche, efficienza energetica             |
 | `/chi-sono`          | Profilo professionale, aree di competenza, regole di lavoro                |
-| `/contatti`          | Primo confronto, dati utili e recapiti solo se confermati                   |
+| `/contatti`          | Modulo B2B qualificante e primo inquadramento                                |
 
 La navigazione è definita in un unico punto (`lib/site.ts`): se una pagina non
 esiste, il collegamento non esiste.
@@ -58,8 +59,9 @@ esiste, il collegamento non esiste.
 3. **Distinguere sempre** fra: fatti documentati, ipotesi dichiarate e
    valutazioni.
 4. **Perimetro esplicito.** Ogni sezione dice anche cosa non è compreso.
-5. **Nessun modulo o pulsante inattivo.** Le chiamate all'azione portano solo a
-   pagine reali del sito.
+5. **Nessun invio simulato.** Il modulo B2B usa l'API Web3Forms dal browser e
+   conferma l'invio solo dopo risposta positiva del servizio. Rimane disattivato
+   finché access key e informativa privacy non sono configurate.
 6. **Recapiti assenti finché non confermati** (vedi
    `docs/informazioni-da-confermare.md`).
 
@@ -81,7 +83,8 @@ esiste, il collegamento non esiste.
   inserito in una cornice separata dal testo (nessuna scritta sovrapposta).
 - **Gerarchia delle CTA:** una sola primaria per schermata (champagne su scuro,
   verde-800 su fascia chiara); le chiusure usano `Chiusura` (una primaria e
-  link testuali). Nessun modulo o pulsante inattivo.
+  link testuali). Il form è disattivato solo finché mancano la key Web3Forms o
+  l'informativa; non mostra mai un invio simulato.
 - **Marchio ufficiale:** lockup "EnerVilla · Deep Energy" e payoff
   "Consulenza energetica per imprese", centralizzati in `lib/site.ts`.
 - **Metriche e accessibilità:** ogni benchmark macroeconomico è collegato alla
@@ -96,18 +99,18 @@ esiste, il collegamento non esiste.
 - **Next.js 16** (App Router) con **TypeScript**.
 - **Tailwind CSS 4** con i token di design definiti in `app/globals.css`.
 - **ESLint** con `eslint-config-next`.
-- Nessun database, nessuna autenticazione, nessun servizio di analisi,
-  nessun CMS: solo pagine statiche.
+- Nessun database, autenticazione, analytics o CMS. Il modulo invia i dati a
+  Web3Forms dal browser; il sito non conserva lead. In assenza di access key o
+  informativa privacy il form resta disattivato.
 
 Struttura del progetto:
 
 ```
 app/            pagine e layout (App Router)
-components/     componenti riutilizzabili (header, footer, sezioni, grafica)
-lib/            dati condivisi (navigazione, tappe del flusso, URL pubblico,
-             dati strutturati)
-docs/           note di progetto e informazioni da confermare
-.env.example    modello per NEXT_PUBLIC_SITE_URL (dominio pubblico)
+components/     header, footer, sezioni, grafica e modulo lead B2B
+lib/            navigazione, dati condivisi, opzioni e configurazione del form
+docs/           note di progetto, privacy e configurazione Web3Forms
+.env.example    modello per dominio, Web3Forms e URL informativa privacy
 ```
 
 ## 7. Comandi
@@ -121,7 +124,10 @@ npx tsc --noEmit  # controllo dei tipi
 
 ## 8. Da completare prima della pubblicazione
 
-- Recapiti, dati fiscali e note legali (informativa privacy, cookie policy).
+- Completare e verificare l'informativa privacy; creare il form Web3Forms,
+  verificare l'email e configurare `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` prima di
+  attivare la raccolta lead. Guida: `docs/lead-capture.md`.
+- Recapiti, dati fiscali e ulteriori note legali.
 - Aggiornamento periodico dei dati di mercato e verifica delle fonti prima di
   ogni revisione dei benchmark statici; non esiste un collegamento a un feed live.
 - Casi seguiti o referenze, solo se autorizzati per iscritto.

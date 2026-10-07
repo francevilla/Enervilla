@@ -8,6 +8,10 @@ Regola di lavoro: nulla di quanto segue va pubblicato finché non arriva una
 conferma esplicita. In assenza di conferma, restano assenti i recapiti,
 le metriche riferite al consulente e i riferimenti legali. I soli numeri
 macroeconomici pubblicati sono benchmark esterni con fonte, periodo e limiti.
+Il modulo B2B è implementato in home e `/contatti`, ma il suo invio è bloccato
+finché informativa privacy e access key Web3Forms non sono configurate. Prima
+del go-live va verificato anche il trattamento dei dati da parte del fornitore,
+inclusi conservazione e trasferimenti internazionali.
 
 ---
 
@@ -62,7 +66,8 @@ Da confermare con il titolare prima di pubblicare qualunque dettaglio su:
 
 | Documento                                  | Stato    | Note |
 | ------------------------------------------ | -------- | ---- |
-| Informativa privacy (GDPR)                 | mancante | Necessaria anche con soli dati inviati per email |
+| Informativa privacy (GDPR)                 | mancante | Da completare e verificare prima di attivare il form; include identità del titolare, finalità, base giuridica, conservazione, Web3Forms quale fornitore, trasferimenti internazionali e diritti |
+| Destinazione delle richieste del sito      | da configurare | Creare e verificare il form Web3Forms; configurare `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` nell'ambiente di deploy. Il browser invia i dati al provider; vedere `docs/lead-capture.md` |
 | Cookie policy                              | mancante | Al momento il sito non usa cookie |
 | Note legali / condizioni d'uso             | mancante | Da collegare nel footer |
 | Consensi e registro dei trattamenti        | mancante | Da predisporre prima della pubblicazione |
@@ -96,6 +101,7 @@ Da confermare con il titolare prima di pubblicare qualunque dettaglio su:
 1. Compilare la sezione 1 con i recapiti desiderati.
 2. Decidere quali dati della sezione 2 pubblicare.
 3. Definire la sezione 3 prima di scrivere qualunque dettaglio operativo.
-4. Preparare i documenti della sezione 4 con un consulente.
-5. Fornire i materiali visivi della sezione 5.
-6. Solo a quel punto aggiornare le pagine interessate.
+4. Preparare i documenti della sezione 4 e l'informativa con un consulente.
+5. Verificare informativa e condizioni Web3Forms, poi configurare l'Access Key, testare l'invio con dati fittizi e definire esportazione e cancellazione dei lead.
+6. Fornire i materiali visivi della sezione 5.
+7. Solo a quel punto completare la pubblicazione e verificare le pagine.

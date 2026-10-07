@@ -6,10 +6,12 @@ import {
   recapiti,
   site,
 } from "@/lib/site";
+import { getLeadPrivacyPolicyUrl } from "@/lib/lead-config";
 
 /** Footer essenziale: posizionamento e collegamenti alle pagine reali. */
 export function SiteFooter() {
   const anno = new Date().getFullYear();
+  const privacyUrl = getLeadPrivacyPolicyUrl();
 
   return (
     <footer className="mt-24 border-t border-grafite-800 bg-grafite-950 text-grafite-200">
@@ -92,9 +94,19 @@ export function SiteFooter() {
           <p>
             © {anno} {marchio.lockup}. {site.posizionamento}.
           </p>
-          <p>
-            Sito informativo: recapiti, note legali e informativa privacy sono in
-            fase di completamento.
+          <p className="flex flex-wrap gap-x-2 gap-y-1">
+            {privacyUrl ? (
+              <a
+                href={privacyUrl}
+                className="underline underline-offset-4 hover:text-champagne-400"
+              >
+                Informativa privacy
+              </a>
+            ) : (
+              <span>Informativa privacy da configurare</span>
+            )}
+            <span aria-hidden="true">·</span>
+            <span>Riferimenti legali da completare prima della pubblicazione.</span>
           </p>
         </div>
       </div>

@@ -1,5 +1,10 @@
 # Dependencies
 node_modules/
 
+# Environment files (keep the documented template tracked)
+.env
+.env.*
+!.env.example
+
 # Build artifacts (Next.js)
 .next/
