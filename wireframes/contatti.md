@@ -1,49 +1,54 @@
-# Wireframe — Pagina Contatti
+# Wireframe — Richiesta di primo confronto
+
+La pagina `/contatti` e la home condividono il form B2B qualificante. La
+raccolta resta disattivata finché non sono configurati access key Web3Forms e
+informativa privacy completa.
 
 ```
-┌──────────────────────────────────────────────────────────────┐
-│ HEADER                                                       │
-├──────────────────────────────────────────────────────────────┤
-│ PAGE HERO                                                    │
-│  eyebrow: CONTATTI                                           │
-│  H1: "Parliamo di cosa serve davvero."                       │
-│  paragrafo: cosa succede dopo il primo contatto              │
-├──────────────────────────────────────────────────────────────┤
-│ SEZ. A — RECAPITI (stato attuale: dati non confermati)       │
-│  ┌──────────────────────────────────────────────┐            │
-│  │ BOX STATO: "Recapiti in fase di conferma"    │            │
-│  │ quando email/telefono/linkedin esistono →    │            │
-│  │ ┌──────────┐ ┌──────────┐ ┌──────────┐      │            │
-│  │ │ ✉ email  │ │ ☎ tel.   │ │ in LinkedIn │   │            │
-│  │ └──────────┘ └──────────┘ └──────────┘      │            │
-│  └──────────────────────────────────────────────┘            │
-├──────────────────────────────────────────────────────────────┤
-│ SEZ. B — COME AVVIARE UN CONFRONTO (max-w-3xl)               │
-│  ≡ 4 passi: porta i dati → definiamo il perimetro →          │
-│     analisi → restituzione scritta                           │
-├──────────────────────────────────────────────────────────────┤
-│ SEZ. C — COSA PORTARE (checklist in box verde tenue)         │
-│  ☐ consumi per POD/PDR ☐ contratti attivi ☐ vincoli siti     │
-├──────────────────────────────────────────────────────────────┤
-│ SEZ. D — Pagine da leggere prima (link reali, non CTA false) │
-│  [acquisto-aggregato] [gas-psv] [energia-come-servizio]      │
-├──────────────────────────────────────────────────────────────┤
-│ FOOTER                                                       │
-└──────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────────┐
+│ HEADER                                                               │
+├──────────────────────────────────────────────────────────────────────┤
+│ HERO                                                                 │
+│  eyebrow: RICHIESTA · PRIMO INQUADRAMENTO                            │
+│  H1: "Un confronto utile parte dal profilo dell'impresa."             │
+│  CTA: Compila il profilo aziendale                                   │
+├──────────────────────────────────────────────────────────────────────┤
+│ FORM / DUE COLONNE                                                   │
+│  ASIDE: cosa serve e come usare il form                              │
+│    01 profilo  →  02 priorità  →  03 primo inquadramento             │
+│    Nota: niente POD/PDR, bollette o allegati                          │
+│                                                                      │
+│  PANEL: Brief iniziale / 01                                          │
+│    01 Referente e azienda                                            │
+│      Nome, email di lavoro, azienda, ruolo, settore, siti            │
+│    02 Esigenza e perimetro energetico                                │
+│      Interessi (multi-selezione), consumi elettricità/gas opzionali,  │
+│      orizzonte della decisione, nota facoltativa                     │
+│    informativa privacy + richiesta di ricontatto                     │
+│    [Invia richiesta]                                                  │
+│    stato visibile se access key Web3Forms/privacy non sono configurate│
+├──────────────────────────────────────────────────────────────────────┤
+│ DOPO L'INVIO                                                        │
+│  01 Perimetro  ·  02 Inquadramento  ·  03 Documenti su canale concordato│
+├──────────────────────────────────────────────────────────────────────┤
+│ APPROFONDIMENTI: acquisto aggregato · gas · servizi · EaaS           │
+├──────────────────────────────────────────────────────────────────────┤
+│ FOOTER + informativa privacy se configurata                          │
+└──────────────────────────────────────────────────────────────────────┘
 ```
 
-## Prompt rigenerabile
+## Principi
 
-> Wireframe fedeltà bassissima, pagina contatti di un sito di consulenza B2B
-> senza modulo: hero con titolo serif; blocco recapiti che mostra card vuote
-> con stato "in conferma"; elenco "come funziona il primo confronto" in 4
-> passi; box checklist "cosa portare"; fila di 3 card-link alle pagine di
-> servizio. Bordi sottili, niente form finti, niente ombre.
+- Campi B2B per capire ruolo, azienda, scala indicativa, esigenza e tempi.
+- Fasce di consumo opzionali e orientative; nessuna soglia di ammissione né
+  lead scoring automatico.
+- Nessun allegato, dato POD/PDR o dato di fornitura identificativo nel primo
+  invio; niente newsletter o consenso marketing.
+- Errori, invio in corso, conferma e canale non configurato hanno stati chiari e
+  annunciati alle tecnologie assistive.
+- Nessun messaggio di successo finché Web3Forms non risponde con `success: true`.
+- La pagina resta onesta in staging: il pulsante è disattivato se access key e
+  informativa non sono pronti.
 
-## Note dal design plan
-
-- **Nessun modulo inattivo** (regola 5 del brief): se non c'è un backend, non
-  c'è `<form>`; le uniche azioni reali sono `mailto:`/`tel:` quando i dati
-  saranno confermati da `lib/site.ts` (`recapiti`).
-- La pagina deve restare onesta anche nello stato "dati non confermati": il
-  box di stato spiega perché i recapiti mancano, invece di simulare presenza.
+Per il contratto API, l'elenco dei valori e il go-live vedere
+[`docs/lead-capture.md`](../docs/lead-capture.md).

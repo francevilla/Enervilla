@@ -15,7 +15,7 @@ sintesi operativa del notebook Anthropic *Prompting for Frontend Aesthetics*
 | Qual è l'emozione target? | Fiducia sobria, non eccitazione. Target: responsabili tecnici/amministrativi B2B industriale. | Niente gradienti spettacolari, niente hero "wow"; tipografia editoriale come protagonista. |
 | Cosa distingue il sito? | Il tono: perimetri espliciti, "cosa non troverai scritto", nessun dato inventato. | L'onestà diventa dispositivo di design: box stato, checklist, colonne include/non include. |
 | Vincoli hard? | Font solo di sistema, zero dipendenze di rete, CSS-only, Tailwind 4, palette fissa grafite/avorio/verde/lime. | L'estetica si costruisce con ritmo, bordi e spaziatura — non con immagini o effetti. |
-| Una CTA primaria o più? | Il brief vieta azioni false; il backend non esiste. | `mailto:`/`tel:` reali appena confermati; fino ad allora solo link a pagine vere. |
+| Una CTA primaria o più? | Il form di contatto deve qualificare richieste B2B senza simulare l'invio. | CTA verso il modulo; invio client-side a Web3Forms e form disattivato finché access key e privacy non sono pronte. |
 | Mobile-first o desktop-first? | Utente tipico legge anche da telefono in stabilimento. | Griglie che collassano a colonna singola; menu mobile con Escape/focus già implementati. |
 
 ## 2. Principi estetici (distillati dal notebook Anthropic)
@@ -58,20 +58,25 @@ Il notebook insegna che l'estetica AI fallisce quando il prompt chiede
 | Active-state nav | Barra verde sulla pagina corrente + `aria-current` | **aggiunto** (P2 relazione) |
 | Orientamento pagine servizio | Bordo sinistro continuo con tacche numerate + link Home | **aggiunto** (P3 relazione) |
 | Dati di contatto reali | Card email/telefono/LinkedIn da `recapiti`, box stato onesto | **aggiunto** (P0 relazione) |
+| `LeadCaptureForm` | Modulo B2B profilato, stati accessibili e attivazione condizionata a privacy/access key Web3Forms | **aggiunto** |
 
 ## 4. Gap analysis → interventi implementati (fase 6)
 
 Dalla relazione consulenze (P0→P3) incrociata con i wireframe:
 
-- [x] **P0 contatti:** header e footer mostrano `mailto:`/`tel:` reali quando
-  `NEXT_PUBLIC_CONTACT_EMAIL`/`PHONE` sono impostati; pagina `/contatti`
-  mostra card recapiti o un box di stato dichiarato (niente finzione).
+- [x] **P0 contatti:** home e `/contatti` raccolgono profilo B2B, interessi,
+  fasce energetiche indicative e orizzonte decisionale. Il browser inoltra i
+  campi a Web3Forms; nessun archivio locale e nessuna conferma prima di una
+  risposta positiva (`success: true`). Privacy o access key mancanti → invio
+  disattivato.
+- [x] **P0 conversione:** CTA della home ancorate al modulo; FAQ/servizi restano
+  disponibili prima e dopo l'invio per chi deve ancora definire il perimetro.
 - [x] **P2 active-state:** evidenziazione pagina corrente nel menu desktop e
   mobile, con `aria-current="page"`; chiusura menu su Escape con ripristino
   del focus; reset su resize desktop.
 - [x] **P3 orientamento:** ogni pagina lunga ha una guida laterale (bordo
-  sinistro con tacche) e un rimando a Home; la home chiude il funnel verso
-  `/contatti` in modo ripetuto ma mai doppio-solido.
+  sinistro con tacche) e un rimando a Home; la home conduce al modulo con una
+  gerarchia primaria coerente, senza CTA solide concorrenti.
 - [x] **Verifica:** lint, `tsc --noEmit`, build di produzione, smoke test dei
   percorsi (200 su tutte le rotte, 404 controllato).
 

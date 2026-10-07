@@ -95,7 +95,7 @@ Ogni sezione risponde a una domanda di decisione: **quanto è esposto il costo? 
 4. **Pilastri:** traduce il bisogno in tre incarichi comprensibili e collegati alle pagine di servizio.
 5. **Rischio:** mostra le variabili che rendono non equivalenti due offerte.
 6. **Metodo:** rassicura chi approva il budget e chi deve mantenere il sito produttivo operativo.
-7. **Contatto:** chiede informazioni circoscritte; nessun modulo fittizio, recapito provvisorio o promessa di risparmio.
+7. **Contatto:** raccoglie informazioni B2B circoscritte con invio client-side a Web3Forms; nessun invio simulato, recapito provvisorio o promessa di risparmio. Il form resta disattivato finché informativa e access key non sono configurate.
 
 ---
 
